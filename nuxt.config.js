@@ -40,8 +40,19 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/pwa'
   ],
-
+  manifest: {
+    name: 'マナブアレルギー',
+    lang: 'ja',
+    short_name: 'マナアレ',
+    title: 'マナブアレルギー',
+    'og:title': 'マナブアレルギー',
+    description: 'マナブアレルギーのサイトです',
+    'og:description': 'マナブアレルギーのサイトです',
+    theme_color: '#212121',
+    background_color: '#212121'
+  },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }
