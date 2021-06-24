@@ -88,4 +88,7 @@ sw.*
 
 # Vim swap files
 *.swp
+<<<<<<< HEAD
 package-lock.json
+=======
+>>>>>>> parent of 532e192 (add package-lock.json to gitignore)
