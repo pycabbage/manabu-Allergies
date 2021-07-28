@@ -5,13 +5,13 @@ export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
   router: {
-    base: '/manabu-Allergies/'
+    base: process.env.BASE || "/"
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'manabu-Allergies',
+    title: 'マナブアレルギー',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'ja'
     },
     meta: [
       { charset: 'utf-8' },
