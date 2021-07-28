@@ -1,4 +1,5 @@
-# manabu-Allergies
+# マナブアレルギー
+[![deploy](https://github.com/pycabbage/manabu-Allergies/actions/workflows/build.yml/badge.svg)](https://github.com/pycabbage/manabu-Allergies/actions/workflows/build.yml)
 
 ## Build Setup
 
