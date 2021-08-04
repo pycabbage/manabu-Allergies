@@ -10,7 +10,11 @@
     <v-app-bar app >
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>マナブアレルギー</v-toolbar-title>
+      <v-toolbar-title>
+        <nuxt-link to="/">
+          マナブアレルギー
+        </nuxt-link>
+      </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn
         icon
@@ -40,6 +44,8 @@
 
 
 <style>
+
+/* ここから下は元々あったCSS */
 html {
   font-family:
     'Source Sans Pro',
