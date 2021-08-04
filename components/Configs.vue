@@ -4,7 +4,8 @@
       <v-avatar :height="AvatarSize"
                 :width="AvatarSize">
         <v-img  :src="User.icon" 
-                :aspect-ratio="16/9"></v-img>
+                :aspect-ratio="16/9"
+                alt="user icon"></v-img>
       </v-avatar>
     </div>
     <v-expansion-panels>
