@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[7],{350:function(n,e,t){"use strict";t.r(e);var r={},l=t(77),c=t(159),o=t.n(c),w=t(311),component=Object(l.a)(r,(function(){var n=this,e=n.$createElement;return(n._self._c||e)("v-app",{attrs:{id:"inspire"}},[n._v("\n  ここにページを書く\n")])}),[],!1,null,null,null);e.default=component.exports;o()(component,{VApp:w.a})}}]);
