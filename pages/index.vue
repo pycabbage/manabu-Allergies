@@ -3,7 +3,7 @@
     <!-- ここにページを書く -->
     <ContentCollections CollectionName="リンク集">
       <template v-slot:CollectionContent>
-        <v-list-item v-for="(item, index) in items" :key="index" :to="item" nuxt="true">
+        <v-list-item v-for="(item, index) in items" :key="index" :to="item" nuxt>
           <v-list-item-content>
             <v-list-item-title v-text="index"></v-list-item-title>
           </v-list-item-content>
