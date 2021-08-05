@@ -6,7 +6,7 @@
         <v-list shaped>
           <v-subheader>リンク集</v-subheader>
           <v-list-item-group color="primary">
-            <v-list-item v-for="(item, index) in items" :key="index" :href="item">
+            <v-list-item v-for="(item, index) in items" :key="index" :to="item" nuxt="true">
               <v-list-item-content>
                 <v-list-item-title v-text="index"></v-list-item-title>
               </v-list-item-content>
