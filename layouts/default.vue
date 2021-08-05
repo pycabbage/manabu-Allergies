@@ -5,15 +5,14 @@
       app
       temporary
     >
+      <Menu />
     </v-navigation-drawer>
 
     <v-app-bar app >
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
       <v-toolbar-title>
-        <nuxt-link to="/">
-          マナブアレルギー
-        </nuxt-link>
+        マナブアレルギー
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn
