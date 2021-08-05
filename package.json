@@ -15,7 +15,8 @@
     "core-js": "^3.9.1",
     "firebase": "^8.8.1",
     "npm": "^7.19.0",
-    "nuxt": "^2.15.3"
+    "nuxt": "^2.15.3",
+    "pixi.js": "^6.1.0"
   },
   "devDependencies": {
     "@nuxtjs/vuetify": "^1.12.1",
