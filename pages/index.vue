@@ -19,16 +19,16 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        items : {
-          ランキング : "/ranking",
-          アカウント設定 : "/account-setting",
-          マイページ : "/my-page",
-          ダイアログのテスト : "/dialog-test"
-        }
+export default {
+  data() {
+    return {
+      items : {
+        ランキング : "/ranking",
+        アカウント設定 : "/account-setting",
+        マイページ : "/my-page",
+        ダイアログのテスト : "/dialog-test"
       }
     }
   }
+}
 </script>
