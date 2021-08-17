@@ -1,5 +1,5 @@
 <template>
-    <v-row justify="left">
+    <v-row>
       <v-card tile>
         <v-list shaped>
           <v-subheader>{{ CollectionName }}</v-subheader>

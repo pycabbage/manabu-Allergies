@@ -17,13 +17,15 @@
 <script>
 export default {
   props: {
-    User:Object,
-  },
-  data(){
-    return {
-      AvatarSize:150,
-      width:1000,
-    };
+    User: {
+      type: Object,
+      require: true,
+    },
+    AvatarSize: {
+      type: Number,
+      require: false,
+      default: 150,
+    },
   },
 }
 </script>

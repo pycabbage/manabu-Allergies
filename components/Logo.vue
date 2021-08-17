@@ -1,6 +1,5 @@
 <template>
-<Svg-icon />
-
+  <Svg-icon />
 </template>
 
 <style>
