@@ -50,14 +50,11 @@ export default {
           alert(error);
         });
     },
-    updateProfilePhotoBtn() {
-      this.$refs.input.click();
-    },
-    updateProfilePhoto() {
+    updateProfilePhoto(e) {
       this.$store
         .dispatch({
           type: "auth/updateProfile",
-          photo: this.$refs.input.files[0],
+          photo: e.target.files[0],
         })
         .then(() => {})
         .catch((error) => {
