@@ -33,6 +33,17 @@
           あとで実装予定。トロフィーの進捗とかをグラフとしてだしたい。
         </div>
       </v-container>
+      <div class="AppConfig">
+        <SettingDialog DialogTitle="Configs"
+                       :ToolBarColor="ThemeColor">
+          <div class="ConfigSwitches"
+               v-for="(conf, index) of AppConfigs">
+            <ConfigSwitch :HandledValue="conf.isValid" 
+                            :ConfName="conf.name">
+            </ConfigSwitch>
+          </div>
+        </SettingDialog>
+      </div>
     </v-col>
   </v-container>
 </template>
@@ -49,6 +60,12 @@ export default {
         tel: 'xxx-xxxx',
         icon: 'AnonymousIcon.png',
       },
+      AppConfigs: [
+        {
+          name: 'test option',
+          isValid: true,
+        },
+      ],
       HandledUserProperty: ["id","name","email"],
       ThemeColor: "light-blue darken-1",
     };
@@ -57,7 +74,10 @@ export default {
     UpdateConfigValue() {
       //あとで実装予定。ユーザー名とか変更できるようにしたい。
     },
-  }
+    TestConfigFunc(){
+      console.log('test options');
+    },
+  },
 }
 </script>
 
@@ -82,5 +102,13 @@ export default {
 .UpdateConfigBtn {
   margin-left: 70%;
   margin-bottom:20px;
+}
+
+.AppConfig {
+  text-align: right;
+}
+
+.ConfigSwitches {
+  margin-top: 10px;
 }
 </style>
