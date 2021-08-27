@@ -21,9 +21,10 @@ export default {
         ランキング : "/ranking",
         アカウント設定 : "/account-setting",
         マイページ : "/my-page",
-        ダイアログのテスト : "/dialog-test"
-      }
-    }
-  }
+        ダイアログのテスト : "/dialog-test",
+        図鑑目次: "/zukan-index",
+      },
+    };
+  },
 }
 </script>

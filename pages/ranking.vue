@@ -1,6 +1,6 @@
 <template>
   <v-app id="ranking">
-    <h1>ランキング</h1>
+    <PageTitle>ランキング</PageTitle>
     <ol>
       <li v-for="(data, key) in sort_data" :key="data">
         {{key}}さん <v-progress-linear color="light-blue" height="30" :value="data" striped>{{data}}</v-progress-linear>

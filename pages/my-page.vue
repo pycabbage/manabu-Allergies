@@ -1,6 +1,7 @@
 <template>
   <v-container>
-    <v-col>
+    <PageTitle class="MyPageTitle">マイページ</PageTitle>
+    <v-row>
       <v-container class="Section">
         <h3>ユーザー情報</h3>
         <hr>
@@ -44,7 +45,7 @@
           </div>
         </SettingDialog>
       </div>
-    </v-col>
+    </v-row>
   </v-container>
 </template>
 
@@ -82,6 +83,11 @@ export default {
 </script>
 
 <style>
+.MyPageTitle {
+  margin-top: 50px;
+  margin-bottom: 70px;
+}
+
 .OpenSetting {
   float:right;
 }
@@ -105,7 +111,7 @@ export default {
 }
 
 .AppConfig {
-  text-align: right;
+  margin-left: auto;
 }
 
 .ConfigSwitches {
