@@ -8,7 +8,8 @@ export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
   router: {
-    base: process.env.BASE || "/"
+    base: process.env.BASE || "/",
+    middleware: 'redirect'
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
