@@ -8,7 +8,8 @@ export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
   router: {
-    base: process.env.BASE || "/"
+    base: process.env.BASE || "/",
+    middleware: 'redirect'
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -39,7 +40,7 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-      '@nuxtjs/vuetify',
+    '@nuxtjs/vuetify',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -61,7 +62,7 @@ export default {
   build: {
     vendor: ['pixi.js'],
     babel: {
-      presets({ isServer }, [ preset, options ]) {
+      presets({ isServer }, [preset, options]) {
         options.loose = true;
       }
     }
