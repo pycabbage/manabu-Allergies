@@ -1,6 +1,6 @@
 <template>
   <v-app id="inspire">
-    <!-- ここにページを書く -->
+    <!--
     <ContentCollections CollectionName="リンク集">
     <template v-slot:CollectionContent>
       <v-list-item v-for="(item, index) in items" :key="index" :to="item" nuxt>
@@ -10,6 +10,8 @@
       </v-list-item>
     </template>
     </ContentCollections>
+    -->
+    <SvgIcon />
   </v-app>
 </template>
 
@@ -17,13 +19,13 @@
 export default {
   data() {
     return {
-      items : {
+/*      items : {
         ランキング : "/ranking",
         アカウント設定 : "/account-setting",
         マイページ : "/my-page",
         ダイアログのテスト : "/dialog-test",
         図鑑目次: "/zukan-index",
-      },
+      },*/
     };
   },
 }
