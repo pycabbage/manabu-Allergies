@@ -10,7 +10,7 @@
             <SettingDialog DialogTitle="User Setting"
                            :ToolBarColor="ThemeColor">
               <v-card-text class="TextareaWrapper">
-                <div v-for="p of HandledUserProperty">
+                <div v-for="p of HandledUserProperty" :key="p">
                   <ConfigTextarea :TextareaLabel="'New user ' + p"/>
                   <!-- 実際にユーザー名変更する処理はまだ。今は見た目だけ。 -->
                 </div>
@@ -38,7 +38,7 @@
         <SettingDialog DialogTitle="Configs"
                        :ToolBarColor="ThemeColor">
           <div class="ConfigSwitches"
-               v-for="(conf, index) of AppConfigs">
+               v-for="(conf, index) of AppConfigs" :key="index">
             <ConfigSwitch :HandledValue="conf.isValid" 
                             :ConfName="conf.name">
             </ConfigSwitch>

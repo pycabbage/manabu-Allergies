@@ -2,7 +2,7 @@
   <v-container>
     <PageTitle class="ZukanIndexTitle">図鑑目次</PageTitle>
     <v-row class="ZukanLists">
-      <v-col cols="2" v-for="zukan of ZukanContent">
+      <v-col cols="2" v-for="zukan of ZukanContent" :key="zukan">
         <ZukanList :ZukanContent="zukan" />
       </v-col>
     </v-row>
