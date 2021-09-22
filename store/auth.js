@@ -304,4 +304,11 @@ export const actions = {
     //         throw new Error(error)
     //     }
     // }
+    async requestFriend(_, payload) {
+        try {
+            firebase.firestore().collection("friend").doc(this.getters["auth/id"]);
+        } catch (error) {
+
+        }
+    }
 }
