@@ -14,7 +14,7 @@
         </v-card-text>
         <v-btn
           class="UpdateConfigBtn"
-          @click="updateFunc(NewValue)"
+          @click="updateValue"
           :color="ThemeColor"
           :disabled="!formValid"
         >
@@ -56,7 +56,10 @@ export default {
     };
   },
   methods: {
-    updateValue(NewVal) {
+    updateValue() {
+      this.updateFunc(this.NewValue);
+    },
+    /*updateValue(NewVal) {
       if (NewVal.length < 1) {
         this.updateFunc("default");
       } else {
@@ -153,7 +156,7 @@ export default {
             alert(error);
           });
       };
-    },
+    },*/
   },
 };
 </script>

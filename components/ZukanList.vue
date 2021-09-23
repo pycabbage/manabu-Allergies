@@ -1,15 +1,25 @@
 <template>
-  <NuxtLink :to="PagePath">
-    <v-card :width="CardWidth"
-            :height="CardWidth"
-      :img="ZukanContent.Img">
-      <v-card-title class="ListTitle">
-        <div>
-          {{ ZukanContent.Title }}
-        </div>
-      </v-card-title>
+  <v-dialog width="1000">
+    <template v-slot:activator="{ on,attrs }">
+      <v-btn class="ZukanContentIcon"
+             icon
+             v-bind="attrs"
+             v-on="on">
+        <v-card :width="CardWidth"
+                :height="CardWidth"
+          :img="ZukanContent.Img">
+          <v-card-title class="ListTitle">
+            <div>
+              {{ ZukanContent.Title }}
+            </div>
+          </v-card-title>
+        </v-card>
+      </v-btn>
+    </template>
+    <v-card>
+      <ZukanContentPage :ZukanContent="ZukanContent" />
     </v-card>
-  </NuxtLink>
+  </v-dialog>
 </template>
 <script>
 export default {
@@ -50,6 +60,11 @@ ZukanContent = {
 -->
 
 <style>
+.ZukanContentIcon {
+  margin-top: 3rem;
+  margin-left: 5rem;
+}
+
 .ListTitle {
   padding-top:50%;
 }

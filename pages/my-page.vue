@@ -7,10 +7,13 @@
         <hr>
         <div class="SectionContent">
           <MyPageContent :currentValue="getName"
-                         valueName="ユーザー名"
-                         :updateFunc="updateProfileName"
-                         :inputValidation="[inputRequire]"
-                         :ThemeColor="ThemeColor"/>
+            valueName="ユーザー名"
+            :updateFunc="updateProfileName"
+            :inputValidation="[inputRequire]"
+            :ThemeColor="ThemeColor"/>
+          <v-btn @click="updateNameValue">
+            test update
+          </v-btn>
         </div>
       </v-container>
       <v-container class="Section">
@@ -57,9 +60,103 @@ export default {
     getId: DataFunc.computed.getId,
   },
   methods: {
-    updateProfileName: DataFunc.methods.updateProfileName,
+    /*updateProfileName: DataFunc.methods.updateProfileName,
     updateEmail: DataFunc.methods.updateEmail,
-    updatePassword: DataFunc.methods.updatePassword,
+    updatePassword: DataFunc.methods.updatePassword,*/
+    updateNameValue() {
+      this.updateProfileName('test');
+    },
+    logout() {
+      return function () {
+        this.$store
+          .dispatch({
+            type: "auth/signOut",
+          })
+          .then(() => {
+            this.$router.push("/login");
+          })
+          .catch((error) => {
+            alert(error);
+          });
+      };
+    },
+    updateProfilePhoto(e) {
+      return function () {
+        this.$store
+          .dispatch({
+            type: "auth/updateProfile",
+            photo: e.target.files[0],
+          })
+          .then(() => {})
+          .catch((error) => {
+            alert(error);
+          });
+      };
+    },
+    updateProfileName(name) {
+      return function () {
+        this.$store
+          .dispatch({
+            type: "auth/updateProfile",
+            name: name,
+          })
+          .then(() => {
+            //this.name = "";
+          })
+          .catch((error) => {
+            alert(error);
+          });
+      };
+    },
+    updateEmail() {
+      return function (email, confirmationPassword) {
+        this.$store
+          .dispatch({
+            type: "auth/updateEmailWithAuth",
+            email: email,
+            confirmationPassword: confirmationPassword,
+          })
+          .then(() => {
+            // this.email = "";
+            // this.confirmationPassword = "";
+          })
+          .catch((error) => {
+            alert(error);
+          });
+      };
+    },
+    updatePassword(password, confirmationPassword) {
+      return function () {
+        this.$store
+          .dispatch({
+            type: "auth/updatePasswordWithAuth",
+            password: password,
+            confirmationPassword: confirmationPassword,
+          })
+          .then(() => {
+            // this.password = "";
+            // this.confirmationPassword = "";
+          })
+          .catch((error) => {
+            alert(error);
+          });
+      };
+    },
+    deleteAccount() {
+      return function (confirmationPassword) {
+        this.$store
+          .dispatch({
+            type: "auth/deleteAccountWithAuth",
+            confirmationPassword: confirmationPassword,
+          })
+          .then(() => {
+            //this.confirmationPassword = "";
+          })
+          .catch((error) => {
+            alert(error);
+          });
+      };
+    },
   },
 }
 </script>
