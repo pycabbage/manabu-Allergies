@@ -7,10 +7,10 @@
         <hr>
         <div class="SectionContent">
           <MyPageContent :currentValue="getName"
-            valueName="ユーザー名"
-            :updateFunc="updateProfileName"
-            :inputValidation="[inputRequire]"
-            :ThemeColor="ThemeColor"/>
+                         valueName="ユーザー名"
+                         :updateFunc="updateProfileName"
+                         :inputValidation="[inputRequire]"
+                         :ThemeColor="ThemeColor"/>
           <v-btn @click="updateNameValue">
             test update
           </v-btn>
@@ -29,7 +29,7 @@
         <div class="ConfigSwitches"
              v-for="(conf, index) of AppConfigs" :key="index">
           <ConfigSwitch :HandledValue="conf.isValid" 
-            :ConfName="conf.name">
+                        :ConfName="conf.name">
           </ConfigSwitch>
         </div>
         </SettingDialog>
