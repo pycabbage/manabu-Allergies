@@ -1,30 +1,20 @@
 <template>
-    <v-switch v-model="HandleValue" 
+    <v-switch @click="HandleFunc(HandleFuncArg)" 
               :label="ConfName"></v-switch>
 </template>
 
 <script>
 export default {
   props: {
-    HandledValue:{
-      type: Boolean,
+    HandleFunc: {
+      type: Function,
       require: true,
     },
-    ConfName: {
+    HandleFuncArg: {
       type: String,
       require: true,
     },
   },
-  computed: {
-    HandleValue: {
-      get(){
-        return this.HandledValue;
-      },
-      set(newVal){
-        this.$emit("pushedSwitch",newVal);
-      }
-    }
-  }
 }
 </script>
 

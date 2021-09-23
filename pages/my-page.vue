@@ -6,25 +6,11 @@
         <h3>ユーザー情報</h3>
         <hr>
         <div class="SectionContent">
-          <div class="OpenSetting">
-            <SettingDialog DialogTitle="User Setting"
-                           :ToolBarColor="ThemeColor">
-              <v-card-text class="TextareaWrapper">
-                <div v-for="p of HandledUserProperty" :key="p">
-                  <ConfigTextarea :TextareaLabel="'New user ' + p"/>
-                  <!-- 実際にユーザー名変更する処理はまだ。今は見た目だけ。 -->
-                </div>
-              </v-card-text>
-              <v-btn  class="UpdateConfigBtn"
-                      :color="ThemeColor">
-                UPDATE
-              </v-btn>
-            </SettingDialog>
-          </div>
-          <p>ユーザー名:{{ User.name }}</p>
-          <p>ユーザーID:{{ User.id }}</p>
-          <p>メールアドレス:{{ User.email }}</p>
-          <p>電話番号:{{ User.tel }}</p>
+          <MyPageContent :currentValue="getName"
+                         valueName="ユーザー名"
+                         :updateFunc="updateProfileName"
+                         :inputValidation="[inputRequire]"
+                         :ThemeColor="ThemeColor"/>
         </div>
       </v-container>
       <v-container class="Section">
@@ -37,12 +23,12 @@
       <div class="AppConfig">
         <SettingDialog DialogTitle="Configs"
                        :ToolBarColor="ThemeColor">
-          <div class="ConfigSwitches"
-               v-for="(conf, index) of AppConfigs" :key="index">
-            <ConfigSwitch :HandledValue="conf.isValid" 
-                            :ConfName="conf.name">
-            </ConfigSwitch>
-          </div>
+        <div class="ConfigSwitches"
+             v-for="(conf, index) of AppConfigs" :key="index">
+          <ConfigSwitch :HandledValue="conf.isValid" 
+            :ConfName="conf.name">
+          </ConfigSwitch>
+        </div>
         </SettingDialog>
       </div>
     </v-row>
@@ -50,34 +36,30 @@
 </template>
 
 <script>
+import DataFunc from '/components/DataFuncs.vue'
+
 export default {
   data(){
     return {
-      User: {
-        id: 'tarou123',
-        name:'太郎',
-        age: 20,
-        email: 'tarou@yamada',
-        tel: 'xxx-xxxx',
-        icon: 'AnonymousIcon.png',
-      },
       AppConfigs: [
         {
           name: 'test option',
           isValid: true,
         },
       ],
-      HandledUserProperty: ["id","name","email"],
       ThemeColor: "light-blue darken-1",
+      inputRequire: value => !!value || "必ず入力してください",
     };
   },
+  computed: {
+    getName: DataFunc.computed.getName,
+    getEmail: DataFunc.computed.getEmail,
+    getId: DataFunc.computed.getId,
+  },
   methods: {
-    UpdateConfigValue() {
-      //あとで実装予定。ユーザー名とか変更できるようにしたい。
-    },
-    TestConfigFunc(){
-      console.log('test options');
-    },
+    updateProfileName: DataFunc.methods.updateProfileName,
+    updateEmail: DataFunc.methods.updateEmail,
+    updatePassword: DataFunc.methods.updatePassword,
   },
 }
 </script>
@@ -86,10 +68,6 @@ export default {
 .MyPageTitle {
   margin-top: 50px;
   margin-bottom: 70px;
-}
-
-.OpenSetting {
-  float:right;
 }
 
 .TextareaWrapper {
