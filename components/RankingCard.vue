@@ -1,5 +1,6 @@
 <template>
-  <v-card class="RankingCardRoot">
+  <v-card class="RankingCardRoot"
+          width="90vw">
     <i class="RankingTexts"
        :style="rankingNumberColor">
       {{ rankingNumber }} .
@@ -34,9 +35,9 @@ export default {
       require: true,
     },
     scoreBarHeight: {
-      type: Number,
+      type: String,
       require: false,
-      default: 50,
+      default: "6vh",
     },
   },
   computed: {
@@ -52,14 +53,16 @@ export default {
 
 <style>
 .RankingCardRoot {
-  margin-bottom: 2rem;
+  margin-bottom: 1vw;
+  /*padding-left: 2vw;
+  padding-right: 2vw;*/
 }
 
 .RankingTexts {
   text-align: right;
   font-size: 2rem;
   font-family: 'Impact';
-  padding-right: 3rem;
+  margin-right: 3rem;
 }
 
 i.RankingTexts {
@@ -67,8 +70,8 @@ i.RankingTexts {
 }
 
 .ScoreBar {
-  width: 100rem;
-  margin-right: 3rem;
-  margin-left: 3rem;
+  width: 95%;
+  margin-left: 2vw;
+  margin-right: 2vw;
 }
 </style>
