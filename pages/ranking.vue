@@ -1,13 +1,14 @@
 <template>
   <v-app id="ranking">
-    <v-container>
+    <v-container class="RankingWrapper">
       <PageTitle>ランキング</PageTitle>
-        <v-row class="RankingContent">
-          <div v-for="(data, index) of sortedDatas" :key="index">
+        <v-row class="RankingContentsWrapper">
+          <div class="RankinguContent"
+               v-for="(data, index) of sortedDatas" :key="index">
             <RankingCard :rankingNumber="index + 1"
-              :userName="data.name"
-              :userScore="data.score"
-              :themeColor="ThemeColor" />
+                         :userName="data.name"
+                         :userScore="data.score"
+                         :themeColor="ThemeColor" />
           </div>
         </v-row>
     </v-container>
@@ -59,7 +60,13 @@ export default {
 </script>
 
 <style>
-.RankingContent {
+.RankingContentsWrapper {
   margin-top: 2rem;
+  margin-right: 2vw;
+  margin-left: 2vw;
 }
+
+/*.RankingContent {
+  width: 80vw;
+}*/
 </style>

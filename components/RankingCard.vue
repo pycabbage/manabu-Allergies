@@ -1,16 +1,18 @@
 <template>
-  <v-card class="RankingCardRoot">
+  <v-card class="RankingCardRoot"
+          width="90vw">
     <i class="RankingTexts"
        :style="rankingNumberColor">
       {{ rankingNumber }} .
     </i>
-    <v-progress-linear class="ScoreBar"
-                       :color="themeColor"
-                       :height="scoreBarHeight"
-                       :value="userScore"
-                       striped>
-      {{ userScore }}</v-progress-linear>
-    <v-card-text class="RankingTexts">{{ userName }}</v-card-text>
+    <div class="ScoreBar">
+      <v-progress-linear :color="themeColor"
+        height="6vh"
+        :value="userScore"
+        striped>
+        {{ userScore }}</v-progress-linear>
+    </div>
+    <p class="RankingTexts">{{ userName }}</p>
   </v-card>
 </template>
 
@@ -33,11 +35,6 @@ export default {
       type: String,
       require: true,
     },
-    scoreBarHeight: {
-      type: Number,
-      require: false,
-      default: 50,
-    },
   },
   computed: {
     rankingNumberColor() {
@@ -52,14 +49,14 @@ export default {
 
 <style>
 .RankingCardRoot {
-  margin-bottom: 2rem;
+  margin-bottom: 1vw;
 }
 
 .RankingTexts {
   text-align: right;
   font-size: 2rem;
   font-family: 'Impact';
-  padding-right: 3rem;
+  margin-right: 3rem;
 }
 
 i.RankingTexts {
@@ -67,8 +64,7 @@ i.RankingTexts {
 }
 
 .ScoreBar {
-  width: 100rem;
-  margin-right: 3rem;
-  margin-left: 3rem;
+  width: 95%;
+  margin-left: 3%;
 }
 </style>
