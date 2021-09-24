@@ -3,7 +3,7 @@
     <v-container>
       <PageTitle>ランキング</PageTitle>
         <v-row class="RankingContent">
-          <div v-for="(data, index) of datas" :key="index">
+          <div v-for="(data, index) of sortedDatas" :key="index">
             <RankingCard :rankingNumber="index + 1"
               :userName="data.name"
               :userScore="data.score"
@@ -44,15 +44,16 @@ export default {
     };
   },
   computed:{
-    sort_data : function(){
-      var obj=this.datas
-      var array = Object.keys(obj).map((k)=>({ key: k, value: obj[k] }));
-      array.sort((a, b) =>  - b.value-a.value);
-      obj = Object.assign({}, ...array.map((item) => ({
-        [item.key]: item.value,
-      })));
-      return obj
-    }
+    sortedDatas() {
+      var sortedDatasArray = this.datas;
+      sortedDatasArray.sort((a, b)=> {            //降順にソートするコード。
+        var aValue = a.score, bValue = b.score;
+        if (aValue < bValue) return 1;
+        else if (aValue > bValue) return -1;
+        else return 0;
+      });
+      return sortedDatasArray;
+    },
   }
 }
 </script>
@@ -60,6 +61,5 @@ export default {
 <style>
 .RankingContent {
   margin-top: 2rem;
-  margin-left: 4rem;
 }
 </style>
