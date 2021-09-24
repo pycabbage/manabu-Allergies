@@ -2,6 +2,7 @@
   "name": "manabu-Allergies",
   "version": "1.0.0",
   "private": true,
+  "homepage": "./",
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build && nuxt generate",
