@@ -7,7 +7,7 @@
     </i>
     <div class="ScoreBar">
       <v-progress-linear :color="themeColor"
-        height="6vh"
+        height="5.5vh"
         :value="userScore"
         striped>
         {{ userScore }}</v-progress-linear>
