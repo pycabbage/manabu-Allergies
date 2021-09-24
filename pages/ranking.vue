@@ -2,17 +2,14 @@
   <v-app id="ranking">
     <v-container>
       <PageTitle>ランキング</PageTitle>
-      <ol>
-        <li v-for="(data, key) in sort_data" :key="data">
-          <v-card>
-            {{key}}さん <v-progress-linear color="light-blue" 
-                                           height="30" 
-                                           :value="data"
-                                           striped>
-              {{data}}</v-progress-linear>
-          </v-card>
-        </li>
-      </ol>
+        <v-row class="RankingContent">
+          <div v-for="(data, index) of datas" :key="index">
+            <RankingCard :rankingNumber="index + 1"
+              :userName="data.name"
+              :userScore="data.score"
+              :themeColor="ThemeColor" />
+          </div>
+        </v-row>
     </v-container>
   </v-app>
 </template>
@@ -21,19 +18,28 @@
 export default {
   data() {
     return {
-      datas:{
-        c : 80,
-        a : 100,
-        b : 90,
-        d : 70,
-        e : 60,
-        f : 50,
-        g : 40,
-        h : 30,
-        i : 20,
-        j : 10,
-        k : 0
-      },
+      datas: [
+        {
+          name: 'bob',
+          score: 80,
+        },
+        {
+          name: 'john',
+          score: 90,
+        },
+        {
+          name: 'mary',
+          score: 70,
+        },
+        {
+          name: 'tarou',
+          score: 100,
+        },
+        {
+          name: 'hanako',
+          score: 50,
+        },
+      ],
       ThemeColor: "light-blue darken-1",
     };
   },
@@ -50,3 +56,10 @@ export default {
   }
 }
 </script>
+
+<style>
+.RankingContent {
+  margin-top: 2rem;
+  margin-left: 4rem;
+}
+</style>

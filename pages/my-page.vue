@@ -163,26 +163,21 @@ export default {
 
 <style>
 .MyPageTitle {
-  margin-top: 50px;
-  margin-bottom: 70px;
+  margin-top: 2rem;
+  margin-bottom: 2.8rem;
 }
 
 .TextareaWrapper {
-  margin-top: 30px;
+  margin-top: 2.5rem;
 }
 
 .Section {
-  margin-bottom: 30px;
+  margin-bottom: 5rem;
 }
 
 .SectionContent {
-  margin-top: 30px;
-  margin-left: 50px;
-}
-
-.UpdateConfigBtn {
-  margin-left: 70%;
-  margin-bottom:20px;
+  margin-top: 2rem;
+  margin-left: 4rem;
 }
 
 .AppConfig {
