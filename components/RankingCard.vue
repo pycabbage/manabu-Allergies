@@ -7,9 +7,9 @@
     </i>
     <div class="ScoreBar">
       <v-progress-linear :color="themeColor"
-        height="5.5vh"
-        :value="userScore"
-        striped>
+                         height="5.5vh"
+                         :value="userScore"
+                        striped>
         {{ userScore }}</v-progress-linear>
     </div>
     <p class="RankingTexts">{{ userName }}</p>
