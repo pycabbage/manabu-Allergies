@@ -162,11 +162,6 @@ export default {
 </script>
 
 <style>
-.MyPageTitle {
-  margin-top: 2rem;
-  margin-bottom: 2.8rem;
-}
-
 .TextareaWrapper {
   margin-top: 2.5rem;
 }

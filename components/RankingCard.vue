@@ -2,7 +2,7 @@
   <v-card class="RankingCardRoot">
     <i class="RankingTexts"
        :style="rankingNumberColor">
-      {{ rankingNumber }}
+      {{ rankingNumber }} .
     </i>
     <v-progress-linear class="ScoreBar"
                        :color="themeColor"
@@ -60,6 +60,10 @@ export default {
   font-size: 2rem;
   font-family: 'Impact';
   padding-right: 3rem;
+}
+
+i.RankingTexts {
+  margin-left: 0.5rem;
 }
 
 .ScoreBar {
