@@ -1,26 +1,30 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer
-      v-model="drawer"
-      app
-      temporary
-    >
-      <Menu />
+    <v-navigation-drawer v-model="drawer" fixed temporary>
+      <v-list nav dense>
+        <v-list-item-group>
+          <v-list-item
+            v-for="item in items"
+            :key="item.title"
+            link
+            :to="item.to"
+            nuxt
+          >
+            <v-list-item-content>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar app >
+    <v-app-bar app>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>
-        マナブアレルギー
-      </v-toolbar-title>
+      <v-toolbar-title> マナブアレルギー </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn
-        icon
-        nuxt
-        v-on:click="login"
-      >
-        <v-icon >mdi-login-variant</v-icon>
+      <v-btn icon nuxt v-on:click="login">
+        <v-icon>mdi-login-variant</v-icon>
       </v-btn>
     </v-app-bar>
 
@@ -31,30 +35,34 @@
 </template>
 
 <script>
-  export default {
-    data: (e) => ({ drawer: false }),
-    methods: {
-      login: ()=>{
-        console.log("Login")
-      }
-    }
-  }
+import Menu from "../components/Menu.vue";
+export default {
+  components: { Menu },
+  data: (e) => ({
+    drawer: false,
+    items: [
+      { title: "トップ", to: "/" },
+      { title: "ランキング", to: "/ranking" },
+      { title: "戦闘", to: "/battle" },
+      //{ title: "アカウント設定", to: "/account-setting" },
+      { title: "マイページ", to: "/my-page" },
+      { title: "ダイアログのテスト", to: "/dialog-test" },
+      { title: "図鑑", to: "/zukan-index" },
+    ],
+  }),
+  methods: {
+    login() {
+      this.$router.push("/login")
+    },
+  },
+};
 </script>
 
-
 <style>
-
 /* ここから下は元々あったCSS */
 html {
-  font-family:
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
+  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
