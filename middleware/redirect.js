@@ -1,5 +1,5 @@
 export default function (context) {
-  if (context.route.path !== "/") {
+  if (context.route.path !== "/" && !context.query.authdetour) {
     context.store.dispatch({
       type: "auth/authStateWithVerification",
     }).then((result) => {
