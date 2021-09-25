@@ -23,9 +23,9 @@
 
       <v-toolbar-title> マナブアレルギー </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn icon nuxt v-on:click="login">
+      <!-- <v-btn icon nuxt v-on:click="login">
         <v-icon>mdi-login-variant</v-icon>
-      </v-btn>
+      </v-btn> -->
     </v-app-bar>
 
     <v-main>
@@ -51,9 +51,9 @@ export default {
     ],
   }),
   methods: {
-    login() {
+    /* login() {
       this.$router.push("/login")
-    },
+    },*/
   },
 };
 </script>
