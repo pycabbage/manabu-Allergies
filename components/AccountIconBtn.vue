@@ -2,9 +2,8 @@
   <Dialog DialogTitle="User icon setting"
           :ToolBarColor="ThemeColor">
     <template v-slot:BtnContent>
-      <v-avatar size=96>
-        <v-img :src="userIconPath" />
-      </v-avatar>
+      <AvatarIcon :userIconPath="userIconPath"
+                  :avatarIconSize="avatarIconSize" />
     </template>
     <template v-slot:DialogContent>
       <div class="FileSelectorWrapper">
@@ -39,6 +38,11 @@ export default {
     ThemeColor: {
       type:String,
       require: true,
+    },
+    avatarIconSize: {
+      type: String,
+      require: false,
+      default: 96,
     },
   },
 }
