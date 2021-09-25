@@ -2,8 +2,10 @@
   <Dialog DialogTitle="Add Friend"
           :ThemeColor="ThemeColor"
           openBtnColor="#8ccb00"
-          btnHeight="10vh"
-          btnWidth="10.5vw">
+          btnHeight="6vw"
+          btnWidth="10.5vw"
+          btnMinHeight="5vw"
+          btnMinWidth="9vw">
     <template v-slot:BtnContent>
       <BtnText color="white"
                size="1vw">Add Friend

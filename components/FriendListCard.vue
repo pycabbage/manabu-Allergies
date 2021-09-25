@@ -1,15 +1,25 @@
 <template>
   <v-card class="mb-8 ml-4">
-    <div class="FriendAvatarIcon">
-      <AvatarIcon avatarIconSize="5vw" />
-    </div>
-    <div class="FriendAvatarDatas">
-      <span class="AvatarDataText FirstText">ID: {{ userData.id }}</span>
-      <span class="AvatarDataText">Name: {{ userData.name }}</span>
-    </div>
-    <div class="FriendAvatarControlBtn">
-      <slot />
-    </div>
+    <v-container>
+      <div>
+        <div class="FriendAvatarIcon">
+          <v-card-action>
+            <AvatarIcon avatarIconSize="5vw" />
+          </v-card-action>
+        </div>
+        <div class="FriendAvatarDatas">
+          <v-card-text>
+            <span class="AvatarDataText">ID: {{ userData.id }}</span> <br>
+            <span class="AvatarDataText">Name: {{ userData.name }}</span>
+          </v-card-text>
+        </div>
+        <div class="FriendAvatarControlBtn">
+          <v-card-action>
+            <slot />
+          </v-card-action>
+        </div>
+      </div>
+    </v-container>
   </v-card>
 </template>
 
@@ -27,31 +37,21 @@ export default {
 <style>
 .FriendAvatarIcon {
   display: inline-block;
-  margin: 2vh 2vw;
-}
-
-.FriendListCards {
-  margin-bottom: 1vh;
-  margin-left: 5vw;
 }
 
 .FriendAvatarDatas {
   display: inline-block;
-  margin: 2vh 0 2vh 1vw;
+  /*margin-right: 1vw;*/
 }
 
 .AvatarDataText {
   font-size: 1.5vw;
   font-weight: bold;
-}
-
-.AvatarDataText, .FirstText {
-  margin-right: 3vw;
+  /*margin-right: 3vw;*/
 }
 
 .FriendAvatarControlBtn {
   display: inline-block;
-  line-height: 2.5vw;
   float: right;
 }
 </style>

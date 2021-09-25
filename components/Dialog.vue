@@ -7,7 +7,9 @@
              v-on="on"
              :color="openBtnColor"
              :height="btnHeight"
-             :width="btnWidth">
+             :width="btnWidth"
+             :min-height="btnMinHeight"
+             :min-width="btnMinWidth">
         <slot name="BtnContent" />
       </v-btn>
     </template>
@@ -48,6 +50,16 @@ export default {
       default: undefined,
     },
     btnWidth: {
+      type: String,
+      require: false,
+      default: undefined,
+    },
+    btnMinHeight: {
+      type: String,
+      require: false,
+      default: undefined,
+    },
+    btnMinWidth: {
       type: String,
       require: false,
       default: undefined,
