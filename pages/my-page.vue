@@ -1,6 +1,11 @@
 <template>
   <v-container>
-    <PageTitle class="MyPageTitle">マイページ</PageTitle>
+    <div class="TitleWrapper">
+      <PageTitle class="MyPageTitle">マイページ</PageTitle>
+      <div class="AccountIconBtn">
+        <AccountIconBtn :ThemeColor="ThemeColor" />
+      </div>
+    </div>
     <v-row>
       <v-container class="Section">
         <h3>ユーザー情報</h3>
@@ -102,6 +107,20 @@ export default {
 }
 
 .LogoutBtnWrapper {
+  float: right;
+}
+
+.TitleWrapper {
+  margin-top: 2rem;
+  margin-bottom: 2.8rem;
+}
+.MyPageTitle {
+  display: inline;
+}
+.AccountIconBtn {
+  display: inline;
+  margin-right: 10vw;
+  margin-top: 1vw;
   float: right;
 }
 </style>

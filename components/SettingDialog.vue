@@ -1,20 +1,13 @@
 <template>
-  <v-dialog v-model="dialog"
-            width="500">
-    <template v-slot:activator="{ on,attrs }">
-      <v-btn icon
-             v-bind="attrs"
-             v-on="on">
-        <v-icon>mdi-cog-outline</v-icon>
-      </v-btn>
+  <Dialog :DialogTitle="DialogTitle"
+          :ToolBarColor="ToolBarColor">
+    <template v-slot:BtnContent>
+      <v-icon>mdi-cog-outline</v-icon>
     </template>
-    <v-card>
-      <v-toolbar :color="ToolBarColor">
-        {{ DialogTitle }}
-      </v-toolbar>
+    <template v-slot:DialogContent>
       <slot />
-    </v-card>
-  </v-dialog>
+    </template>
+  </Dialog>
 </template>
 
 <script>
@@ -29,11 +22,11 @@ export default {
       require: false,
       default: null,
     },
-    dialog: {
-      type: Boolean,
-      require: false,
-      default: false,
-    }
+  },
+  data() {
+    return {
+      dialog: false,
+    };
   },
 }
 </script>
