@@ -7,7 +7,7 @@
              v-on="on">
         <v-card :width="CardWidth"
                 :height="CardWidth"
-          :img="ZukanContent.Img">
+                :img="ZukanContent.Img">
           <v-card-title class="ListTitle">
             <div>
               {{ ZukanContent.Title }}
@@ -33,11 +33,6 @@ export default {
     return {
       CardWidth: 150,
     };
-  },
-  computed: {
-    PagePath() {
-      return "zukan-contents/" + this.ZukanContent.PageFileName;
-    },
   },
 }
 </script>
