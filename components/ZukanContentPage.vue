@@ -34,27 +34,3 @@ export default {
   },
 }
 </script>
-
-<!--
-説明文のZukanContent想定フォーマット
-ZukanContent = {
-  Title: "図鑑のタイトル",
-  Img: "図鑑に表示される画像のパス",
-  PageFileName: "説明等が書かれたvueのファイル名",
-  Description:{
-    タイトル１:"説明文...",
-    タイトル２:"説明文...",
-              .
-              .
-              .
-    タイトルn :"説明文..."
-  },
-}
--->
-
-<style>
-.Descriptions {
-  margin-top: 50px;
-  margin-left: 10px;
-}
-</style>

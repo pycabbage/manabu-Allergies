@@ -1,17 +1,14 @@
 <template>
   <v-dialog width="1000">
     <template v-slot:activator="{ on,attrs }">
-      <v-btn class="ZukanContentIcon"
-             icon
+      <v-btn icon
              v-bind="attrs"
              v-on="on">
         <v-card :width="CardWidth"
                 :height="CardWidth"
                 :img="ZukanContent.Img">
           <v-card-title class="ListTitle">
-            <div>
-              {{ ZukanContent.Title }}
-            </div>
+            <p class="ZukanTitle">{{ ZukanContent.Title }}</p>
           </v-card-title>
         </v-card>
       </v-btn>
@@ -21,6 +18,7 @@
     </v-card>
   </v-dialog>
 </template>
+
 <script>
 export default {
   props: {
@@ -28,39 +26,17 @@ export default {
       type:Object,
       require:true,
     },
-  },
-  data(){
-    return {
-      CardWidth: 150,
-    };
+    CardWidth: {
+      type: String,
+      require: false,
+      default: "150",
+    }
   },
 }
 </script>
 
-<!--
-説明文のZukanContent想定フォーマット
-ZukanContent = {
-  Title: "図鑑のタイトル",
-  Img: "図鑑に表示される画像のパス",
-  PageFileName: "説明等が書かれたvueのファイル名",
-  Description:{
-    タイトル１:"説明文...",
-    タイトル２:"説明文...",
-              .
-              .
-              .
-    タイトルn :"説明文..."
-  },
-}
--->
-
 <style>
-.ZukanContentIcon {
-  margin-top: 3rem;
-  margin-left: 5rem;
-}
-
-.ListTitle {
-  padding-top:50%;
+.ZukanTitle {
+  font-size: 1vw;
 }
 </style>
