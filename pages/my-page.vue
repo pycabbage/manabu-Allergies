@@ -9,6 +9,7 @@
           <MyPageUserName :currentValue="getName"
                           :inputValidation="[inputRequire]"
                           :ThemeColor="ThemeColor"/>
+          <p>ユーザーID： {{ getId }}</p>
           <MyPageEmail :currentValue="getEmail"
                           :inputValidation="[inputRequire]"
                           :ThemeColor="ThemeColor"/>
@@ -24,17 +25,11 @@
           あとで実装予定。トロフィーの進捗とかをグラフとしてだしたい。
         </div>
       </v-container>
-      <div class="AppConfig">
-        <SettingDialog DialogTitle="Configs"
-                       :ToolBarColor="ThemeColor">
-        <div class="ConfigSwitches"
-             v-for="(conf, index) of AppConfigs" :key="index">
-          <ConfigSwitch :HandledValue="conf.isValid" 
-            :ConfName="conf.name">
-          </ConfigSwitch>
+      <v-container>
+        <div class="LogoutBtnWrapper">
+          <LogoutBtn />
         </div>
-        </SettingDialog>
-      </div>
+      </v-container>
     </v-row>
   </v-container>
 </template>
@@ -45,12 +40,6 @@ import DataFunc from '/components/DataFuncs.vue'
 export default {
   data(){
     return {
-      AppConfigs: [
-        {
-          name: 'test option',
-          isValid: true,
-        },
-      ],
       ThemeColor: "light-blue darken-1",
       inputRequire: value => !!value || "必ず入力してください",
       NewValue: "test",
@@ -81,49 +70,6 @@ export default {
           photo: e.target.files[0],
         })
         .then(() => {})
-        .catch((error) => {
-          alert(error);
-        });
-    },
-    updateProfileName() {
-      this.$store
-        .dispatch({
-          type: "auth/updateProfile",
-          name: this.NewValue,
-        })
-        .then(() => {
-          //this.name = "";
-        })
-        .catch((error) => {
-          alert(error);
-        });
-    },
-    updateEmail() {
-      this.$store
-        .dispatch({
-          type: "auth/updateEmailWithAuth",
-          email: email,
-          confirmationPassword: confirmationPassword,
-        })
-        .then(() => {
-          // this.email = "";
-          // this.confirmationPassword = "";
-        })
-        .catch((error) => {
-          alert(error);
-        });
-    },
-    updatePassword(password, confirmationPassword) {
-      this.$store
-        .dispatch({
-          type: "auth/updatePasswordWithAuth",
-          password: password,
-          confirmationPassword: confirmationPassword,
-        })
-        .then(() => {
-          // this.password = "";
-          // this.confirmationPassword = "";
-        })
         .catch((error) => {
           alert(error);
         });
@@ -165,5 +111,9 @@ export default {
 
 .ConfigSwitches {
   margin-top: 10px;
+}
+
+.LogoutBtnWrapper {
+  float: right;
 }
 </style>
