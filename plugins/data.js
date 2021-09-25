@@ -17,8 +17,8 @@ export default class Data {
 
     constructor(access, user) {
         switch (access) {
-            case "public": this.access = "publicaaa"; break;
-            case "friend": this.access = "friendaaa"; break;
+            case "public": this.access = "public"; break;
+            case "friend": this.access = "friend"; break;
             default: this.access = "private"; break
         }
         this.id = user.uid
@@ -51,7 +51,7 @@ export default class Data {
     }
 
     async getAll(key) {
-        if (this.access == "publicaaa" || this.access == "friend") {
+        if (this.access == "public" || this.access == "friend") {
             const data = []
             await (await firebase.firestore().collection(this.access).get()).forEach(value => {
                 if (key == undefined) {
