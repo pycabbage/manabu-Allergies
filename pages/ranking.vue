@@ -1,19 +1,18 @@
 <template>
   <v-app id="ranking">
-    <v-container>
-      <PageTitle>ランキング</PageTitle>
-      <ol>
-        <li v-for="(data, key) in sort_data" :key="data">
-          <v-card>
-            {{key}}さん <v-progress-linear color="light-blue" 
-                                           height="30" 
-                                           :value="data"
-                                           striped>
-              {{data}}</v-progress-linear>
-          </v-card>
-        </li>
-      </ol>
-    </v-container>
+    <div class="RankingWrapper">
+      <v-container>
+        <PageTitle>ランキング</PageTitle>
+        <div class="RankingContent">
+          <div v-for="(data, index) of sortedDatas" :key="index">
+            <RankingCard :rankingNumber="index + 1"
+                         :userName="data.name"
+                         :userScore="data.score"
+                         :themeColor="ThemeColor" />
+          </div>
+        </div>
+      </v-container>
+    </div>
   </v-app>
 </template>
 
@@ -21,32 +20,59 @@
 export default {
   data() {
     return {
-      datas:{
-        c : 80,
-        a : 100,
-        b : 90,
-        d : 70,
-        e : 60,
-        f : 50,
-        g : 40,
-        h : 30,
-        i : 20,
-        j : 10,
-        k : 0
-      },
+      datas: [
+        {
+          name: 'bob',
+          score: 80,
+        },
+        {
+          name: 'john',
+          score: 90,
+        },
+        {
+          name: 'mary',
+          score: 70,
+        },
+        {
+          name: 'tarou',
+          score: 100,
+        },
+        {
+          name: 'hanako',
+          score: 50,
+        },
+      ],
       ThemeColor: "light-blue darken-1",
     };
   },
   computed:{
-    sort_data : function(){
-      var obj=this.datas
-      var array = Object.keys(obj).map((k)=>({ key: k, value: obj[k] }));
-      array.sort((a, b) =>  - b.value-a.value);
-      obj = Object.assign({}, ...array.map((item) => ({
-        [item.key]: item.value,
-      })));
-      return obj
-    }
+    sortedDatas() {
+      var sortedDatasArray = this.datas;
+      sortedDatasArray.sort((a, b)=> {            //降順にソートするコード。
+        var aValue = a.score, bValue = b.score;
+        if (aValue < bValue) return 1;
+        else if (aValue > bValue) return -1;
+        else return 0;
+      });
+      return sortedDatasArray;
+    },
   }
 }
 </script>
+
+<style>
+.RankingWrapper {
+  width: 95vw;
+  margin-left: 2vw;
+}
+
+.RankingContentsWrapper {
+  margin-top: 2rem;
+  margin-right: 2%;
+  margin-left: 2%;
+}
+
+.RankingContent {
+  width: 100%;
+}
+</style>

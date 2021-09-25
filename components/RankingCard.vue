@@ -1,12 +1,18 @@
 <template>
-  <v-card>
-    <i class="RankingTexts">{{ rankingNumber }}</i>
-    <v-progress-linear :color="themeColor"
-                       :height="scoreBarHeight"
-                       :value="userScore"
-                       striped>
-      {{ userScore }}</v-progress-linear>
-    <v-card-text class="RankingTexts">{{ userName }}</v-card-text>
+  <v-card class="RankingCardRoot"
+          width="90vw">
+    <i class="RankingTexts"
+       :style="rankingNumberColor">
+      {{ rankingNumber }} .
+    </i>
+    <div class="ScoreBar">
+      <v-progress-linear :color="themeColor"
+                         height="5.5vh"
+                         :value="userScore"
+                        striped>
+        {{ userScore }}</v-progress-linear>
+    </div>
+    <p class="RankingTexts">{{ userName }}</p>
   </v-card>
 </template>
 
@@ -29,18 +35,36 @@ export default {
       type: String,
       require: true,
     },
-    scoreBarHeight: {
-      type: Number,
-      require: false,
-      default: 50,
+  },
+  computed: {
+    rankingNumberColor() {
+      if(this.rankingNumber === 1) return "color: #ffd700;"
+      else if(this.rankingNumber === 2) return "color: #c0c0c0;"
+      else if(this.rankingNumber === 3) return "color: #ff8c00;"
+      return "color: #000000";
     },
-  }
+  },
 }
 </script>
 
 <style>
+.RankingCardRoot {
+  margin-bottom: 1vw;
+}
+
 .RankingTexts {
+  text-align: right;
   font-size: 2rem;
   font-family: 'Impact';
+  margin-right: 3rem;
+}
+
+i.RankingTexts {
+  margin-left: 0.5rem;
+}
+
+.ScoreBar {
+  width: 95%;
+  margin-left: 3%;
 }
 </style>

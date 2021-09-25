@@ -1,4 +1,4 @@
-import firebase from '../plugins/firebase'
+import firebase, { auth, db, storage } from '../plugins/firebase'
 
 export const state = () => ({
     emailVerified: false,
@@ -60,17 +60,22 @@ export const actions = {
                     photo: this.getters["auth/photo"],
                 })
             } else {
-                firebase.auth().onAuthStateChanged((user) => {
+                auth.onAuthStateChanged((user) => {
                     if (user) {
-                        context.commit({
-                            type: "set",
+                        const userData = {
                             emailVerified: user.emailVerified,
                             id: user.uid,
                             email: user.email,
                             name: user.displayName,
                             photo: user.photoURL,
+                        }
+                        context.commit({
+                            type: "set",
+                            ...userData
                         })
-                        resolve(user)
+                        resolve({
+                            ...userData
+                        })
                     } else {
                         context.commit({
                             type: "set",
@@ -117,22 +122,34 @@ export const actions = {
     //     }
     // },
     async createUserWithProfileVerification(context, payload) {
-        try {
-            const result = await firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
-            await result.user.updateProfile({ displayName: payload.name, photoURL: payload.photo })
-            await result.user.sendEmailVerification()
-            context.commit({
-                type: "set",
-                emailVerified: result.user.emailVerified,
-                id: result.user.uid,
-                email: result.user.email,
-                name: result.user.displayName,
-                photo: result.user.photoURL,
-            })
-            return result
-        } catch (error) {
-            throw new Error(error)
-        }
+        const result = await auth.createUserWithEmailAndPassword(payload.email, payload.password);
+        await result.user.updateProfile({ displayName: payload.name, photoURL: payload.photo });
+        await result.user.sendEmailVerification();
+        const batch = db.batch();
+        const publicRef = db.collection("public").doc(result.user.uid);
+        const privateRef = db.collection("private").doc(result.user.uid);
+        const requestRef = db.collection("request").doc(result.user.uid);
+        batch.set(publicRef, {
+            id: result.user.uid,
+            name: result.user.displayName,
+            photo: result.user.photoURL,
+        })
+        batch.set(privateRef, {
+            requestFriend: []
+        })
+        batch.set(requestRef, {
+            receiveFriend: []
+        })
+        await batch.commit();
+        context.commit({
+            type: "set",
+            emailVerified: result.user.emailVerified,
+            id: result.user.uid,
+            email: result.user.email,
+            name: result.user.displayName,
+            photo: result.user.photoURL,
+        })
+        return result
     },
     // async signIn(context, payload) {
     //     try {
@@ -150,62 +167,51 @@ export const actions = {
     //     }
     // },
     async signInWithVerification(context, payload) {
-        try {
-            const user = firebase.auth().currentUser
-            if (!this.getters["auth/emailVerified"] && user) {
-                await user.sendEmailVerification()
-                return user
-            } else {
-                const result = await firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
-                context.commit({
-                    type: "set",
-                    emailVerified: result.user.emailVerified,
-                    id: result.user.uid,
-                    email: result.user.email,
-                    name: result.user.displayName,
-                    photo: result.user.photoURL,
-                })
-                return result
-            }
-        } catch (error) {
-            throw new Error(error)
+        const user = auth.currentUser
+        if (!this.getters["auth/emailVerified"] && user) {
+            await user.sendEmailVerification()
+            return user;
+        } else {
+            const result = await auth.signInWithEmailAndPassword(payload.email, payload.password)
+            context.commit({
+                type: "set",
+                emailVerified: result.user.emailVerified,
+                id: result.user.uid,
+                email: result.user.email,
+                name: result.user.displayName,
+                photo: result.user.photoURL,
+            })
+            return result.user;
         }
     },
     async signOut(context) {
-        try {
-            await firebase.auth().signOut()
-            context.commit({
-                type: "set",
-                emailVerified: false,
-                id: "",
-                email: "",
-                name: "",
-                photo: "",
-            })
-        } catch (error) {
-            throw new Error(error)
-        }
+        await auth.signOut()
+        context.commit({
+            type: "set",
+            emailVerified: false,
+            id: "",
+            email: "",
+            name: "",
+            photo: "",
+        })
     },
     async updateProfile(context, payload) {
-        try {
-            if (payload.photo) {
-                const result = await firebase.storage().ref().child(`${this.getters["auth/id"]}/userPhoto`).put(payload.photo)
-                payload.photo = await result.ref.getDownloadURL()
-            } else {
-                payload.photo = this.getters["auth/photo"]
-            }
-            await firebase.auth().currentUser.updateProfile({
-                displayName: payload.name,
-                photoURL: payload.photo,
-            })
-            context.commit({
-                type: "set",
-                name: payload.name,
-                photo: payload.photo,
-            })
-        } catch (error) {
-            throw new Error(error)
-        }
+        const result = await storage.ref().child(`${this.getters["auth/id"]}/userPhoto`).put(payload.photo)
+        const userName = payload.name ?? this.getters["auth/name"]
+        const userPhoto = payload.photo ? await result.ref.getDownloadURL() : this.getters["auth/photo"]
+        await auth.currentUser.updateProfile({
+            displayName: userName,
+            photoURL: userPhoto,
+        })
+        await db.collection("public").doc(this.getters["auth/id"]).update({
+            name: userName,
+            photo: userPhoto
+        })
+        context.commit({
+            type: "set",
+            name: userName,
+            photo: userPhoto,
+        })
     },
     // async updateEmail(context, payload) {
     //     try {
@@ -219,18 +225,14 @@ export const actions = {
     //     }
     // },
     async updateEmailWithAuth(context, payload) {
-        try {
-            const user = firebase.auth().currentUser
-            const credentials = await firebase.auth.EmailAuthProvider.credential(user.email, payload.confirmationPassword);
-            await user.reauthenticateWithCredential(credentials)
-            await user.updateEmail(payload.email)
-            context.commit({
-                type: "set",
-                email: payload.email
-            })
-        } catch (error) {
-            throw new Error(error)
-        }
+        const user = auth.currentUser
+        const credentials = await firebase.auth.EmailAuthProvider.credential(user.email, payload.confirmationPassword);
+        await user.reauthenticateWithCredential(credentials)
+        await user.updateEmail(payload.email)
+        context.commit({
+            type: "set",
+            email: payload.email
+        })
     },
     // async updatePassword(_, payload) {
     //     try {
@@ -240,21 +242,13 @@ export const actions = {
     //     }
     // },
     async updatePasswordWithAuth(_, payload) {
-        try {
-            const user = firebase.auth().currentUser
-            const credentials = await firebase.auth.EmailAuthProvider.credential(user.email, payload.confirmationPassword);
-            await user.reauthenticateWithCredential(credentials)
-            await user.updatePassword(payload.password)
-        } catch (error) {
-            throw new Error(error)
-        }
+        const user = firebase.auth().currentUser
+        const credentials = await firebase.auth.EmailAuthProvider.credential(user.email, payload.confirmationPassword);
+        await user.reauthenticateWithCredential(credentials)
+        await user.updatePassword(payload.password)
     },
     async resetPassword(_, payload) {
-        try {
-            await firebase.auth().sendPasswordResetEmail(payload.email)
-        } catch (error) {
-            throw new Error(error)
-        }
+        await firebase.auth().sendPasswordResetEmail(payload.email)
     },
     // async deleteAccount(context) {
     //     try {
@@ -271,22 +265,26 @@ export const actions = {
     //     }
     // },
     async deleteAccountWithAuth(context, payload) {
-        try {
-            const user = firebase.auth().currentUser
-            const credentials = await firebase.auth.EmailAuthProvider.credential(user.email, payload.confirmationPassword);
-            await user.reauthenticateWithCredential(credentials)
-            await user.delete()
-            context.commit({
-                type: "set",
-                emailVerified: false,
-                id: "",
-                email: "",
-                name: "",
-                photo: "",
-            })
-        } catch (error) {
-            throw new Error(error)
-        }
+        const user = firebase.auth().currentUser
+        const credentials = await firebase.auth.EmailAuthProvider.credential(user.email, payload.confirmationPassword);
+        await user.reauthenticateWithCredential(credentials)
+        await user.delete()
+        const batch = db.batch();
+        const publicRef = db.collection("public").doc(user.uid);
+        const privateRef = db.collection("private").doc(user.uid);
+        const requestRef = db.collection("request").doc(user.uid);
+        batch.delete(publicRef)
+        batch.set(privateRef)
+        batch.set(requestRef)
+        await batch.commit();
+        context.commit({
+            type: "set",
+            emailVerified: false,
+            id: "",
+            email: "",
+            name: "",
+            photo: "",
+        })
     },
     // async reAuth(_, payload) {
     //     try {
@@ -304,11 +302,4 @@ export const actions = {
     //         throw new Error(error)
     //     }
     // }
-    async requestFriend(_, payload) {
-        try {
-            firebase.firestore().collection("friend").doc(this.getters["auth/id"]);
-        } catch (error) {
-
-        }
-    }
 }
