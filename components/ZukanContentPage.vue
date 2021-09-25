@@ -8,10 +8,10 @@
       <v-container class="ZukanContent">
         <div class="font-weight-bold display-3">{{ ZukanContent.Title }}</div>
         <div  class="Descriptions" 
-              v-for="desc in ZukanContent.Description">
-          <h2>{{ desc.title }}</h2>
+              v-for="(desc, key) in ZukanContent.Descriptions" :key="key">
+          <h2>{{ key }}</h2>
           <hr>
-          <p>{{ desc.content }}</p>
+          <p>{{ desc }}</p>
         </div>
       </v-container>
     </v-col>

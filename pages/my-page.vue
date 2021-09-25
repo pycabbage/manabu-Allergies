@@ -51,18 +51,6 @@ export default {
     getId: DataFunc.computed.getId,
   },
   methods: {
-    logout() {
-      this.$store
-        .dispatch({
-          type: "auth/signOut",
-        })
-        .then(() => {
-          this.$router.push("/login");
-        })
-        .catch((error) => {
-          alert(error);
-        });
-    },
     updateProfilePhoto(e) {
       this.$store
         .dispatch({
