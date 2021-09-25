@@ -1,4 +1,4 @@
-import firebase from './firebase'
+import firebase, { storage } from './firebase'
 
 export default class Data {
     static async init(access) {
@@ -64,5 +64,19 @@ export default class Data {
         } else {
             return;
         }
+    }
+
+    async setFile(key, file) {
+        const r = await firebase.storage().ref().child(`${this.id}/${key}`).put(file)
+        return r.ref.getDownloadURL()
+    }
+
+    async getFile(key) {
+        const r = await firebase.storage().ref().child(`${this.id}/${key}`).getDownloadURL()
+        return r
+    }
+
+    async deleteFile(key) {
+        await firebase.storage().ref().child(`${this.id}/${key}`).delete()
     }
 }
