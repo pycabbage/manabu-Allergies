@@ -2,17 +2,26 @@
   <Dialog DialogTitle="User icon setting"
           :ToolBarColor="ThemeColor">
     <template v-slot:BtnContent>
-      <v-avatar size=96>
-        <v-img :src="userIconPath" />
-      </v-avatar>
+      <AvatarIcon :userIconPath="userIconPath"
+                  :avatarIconSize="avatarIconSize" />
     </template>
     <template v-slot:DialogContent>
       <div class="FileSelectorWrapper">
-        <v-file-input class="IconFileSelector"
-                      label="新しいアイコンの画像を選択"
-                      filled
-                      prepend-icon="mdi-camera">
-        </v-file-input>
+        <v-form v-model="formValid"
+                ref="form"
+                @submit.prevent>
+          <v-file-input class="IconFileSelector"
+                        label="新しいアイコンの画像を選択"
+                        filled
+                        prepend-icon="mdi-camera">
+          </v-file-input>
+          <v-btn class="UpdateConfigBtn"
+                 @click=""
+                 :color="ThemeColor"
+                 :disabled="!formValid">
+            UPDATE
+          </v-btn>
+        </v-form>
       </div>
     </template>
   </Dialog>
@@ -29,6 +38,11 @@ export default {
     ThemeColor: {
       type:String,
       require: true,
+    },
+    avatarIconSize: {
+      type: String,
+      require: false,
+      default: 96,
     },
   },
 }
