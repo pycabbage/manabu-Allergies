@@ -1,77 +1,58 @@
 <template>
-  <v-app>
-    <div class="text-center" v-if="getEmailVerified">
-      <appbar title="Friend" />
-      <v-row justify="center" class="my-5">
-        <v-dialog v-model="dialog" width="400px">
-          <template v-slot:activator="{ on }">
-            <v-btn v-on="on">Add Friend</v-btn>
-          </template>
-          <v-card>
-            <v-form>
-              <v-card-title>Add Friend</v-card-title>
-              <v-col>
-                <v-text-field
-                  type="text"
-                  label="friend id"
-                  v-model="requestFriendId"
-                  required
-                />
-              </v-col>
-              <v-card-actions class="justify-end">
-                <v-btn @click="dialog = false"> Cancel </v-btn>
-                <v-btn
-                  type="submit"
-                  @click.prevent="requestFriend"
-                  :loading="loading"
-                  :disabled="loading"
-                >
-                  Send
-                </v-btn>
-              </v-card-actions>
-            </v-form>
-          </v-card>
-        </v-dialog>
-      </v-row>
-      <div>
-        Now Request
-        <div v-for="i in getRequestFriendList" :key="i.id">
-          <v-card>
-            ID: {{ i.id }} <br />
-            NAME: {{ i.name }}
-            <v-btn @click="deleteRequestFriend(i.id)">Delete</v-btn>
-          </v-card>
-        </div>
-      </div>
-      <div>
-        Now Requested
-        <div v-for="i in getReceiveRequestFriendList" :key="i.id">
-          <v-card>
-            ID: {{ i.id }} <br />
-            NAME: {{ i.name }}
-            <v-btn @click="addReceiveFriend(i.id)">Add</v-btn>
-            <v-btn @click="deleteReceiveFriend(i.id)">Delete</v-btn>
-          </v-card>
-        </div>
-      </div>
-      <div>
-        Friend
-        <div v-for="i in getFriendListGet" :key="i.id">
-          <v-card>
-            ID: {{ i.id }} <br />
-            NAME: {{ i.name }}
-            <v-btn @click="deleteFriend(i.id)">Delete</v-btn>
-          </v-card>
-        </div>
+  <v-container class="text-center" v-if="getEmailVerified">
+    <v-row justify="center" class="my-5">
+      <AddFriend :ThemeColor="ThemeColor" />
+    </v-row>
+    <v-tabs vertical>
+      <v-tab>
+        Friend List
+      </v-tab>
+      <v-tab>
+        Friend Request List
+      </v-tab>
+      <v-tab>
+        You Friend Requested List
+      </v-tab>
+    </v-tabs>
+    <div>
+      Now Request
+      <div v-for="i in getRequestFriendList" :key="i.id">
+        <v-card>
+          ID: {{ i.id }} <br />
+          NAME: {{ i.name }}
+          <v-btn @click="deleteRequestFriend(i.id)">Delete</v-btn>
+        </v-card>
       </div>
     </div>
-  </v-app>
+    <div>
+      Now Requested
+      <div v-for="i in getReceiveRequestFriendList" :key="i.id">
+        <v-card>
+          ID: {{ i.id }} <br />
+          NAME: {{ i.name }}
+          <v-btn @click="addReceiveFriend(i.id)">Add</v-btn>
+          <v-btn @click="deleteReceiveFriend(i.id)">Delete</v-btn>
+        </v-card>
+      </div>
+    </div>
+    <div>
+      Friend
+      <div v-for="i in getFriendListGet" :key="i.id">
+        <v-card>
+          ID: {{ i.id }} <br />
+          NAME: {{ i.name }}
+          <v-btn @click="deleteFriend(i.id)">Delete</v-btn>
+        </v-card>
+      </div>
+    </div>
+  </v-container>
 </template>
 
 <script>
 export default {
   data: function () {
     return {
+      ThemeColor: "light-blue darken-1",
       dialog: false,
       loading: false,
       requestFriendId: "",

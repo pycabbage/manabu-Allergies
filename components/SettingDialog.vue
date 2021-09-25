@@ -1,6 +1,7 @@
 <template>
   <Dialog :DialogTitle="DialogTitle"
-          :ToolBarColor="ToolBarColor">
+          :ToolBarColor="ToolBarColor"
+          isUseImg="true">
     <template v-slot:BtnContent>
       <v-icon>mdi-cog-outline</v-icon>
     </template>
