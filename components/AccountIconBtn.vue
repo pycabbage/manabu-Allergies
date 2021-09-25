@@ -7,10 +7,13 @@
       </v-avatar>
     </template>
     <template v-slot:DialogContent>
-      <v-file-input label="画像を選択"
-                    filled
-                    prepend-icon="mdi-camera">
-      </v-file-input>
+      <div class="FileSelectorWrapper">
+        <v-file-input class="IconFileSelector"
+                      label="新しいアイコンの画像を選択"
+                      filled
+                      prepend-icon="mdi-camera">
+        </v-file-input>
+      </div>
     </template>
   </Dialog>
 </template>
@@ -30,3 +33,9 @@ export default {
   },
 }
 </script>
+
+<style>
+.FileSelectorWrapper {
+  margin: 2vh 1vw 0 1vw;
+}
+</style>
