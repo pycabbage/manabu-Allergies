@@ -97,14 +97,7 @@
 export default {
   data() {
     return {
-      e1: 1,
-/*      items : {
-        ランキング : "/ranking",
-        アカウント設定 : "/account-setting",
-        マイページ : "/my-page",
-        ダイアログのテスト : "/dialog-test",
-        図鑑目次: "/zukan-index",
-      },*/
+      e1: 1
     };
   },
 }

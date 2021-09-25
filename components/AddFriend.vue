@@ -1,9 +1,13 @@
 <template>
   <Dialog DialogTitle="Add Friend"
           :ThemeColor="ThemeColor"
-          openBtnColor="#8ccb00">
+          openBtnColor="#8ccb00"
+          btnHeight="10vh"
+          btnWidth="10.5vw">
     <template v-slot:BtnContent>
-      <span style="color: white;">Add Friend</span>
+      <BtnText color="white"
+               size="1vw">Add Friend
+      </BtnText>
     </template>
     <template v-slot:DialogContent>
       <v-container>
@@ -29,36 +33,6 @@
     </template>
   </Dialog>
 </template>
-
-<!-- <v-dialog v-model="dialog" width="400px"> -->
-<!--   <template v-slot:activator="{ on }"> -->
-<!--     <v-btn v-on="on">Add Friend</v-btn> -->
-<!--   </template> -->
-<!--   <v-card> -->
-<!--     <v-form> -->
-<!--       <v-card-title>Add Friend</v-card-title> -->
-<!--       <v-col> -->
-<!--         <v-text-field -->
-<!--           type="text" -->
-<!--           label="friend id" -->
-<!--           v-model="requestFriendId" -->
-<!--           required -->
-<!--           /> -->
-<!--       </v-col> -->
-<!--       <v-card-actions class="justify-end"> -->
-<!--         <v-btn @click="dialog = false"> Cancel </v-btn> -->
-<!--         <v-btn -->
-<!--           type="submit" -->
-<!--           @click.prevent="requestFriend" -->
-<!--           :loading="loading" -->
-<!--           :disabled="loading" -->
-<!--           > -->
-<!--           Send -->
-<!--         </v-btn> -->
-<!--       </v-card-actions> -->
-<!--     </v-form> -->
-<!--   </v-card> -->
-<!-- </v-dialog> -->
 
 <script>
 export default {

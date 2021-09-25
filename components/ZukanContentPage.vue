@@ -7,6 +7,7 @@
       </v-container>
       <v-container class="ZukanContent">
         <div class="font-weight-bold display-3">{{ ZukanContent.Title }}</div>
+        <v-subheader>{{ ZukanContent.Subtitle }}</v-subheader>
         <div  class="Descriptions" 
               v-for="(desc, key) in ZukanContent.Descriptions" :key="key">
           <h2>{{ key }}</h2>

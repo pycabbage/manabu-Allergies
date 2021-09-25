@@ -5,7 +5,9 @@
       <v-btn :icon="isUseImg"
              v-bind="attrs"
              v-on="on"
-             :color="openBtnColor">
+             :color="openBtnColor"
+             :height="btnHeight"
+             :width="btnWidth">
         <slot name="BtnContent" />
       </v-btn>
     </template>
@@ -39,6 +41,16 @@ export default {
       type: String,
       require: false,
       default: "undefined",
+    },
+    btnHeight: {
+      type: String,
+      require: false,
+      default: undefined,
+    },
+    btnWidth: {
+      type: String,
+      require: false,
+      default: undefined,
     },
   },
   data() {
