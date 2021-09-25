@@ -29,11 +29,11 @@ export default {
       require: false,
       default: null,
     },
-  },
-  data(){
-    return {
-      dialog: false,
-    };
+    dialog: {
+      type: Boolean,
+      require: false,
+      default: false,
+    }
   },
 }
 </script>

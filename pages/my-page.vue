@@ -6,14 +6,15 @@
         <h3>ユーザー情報</h3>
         <hr>
         <div class="SectionContent">
-          <MyPageContent :currentValue="getName"
-                         valueName="ユーザー名"
-                         :updateFunc="updateProfileName"
-                         :inputValidation="[inputRequire]"
-                         :ThemeColor="ThemeColor"/>
-          <v-btn @click="updateNameValue">
-            test update
-          </v-btn>
+          <MyPageUserName :currentValue="getName"
+                          :inputValidation="[inputRequire]"
+                          :ThemeColor="ThemeColor"/>
+          <MyPageEmail :currentValue="getEmail"
+                          :inputValidation="[inputRequire]"
+                          :ThemeColor="ThemeColor"/>
+          <MyPagePassword currentValue="*************"
+                          :inputValidation="[inputRequire]"
+                          :ThemeColor="ThemeColor"/>
         </div>
       </v-container>
       <v-container class="Section">
@@ -29,7 +30,7 @@
         <div class="ConfigSwitches"
              v-for="(conf, index) of AppConfigs" :key="index">
           <ConfigSwitch :HandledValue="conf.isValid" 
-                        :ConfName="conf.name">
+            :ConfName="conf.name">
           </ConfigSwitch>
         </div>
         </SettingDialog>
@@ -52,6 +53,7 @@ export default {
       ],
       ThemeColor: "light-blue darken-1",
       inputRequire: value => !!value || "必ず入力してください",
+      NewValue: "test",
     };
   },
   computed: {
@@ -60,102 +62,84 @@ export default {
     getId: DataFunc.computed.getId,
   },
   methods: {
-    /*updateProfileName: DataFunc.methods.updateProfileName,
-    updateEmail: DataFunc.methods.updateEmail,
-    updatePassword: DataFunc.methods.updatePassword,*/
-    updateNameValue() {
-      this.updateProfileName('test');
-    },
     logout() {
-      return function () {
-        this.$store
-          .dispatch({
-            type: "auth/signOut",
-          })
-          .then(() => {
-            this.$router.push("/login");
-          })
-          .catch((error) => {
-            alert(error);
-          });
-      };
+      this.$store
+        .dispatch({
+          type: "auth/signOut",
+        })
+        .then(() => {
+          this.$router.push("/login");
+        })
+        .catch((error) => {
+          alert(error);
+        });
     },
     updateProfilePhoto(e) {
-      return function () {
-        this.$store
-          .dispatch({
-            type: "auth/updateProfile",
-            photo: e.target.files[0],
-          })
-          .then(() => {})
-          .catch((error) => {
-            alert(error);
-          });
-      };
+      this.$store
+        .dispatch({
+          type: "auth/updateProfile",
+          photo: e.target.files[0],
+        })
+        .then(() => {})
+        .catch((error) => {
+          alert(error);
+        });
     },
-    updateProfileName(name) {
-      return function () {
-        this.$store
-          .dispatch({
-            type: "auth/updateProfile",
-            name: name,
-          })
-          .then(() => {
-            //this.name = "";
-          })
-          .catch((error) => {
-            alert(error);
-          });
-      };
+    updateProfileName() {
+      this.$store
+        .dispatch({
+          type: "auth/updateProfile",
+          name: this.NewValue,
+        })
+        .then(() => {
+          //this.name = "";
+        })
+        .catch((error) => {
+          alert(error);
+        });
     },
     updateEmail() {
-      return function (email, confirmationPassword) {
-        this.$store
-          .dispatch({
-            type: "auth/updateEmailWithAuth",
-            email: email,
-            confirmationPassword: confirmationPassword,
-          })
-          .then(() => {
-            // this.email = "";
-            // this.confirmationPassword = "";
-          })
-          .catch((error) => {
-            alert(error);
-          });
-      };
+      this.$store
+        .dispatch({
+          type: "auth/updateEmailWithAuth",
+          email: email,
+          confirmationPassword: confirmationPassword,
+        })
+        .then(() => {
+          // this.email = "";
+          // this.confirmationPassword = "";
+        })
+        .catch((error) => {
+          alert(error);
+        });
     },
     updatePassword(password, confirmationPassword) {
-      return function () {
-        this.$store
-          .dispatch({
-            type: "auth/updatePasswordWithAuth",
-            password: password,
-            confirmationPassword: confirmationPassword,
-          })
-          .then(() => {
-            // this.password = "";
-            // this.confirmationPassword = "";
-          })
-          .catch((error) => {
-            alert(error);
-          });
-      };
+      this.$store
+        .dispatch({
+          type: "auth/updatePasswordWithAuth",
+          password: password,
+          confirmationPassword: confirmationPassword,
+        })
+        .then(() => {
+          // this.password = "";
+          // this.confirmationPassword = "";
+        })
+        .catch((error) => {
+          alert(error);
+        });
     },
     deleteAccount() {
-      return function (confirmationPassword) {
-        this.$store
-          .dispatch({
-            type: "auth/deleteAccountWithAuth",
-            confirmationPassword: confirmationPassword,
-          })
-          .then(() => {
-            //this.confirmationPassword = "";
-          })
-          .catch((error) => {
-            alert(error);
-          });
-      };
+      this.$store
+        .dispatch({
+          type: "auth/deleteAccountWithAuth",
+          confirmationPassword: confirmationPassword,
+        })
+        .then(() => {
+          //this.confirmationPassword = "";
+        })
+        .catch((error) => {
+          alert(error);
+        });
     },
   },
 }
