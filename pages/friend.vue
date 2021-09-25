@@ -33,7 +33,7 @@
           </v-card>
         </v-dialog>
       </v-row>
-      <div>
+      <!-- <div>
         Now Request
         <div v-for="i in getRequestFriendList" :key="i.id">
           <v-card>
@@ -42,7 +42,7 @@
             <v-btn @click="deleteRequestFriend(i.id)">Delete</v-btn>
           </v-card>
         </div>
-      </div>
+      </div> -->
       <div>
         Now Requested
         <div v-for="i in getReceiveRequestFriendList" :key="i.id">
