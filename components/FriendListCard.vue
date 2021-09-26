@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import { toIcon } from '../plugins/data.js'
 export default {
   props: {
     userData: {
@@ -32,6 +33,18 @@ export default {
       require: true,
     },
   },
+  data: function() {
+    return {
+      imageURL: "",
+    }
+  },
+  beforeUpdate() {
+    console.log(this.userData.id)
+    console.log(toIcon(this.userData.id))
+    ///(async() => {
+      // this.imageURL = await toIcon(this.userData.id)
+    //})()
+  }
 }
 </script>
 
