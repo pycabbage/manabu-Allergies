@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import Data from "../plugins/data";
+
 export default {
   data() {
     return {
