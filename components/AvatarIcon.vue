@@ -1,6 +1,6 @@
 <template>
   <v-avatar :size="avatarIconSize">
-    <v-img :src="userIconPath" />
+    <v-img :src="this.$store.getters['auth/photo']" />
   </v-avatar>
 </template>
 

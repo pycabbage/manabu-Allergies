@@ -11,7 +11,7 @@ export default {
     userIconPath: {
       type: String,
       require: false,
-      default: "/anonymousIcon.png",
+      default: "this.$store.getters['auth/photo']",
     },
     avatarIconSize: {
       type: String,
