@@ -26,7 +26,7 @@
                @click="updateEmail"
                :color="ThemeColor"
                :disabled="!formValid">
-          UPDATE
+          <BtnText>UPDATE</BtnText>
         </v-btn>
       </SettingDialog>
     </div>

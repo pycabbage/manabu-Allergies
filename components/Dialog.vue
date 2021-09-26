@@ -2,9 +2,14 @@
   <v-dialog v-model="dialog"
             width="500">
     <template v-slot:activator="{ on,attrs }">
-      <v-btn icon
+      <v-btn :icon="isUseImg"
              v-bind="attrs"
-             v-on="on">
+             v-on="on"
+             :color="openBtnColor"
+             :height="btnHeight"
+             :width="btnWidth"
+             :min-height="btnMinHeight"
+             :min-width="btnMinWidth">
         <slot name="BtnContent" />
       </v-btn>
     </template>
@@ -28,6 +33,36 @@ export default {
       type: String,
       require: false,
       default: null,
+    },
+    isUseImg :{
+      type: Boolean,
+      require: false,
+      default: false,
+    },
+    openBtnColor: {
+      type: String,
+      require: false,
+      default: "undefined",
+    },
+    btnHeight: {
+      type: String,
+      require: false,
+      default: undefined,
+    },
+    btnWidth: {
+      type: String,
+      require: false,
+      default: undefined,
+    },
+    btnMinHeight: {
+      type: String,
+      require: false,
+      default: undefined,
+    },
+    btnMinWidth: {
+      type: String,
+      require: false,
+      default: undefined,
     },
   },
   data() {

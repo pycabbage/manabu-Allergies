@@ -15,7 +15,7 @@ export default {
     avatarIconSize: {
       type: String,
       require: false,
-      default: 96,
+      default: "96",
     },
   }
 }

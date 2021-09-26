@@ -46,7 +46,8 @@ export default {
       { title: "ランキング", to: "/ranking" },
       { title: "戦闘", to: "/battle" },
       { title: "マイページ", to: "/my-page" },
-      { title: "図鑑", to: "/zukan" }
+      { title: "図鑑", to: "/zukan" },
+      { title: "フレンドリスト", to:"/friend"},
     ],
   }),
   methods: {

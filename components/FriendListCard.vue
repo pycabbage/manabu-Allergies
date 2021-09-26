@@ -2,27 +2,21 @@
   <v-card class="mb-8 ml-4">
     <v-container>
       <div>
-        <v-container>
+        <div class="FriendAvatarIcon">
           <v-card-action>
-            <div class="FriendAvatarWrapper">
-              <div class="FriendAvatarIcon">
-                <AvatarIcon class="mb-4" avatarIconSize="5vw" />
-              </div>
-              <div class="FriendAvatarDatas">
-                <span class="AvatarDataText">ID: 1</span> <br>
-                <span class="AvatarDataText">Name: hoge</span>
-              </div>
-              <div class="FriendAvatarControlBtn">
-                  <v-btn>
-
-                  </v-btn>
-              </div>
-            </div>
+            <AvatarIcon avatarIconSize="5vw" />
           </v-card-action>
-        </v-container>
+        </div>
         <div class="FriendAvatarDatas">
           <v-card-text>
+            <span class="AvatarDataText">ID: {{ userData.id }}</span> <br>
+            <span class="AvatarDataText">Name: {{ userData.name }}</span>
           </v-card-text>
+        </div>
+        <div class="FriendAvatarControlBtn">
+          <v-card-action>
+            <slot />
+          </v-card-action>
         </div>
       </div>
     </v-container>
@@ -30,7 +24,14 @@
 </template>
 
 <script>
-
+export default {
+  props: {
+    userData: {
+      type: Object,
+      require: true,
+    },
+  },
+}
 </script>
 
 <style>

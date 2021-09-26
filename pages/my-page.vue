@@ -95,7 +95,6 @@ export default {
 
 .SectionContent {
   margin-top: 2rem;
-  margin-left: 4rem;
 }
 
 .AppConfig {

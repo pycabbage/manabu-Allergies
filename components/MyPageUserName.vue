@@ -1,6 +1,6 @@
 <template>
   <div class="MyPageContentWrapper">
-    {{ valueName }}： {{ currentValue }}
+    <span class="CurrentValue">{{ valueName }}： {{ currentValue }}</span>
     <div class="OpenSetting">
       <SettingDialog DialogTitle="User Setting" 
                      :ToolBarColor="ThemeColor">
@@ -18,7 +18,7 @@
                @click="updateProfileName"
                :color="ThemeColor"
                :disabled="!formValid">
-          UPDATE
+          <BtnText>UPDATE</BtnText>
         </v-btn>
       </SettingDialog>
     </div>
@@ -78,5 +78,9 @@ export default {
 
 .MyPageContentWrapper {
   margin-bottom: 2vh;
+}
+
+.CurrentValue {
+  font-size: 1rem;
 }
 </style>

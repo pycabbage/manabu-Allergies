@@ -1,6 +1,7 @@
 <template>
   <Dialog DialogTitle="User icon setting"
-          :ToolBarColor="ThemeColor">
+          :ToolBarColor="ThemeColor"
+          isUseImg="true">
     <template v-slot:BtnContent>
       <AvatarIcon :userIconPath="userIconPath"
                   :avatarIconSize="avatarIconSize" />

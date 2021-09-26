@@ -3,7 +3,7 @@
          color="#ff4956"
          height="4.5vh">
     <v-icon color="white">mdi-logout</v-icon>
-    <span class="LogoutBtnText">LOGOUT</span>
+    <BtnText color="white">LOGOUT</BtnText>
   </v-btn> 
 </template>
 
@@ -30,13 +30,3 @@ export default {
   },
 }
 </script>
-
-<style>
-.LogoutBtnWrapper {
-  color: white;
-}
-
-.LogoutBtnText {
-  color: white;
-}
-</style>
