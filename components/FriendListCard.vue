@@ -48,11 +48,6 @@ export default {
 </script>
 
 <style>
-.FriendAvatarIcon {
-  /*display: inline-block;*/
-  /*margin-top: 1.5vw;*/
-}
-
 .FriendAvatarDatas {
   /*display: inline-block;*/
   margin-top: 1vw;
