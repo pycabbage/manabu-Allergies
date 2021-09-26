@@ -40,11 +40,14 @@
   import VueCropper from "vue-cropperjs";
   import "cropperjs/dist/cropper.css";
   const APIKEY = "AIzaSyB8-ldByAwinojKoMBHNkvO-0ciC_ZrvXo";
+  import Data from "../plugins/data";
 
   export default {
     components: { VueCropper },
     mounted() {
       this.imgSrc = this.$store.state.image.image
+      this.file = this.$store.state.file.file
+      console.log(this.file)
       if (!this.imgSrc) {
         this.$router.push({path: 'scan'});
       }
@@ -142,6 +145,47 @@
         console.log(`this includes ${this.includeList}`)
       },
       selectElement(e) {
+        const detectKey = n => {
+          var data = [
+            {
+              name: "卵",
+              id: "egg"
+            },
+            {
+              name: "えび",
+              id: "shrimp"
+            },
+            {
+              name: "かに",
+              id: "crab"
+            },
+            {
+              name: "そば",
+              id: "soba"
+            },
+            {
+              name: "小麦",
+              id: "wheat"
+            },
+            {
+              name: "乳",
+              id: "milk"
+            },
+            {
+              name: "落花生（ピーナッツ）",
+              id: "peanut"
+            }
+          ]
+          var i = data.map(d=>e===d.name).indexOf(true)
+          return data[i].id
+        }
+        var id = detectKey(e)
+        console.log(id)
+        console.log("uploading ... ")
+        Data.init("private").then(data => data.setFile(id, this.file))
+        .then(()=>{
+          console.log("Uploaded.")
+        })
         this.$router.push({path: 'battle', query: {name: e}});
       }
     }
