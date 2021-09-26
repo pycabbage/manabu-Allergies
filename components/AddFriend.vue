@@ -2,13 +2,13 @@
   <Dialog DialogTitle="Add Friend"
           :ThemeColor="ThemeColor"
           openBtnColor="#8ccb00"
-          btnHeight="5vw"
+          btnHeight="4.25vw"
           btnWidth="8.5vw"
           btnMinHeight="50px"
           btnMinWidth="100px">
     <template v-slot:BtnContent>
       <BtnText color="white"
-               size="1vw">Add Friend
+               size="max(1.2vw, 12px)">Add Friend
       </BtnText>
     </template>
     <template v-slot:DialogContent>
@@ -22,7 +22,6 @@
                           required/>
           </v-col>
           <v-card-actions class="justify-end">
-            <!-- <v-btn @click="dialog = false"> Cancel </v-btn> -->
             <v-btn type="submit"
                    @click.prevent="requestFriend"
                    :loading="loading"
