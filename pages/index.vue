@@ -1,11 +1,13 @@
 <template>
-  <v-container>
-    <v-row justify="center">
+  <v-container class="mt-16">
+    <v-row class="mb-16"
+           justify="center">
       <v-img src="icon.png" 
-             height="45vw"
+             height="42vw"
              contain/>
     </v-row>
-    <v-row justify="center">
+    <v-row class="mt-16"
+           justify="center">
       <p class="TopTitle">マナブアレルギーへようこそ！</p>
     </v-row>
     <div class="PageBtns">
