@@ -171,6 +171,8 @@ export const actions = {
         const friendData = await db.collection("public").where("id", "in", friendIdList).get();
         const friendDataList = []
         await friendData.forEach((value) => friendDataList.push({ id: value.id, name: value.data().name }))
+
+
         context.commit({
             type: "set",
             friendList: friendDataList,

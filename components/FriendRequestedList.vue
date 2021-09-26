@@ -1,18 +1,19 @@
 <template>
   <div>
     <!-- <div v-for="i in getRequestFriendList" :key="i.id"> -->
-    <div v-for="userData in testUser" :key="userData.id">
+    <div v-for="userData in getRequestFriendList" :key="userData.id">
       <FriendListCard :userData="userData">
-      <v-btn @click="deleteRequestFriend(userData.id)"
-        color="#ff4956"
-        width="5vw"
-        height="2.5vw">
-        <BtnText color="white"
-                 size="0.7vw">DELETE</BtnText>
-      </v-btn>
+        <v-btn
+          @click="deleteRequestFriend(userData.id)"
+          color="#ff4956"
+          width="5vw"
+          height="2.5vw"
+        >
+          <BtnText color="white" size="0.7vw">DELETE</BtnText>
+        </v-btn>
       </FriendListCard>
     </div>
-    </div>
+  </div>
 </template>
 
 <script>
@@ -51,5 +52,5 @@ export default {
         .catch((error) => {});
     },
   },
-}
+};
 </script>
