@@ -1,8 +1,8 @@
 <template>
   <Dialog DialogTitle="User icon setting"
           :ToolBarColor="ThemeColor"
-          isUseImg="true">
-    <template v-slot:BtnContent>
+          :isUseImg="true">
+  <template v-slot:BtnContent>
       <AvatarIcon :userIconPath="userIconPath"
                   :avatarIconSize="avatarIconSize" />
     </template>
@@ -12,12 +12,14 @@
                 ref="form"
                 @submit.prevent>
           <v-file-input class="IconFileSelector"
+                        v-model="NewIcon"
+                        accept="image/*"
                         label="新しいアイコンの画像を選択"
                         filled
                         prepend-icon="mdi-camera">
           </v-file-input>
           <v-btn class="UpdateConfigBtn"
-                 @click=""
+                 @click="updateProfilePhoto( NewIcon )"
                  :color="ThemeColor"
                  :disabled="!formValid">
             UPDATE
@@ -43,7 +45,27 @@ export default {
     avatarIconSize: {
       type: String,
       require: false,
-      default: 96,
+      default: "96",
+    },
+  },
+  data() {
+    return {
+      formValid: false,
+      isUseImg: true,
+      NewIcon: null,
+    };
+  },
+  methods: {
+    updateProfilePhoto(e) {
+      this.$store
+        .dispatch({
+          type: "auth/updateProfile",
+          photo: e.target.files[0],
+        })
+        .then(() => {})
+        .catch((error) => {
+          alert(error);
+        });
     },
   },
 }
