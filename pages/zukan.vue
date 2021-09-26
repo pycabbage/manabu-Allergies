@@ -4,6 +4,7 @@
     <v-row class="ZukanLists" >
       <div class="ZukanContent"
            v-for="(zukan, index) in ZukanContent.ZukanDatas" :key="index">
+           <!-- v-if="ZukanIDs.includes( index )"> -->
         <v-col>
           <ZukanList :ZukanContent="zukan" />
         </v-col>
@@ -19,15 +20,16 @@ export default {
     return {
       ZukanContent
     };
-  }
+  },
+  data() {
+    return {
+      ZukanIDs: [0,2],
+    };
+  },
 }
 </script>
 
 <style>
-.ZukanIndexTitle {
-  /*margin-top:50px;
-  margin-bottom:50px;*/
-}
 
 .ZukanLists {
   margin-top: 10vh;
