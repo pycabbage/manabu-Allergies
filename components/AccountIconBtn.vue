@@ -1,31 +1,18 @@
 <template>
   <div>
-   <input
-        style="display: none"
-        ref="input"
-        type="file"
-        accept="image/jpeg, image/jpg, image/png"
-        @change="updateProfilePhoto()"
-      />
-      <v-row justify="center" class="my-5">
-        <v-btn
-          x-large
-          icon
-          @click="updateProfilePhotoBtn"
-          :loading="loading"
-          :disabled="loading"
-        >
-          <v-avatar size="100">
-            <img
-              :src="this.$store.getters['auth/photo']"
-              alt="user photo"
-              width="200"
-              height="200"
-              v-if="!loading"
-            />
-          </v-avatar>
-        </v-btn>
-      </v-row>
+    <input @change="updateProfilePhoto()"
+           style="display: none"
+           ref="input"
+           type="file"
+           accept="image/jpeg, image/jpg, image/png" />
+    <v-btn @click="updateProfilePhotoBtn"
+           x-large
+           icon
+           :loading="loading"
+           :disabled="loading" >
+      <AvatarIcon :userIconPath="userIconPath"
+                  avatarIconSize="128" />
+    </v-btn>
   </div>
 </template>
 
@@ -33,9 +20,8 @@
 export default {
   props: {
     userIconPath: {
-      type: String,
       require: false,
-      default: "/anonymousIcon.png",
+      default: "this.$store.getters['auth/photo']",
     },
     ThemeColor: {
       type:String,
@@ -74,7 +60,7 @@ export default {
           this.loading = false;
         });
     }
-    },
+  },
 }
 </script>
 
