@@ -4,7 +4,7 @@
           min-height="80px"
           min-width="150px">
     <v-row no-gutters>
-      <v-col>
+      <v-col cols="2">
         <div class="FriendAvatarIcon">
           <AvatarIcon class="mt-1" avatarIconSize="5vw" />
         </div>
@@ -15,7 +15,7 @@
           <span class="AvatarDataText">Name: {{ userData.name }}</span>
         </div>
       </v-col>
-      <v-col>
+      <v-col cols="1">
         <div class="FriendAvatarControlBtn">
           <slot />
         </div>
