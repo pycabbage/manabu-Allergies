@@ -22,11 +22,11 @@ export default {
   methods: {
     async addDropFile(e) {
       this.file = e.dataTransfer.files[0];
-      this.setImage(e);
       /////////////////////////////////////////////////////
       const data = await Data.init("private");
       await data.setFile(/*"key"*/ "key", this.file);
       /////////////////////////////////////////////
+      this.setImage(e);
     },
     setImage(e) {
       const fr = new FileReader();
