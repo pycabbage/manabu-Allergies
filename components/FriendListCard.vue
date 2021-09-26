@@ -3,7 +3,7 @@
     <v-row no-gutters>
       <v-col cols="2">
         <div class="FriendAvatarIcon">
-          <!-- <img :src="img" /> -->
+          <!-- <img :src="img" 　width="50" height="50" /> -->
           <AvatarIcon class="mt-1" 
                       avatarIconSize="5vw"
                       :userIconPath="img"/>
