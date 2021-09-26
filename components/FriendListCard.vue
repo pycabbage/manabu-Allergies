@@ -1,17 +1,15 @@
 <template>
-  <v-card width="95%"
-          height="8vw"
-          min-height="80px"
-          min-width="150px">
+  <v-card width="95%" height="8vw" min-height="80px" min-width="150px">
     <v-row no-gutters>
       <v-col cols="2">
         <div class="FriendAvatarIcon">
+          <img :src="img" />
           <AvatarIcon class="mt-1" avatarIconSize="5vw" />
         </div>
       </v-col>
       <v-col>
         <div class="mt-6">
-          <span class="AvatarDataText">ID: {{ userData.id }}</span> <br>
+          <span class="AvatarDataText">ID: {{ userData.id }}</span> <br />
           <span class="AvatarDataText">Name: {{ userData.name }}</span>
         </div>
       </v-col>
@@ -25,7 +23,7 @@
 </template>
 
 <script>
-import { toIcon } from '../plugins/data.js'
+import { toIcon } from "../plugins/data";
 export default {
   props: {
     userData: {
@@ -33,19 +31,18 @@ export default {
       require: true,
     },
   },
-  data: function() {
+  data: function () {
     return {
-      imageURL: "",
-    }
+      img: "",
+    };
   },
-  beforeUpdate() {
-    console.log(this.userData.id)
-    console.log(toIcon(this.userData.id))
-    ///(async() => {
-      // this.imageURL = await toIcon(this.userData.id)
-    //})()
-  }
-}
+  async fetch() {
+    console.log(this.userData.id);
+    const imageURL = await toIcon(this.userData.id);
+    console.log(imageURL);
+    this.img = imageURL;
+  },
+};
 </script>
 
 <style>
