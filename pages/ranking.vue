@@ -20,12 +20,6 @@
 import Data from "../plugins/data";
 
 export default {
-  async asyncData() {
-    const db = await Data.getAll("zukanID");
-    return { 
-      db: db ,
-    };
-  },
   data() {
     return {
       datas: [
