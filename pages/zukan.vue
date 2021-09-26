@@ -9,16 +9,19 @@
           </v-col>
         </div>
     </v-row>
+    <v-btn @click="ZukanIDSet(counter++)">test</v-btn>
   </v-container>
 </template>
 
 <script>
 import Data from "/plugins/data";
-
-export default {
+/*export default {
   async asyncData() {
     const db = await Data.init("public");
-    //await db.set("zukanID", [0]);
+    const tempdb = await db.get("zukanID");
+    if(tempdb.isArray !== true) {
+      await db.set("zukanID", []);
+    }
     const zukans = require("~/assets/ZukanDatas.json");
     return { 
       zukans: zukans.ZukanDatas, 
@@ -26,9 +29,35 @@ export default {
       dbList: await db.get("zukanID")
     };
   },
+  async ZukanIDSet(value) {
+    var newVal = dbList;
+    await newVal.push(value);
+    await this.db.set("zukanID", newVal);
+  },
+}*/
+
+export default {
+  async asyncData() {
+    const db = await Data.init("public");
+    const tempdb = await db.get("zukanID");
+    if(Array.isArray(tempdb) !== true) {
+      await db.set("zukanID", []);
+    }
+    const zukans = require("~/assets/ZukanDatas.json");
+    return { 
+      zukans: zukans.ZukanDatas, 
+      db: db ,
+      dbList: await db.get("zukanID")
+    };
+  },
+  data() {
+    return {
+      counter: 0,
+    };
+  },
   methods: {
     async ZukanIDSet(value) {
-      var newVal = await this.db.get("zukanID");
+      var newVal = this.dbList;
       await newVal.push(value);
       await this.db.set("zukanID", newVal);
     },
