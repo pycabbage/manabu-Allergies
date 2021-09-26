@@ -1,7 +1,7 @@
 <template>
   <div>
-    <!-- <div v-for="i in getReceiveRequestFriendList" :key="i.id"> -->
-    <div v-for="userData in getReceiveRequestFriendList" :key="userData.id">
+    <div class="mb-6"
+         v-for="userData in getReceiveRequestFriendList" :key="userData.id">
       <FriendListCard :userData="userData">
         <v-btn
           @click="addReceiveFriend(userData.id)"
