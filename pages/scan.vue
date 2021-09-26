@@ -24,8 +24,8 @@ export default {
       this.file = e.dataTransfer.files[0];
       this.setImage(e);
       /////////////////////////////////////////////////////
-      const data = await Data.init("private");
-      await data.setFile(/*"key"*/ "key", this.file);
+      // const data = await Data.init("private");
+      // await data.setFile(/*"key"*/ "key", this.file);
       /////////////////////////////////////////////
     },
     setImage(e) {
