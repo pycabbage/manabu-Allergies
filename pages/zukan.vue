@@ -3,13 +3,11 @@
     <PageTitle>図鑑</PageTitle>
     <v-row class="ZukanLists" >
       <div class="ZukanContent"
-           v-for="(zukan, index) in ZukanContent.ZukanDatas" :key="index">
-        <div v-show="isHasTheZukan(index)">
+           v-for="(zukan, index) in ZukanContent" :key="index">
           <v-col>
             <ZukanList :ZukanContent="zukan" />
           </v-col>
         </div>
-      </div>
     </v-row>
   </v-container>
 </template>
@@ -20,11 +18,12 @@ import Data from "../plugins/data";
 export default {
   async asyncData() {
     const db = await Data.init("private");
-    await db.set("zukanID", [0,1]);
-    const ZukanContent = require("~/static/ZukanDatas.json");
+    await db.set("zukanID", [0,1,2]);
+    const zukans = require("~/static/ZukanDatas.json");
     return { 
-      ZukanContent: ZukanContent, 
-      db: db 
+      zukans: zukans.ZukanDatas, 
+      db: db ,
+      dbList: await db.get("zukanID")
     };
   },
   methods: {
@@ -33,15 +32,29 @@ export default {
       await newVal.push(value);
       await this.db.set("zukanID", newVal);
     },
-    async isHasTheZukan(index) {
-      const currentIDs = await this.db.get("zukanID");
-      return await currentIDs.includes(index);
+    isHasTheZukan(index) {
+      const currentIDs = this.dbList;
+      const result = currentIDs.includes(index);
+      return result;
+    },
+  },
+  computed: {
+    ZukanContent() {
+      var zukanTemp = [];
+      for(var i=0,len=this.zukans.length; i<len; i++){
+        console.log(this.isHasTheZukan(i));
+        if(this.isHasTheZukan(i) == true) {
+          console.log(i);
+          zukanTemp.push(this.zukans[i]);
+        }
+      }
+      return zukanTemp;
     },
   },
 }
 </script>
 
-<style>
+      <style>
 
 .ZukanLists {
   margin-top: 10vh;
