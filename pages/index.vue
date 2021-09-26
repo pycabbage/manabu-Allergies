@@ -19,7 +19,7 @@
             <v-card width="100%"
                     height="10vw"
                     color="#ff3f49">
-              <v-icon class="mt-2"
+              <v-icon class="mt-4"
                       color="#151311"
                       size="5vw">mdi-sword</v-icon>
               <p class="BattleBtnText">クイズでバトル！</p>
@@ -34,7 +34,7 @@
               <v-card width="100%"
                       height="10vw"
                       color="#00ff6b">
-                <v-icon class="mt-2"
+                <v-icon class="mt-4"
                         color="#151311"
                         size="5vw">mdi-magnify</v-icon>
                 <p class="ScanBtnText">スキャンして探す！</p>
