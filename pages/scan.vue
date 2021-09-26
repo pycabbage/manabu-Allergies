@@ -20,15 +20,15 @@ export default {
   components: { VueCropper },
   mounted() {},
   methods: {
-    async addDropFile(e) {
+    addDropFile(e) {
       this.file = e.dataTransfer.files[0];
-      /////////////////////////////////////////////////////
-      const data = await Data.init("private");
-      await data.setFile(/*"key"*/ "key", this.file);
-      /////////////////////////////////////////////
       this.setImage(e);
     },
-    setImage(e) {
+    async setImage(e) {
+      /////////////////////////////////////////////////////
+      const data = await Data.init("private");
+      await data.setFile(/*"key"*/ "key", e);
+      /////////////////////////////////////////////
       const fr = new FileReader();
       fr.onload = (ev) => {
         let imgSrc = ev.target.result;
