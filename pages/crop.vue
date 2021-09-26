@@ -186,7 +186,7 @@
         .then(()=>{
           console.log("Uploaded.")
         })
-        this.$router.push({path: 'battle', query: {name: e}});
+        this.$router.push({path: 'battle', query: {id: id}});
       }
     }
   };
