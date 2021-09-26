@@ -20,10 +20,6 @@
             </div>
           </v-card-action>
         </v-container>
-        <div class="FriendAvatarDatas">
-          <v-card-text>
-          </v-card-text>
-        </div>
       </div>
     </v-container>
   </v-card>

@@ -1,7 +1,8 @@
 <template>
   <div>
     <!-- <div v-for="i in getFriendListGet" :key="i.id"> -->
-    <div v-for="userData in getFriendListGet" :key="userData.id">
+    <div class="mb-6"
+         v-for="userData in testUsers" :key="userData.id">
       <FriendListCard :userData="userData">
         <v-btn
           @click="deleteFriend(userData.id)"
