@@ -3,20 +3,20 @@
     <div class="mb-6"
          v-for="userData in getReceiveRequestFriendList" :key="userData.id">
       <FriendListCard :userData="userData">
-        <v-btn
-          @click="addReceiveFriend(userData.id)"
-          color="#8ccb00"
-          width="5vw"
-          height="2.5vw"
-        >
+        <v-btn @click="addReceiveFriend(userData.id)"
+               color="#8ccb00"
+               width="6vw"
+               min-width="60px"
+               height="3vw"
+               min-height="30px">
           <BtnText color="white" size="0.7vw">ADD</BtnText>
         </v-btn>
-        <v-btn
-          @click="deleteReceiveFriend(userData.id)"
-          color="#ff4956"
-          width="5vw"
-          height="2.5vw"
-        >
+        <v-btn @click="deleteReceiveFriend(userData.id)"
+               color="#ff4956"
+               width="6vw"
+               min-width="60px"
+               height="3vw"
+               min-height="30px">
           <BtnText color="white" size="0.7vw">DELETE</BtnText>
         </v-btn>
       </FriendListCard>

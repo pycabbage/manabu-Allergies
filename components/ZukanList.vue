@@ -5,7 +5,9 @@
              v-bind="attrs"
              v-on="on">
         <v-card :width="CardWidth"
+                :min-width="CardMinWidth"
                 :height="CardWidth"
+                :min-height="CardMinWidth"
                 :img="ZukanContent.Img">
           <v-card-title class="ListTitle">
             <p class="ZukanTitle">{{ ZukanContent.Title }}</p>
@@ -27,16 +29,19 @@ export default {
       require:true,
     },
     CardWidth: {
-      type: String,
       require: false,
-      default: "150",
-    }
+      default: "10vw",
+    },
+    CardMinWidth: {
+      require: false,
+      default: "125px",
+    },
   },
 }
 </script>
 
 <style>
 .ZukanTitle {
-  font-size: 1vw;
+  font-size: max(1.4vw, 18px);
 }
 </style>

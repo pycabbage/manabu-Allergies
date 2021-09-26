@@ -1,11 +1,10 @@
 <template>
-  <v-card width="95%" height="8vw" min-height="80px" min-width="150px">
+  <v-card width="100%" height="8vw" min-height="80px" min-width="150px">
     <v-row no-gutters>
       <v-col cols="2">
         <div class="FriendAvatarIcon">
-          <!-- <img :src="img" 　width="50" height="50" /> -->
           <AvatarIcon class="mt-1" 
-                      avatarIconSize="5vw"
+                      avatarIconSize="max(5vw, 50px)"
                       :userIconPath="img"/>
         </div>
       </v-col>
@@ -49,17 +48,14 @@ export default {
 
 <style>
 .FriendAvatarDatas {
-  /*display: inline-block;*/
   margin-top: 1vw;
   margin-right: 0;
-  /*margin-right: 1vw;*/
 }
 
 .AvatarDataText {
-  font-size: 1.5vw;
+  font-size: max(1.5vw, 12px);
   font-weight: bold;
   margin-right: 0;
-  /*margin-right: 3vw;*/
 }
 
 .FriendAvatarControlBtn {
