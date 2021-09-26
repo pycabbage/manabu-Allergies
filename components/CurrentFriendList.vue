@@ -4,12 +4,13 @@
     <div class="mb-6"
          v-for="userData in testUsers" :key="userData.id">
       <FriendListCard :userData="userData">
-        <v-btn @click="deleteFriend(userData.id)"
-               color="#ff4956"
-               width="5vw"
-               height="2.5vw">
-          <BtnText color="white"
-                   size="0.7vw">DELETE</BtnText>
+        <v-btn
+          @click="deleteFriend(userData.id)"
+          color="#ff4956"
+          width="5vw"
+          height="2.5vw"
+        >
+          <BtnText color="white" size="0.7vw">DELETE</BtnText>
         </v-btn>
       </FriendListCard>
     </div>
@@ -52,7 +53,7 @@ export default {
         .catch((error) => {});
     },
   },
-}
+};
 </script>
 
 <style>
