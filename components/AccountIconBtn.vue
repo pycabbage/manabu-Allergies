@@ -27,7 +27,6 @@
         </v-btn>
       </v-row>
   </div>
- 
 </template>
 
 <script>
