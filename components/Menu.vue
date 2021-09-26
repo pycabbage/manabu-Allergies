@@ -16,7 +16,7 @@ export default {
     return {
       items: [
         { title: "トップ", to: "/" },
-        { title: "ランキング", to: "/ranking" },
+        //{ title: "ランキング", to: "/ranking" },
         { title: "戦闘", to: "/battle" },
         //{ title: "アカウント設定", to: "/account-setting" },
         { title: "マイページ", to: "/my-page" },
