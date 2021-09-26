@@ -12,18 +12,18 @@
                 ref="form"
                 @submit.prevent>
           <v-file-input class="IconFileSelector"
-                        v-model="NewIcon"
+                        @change="updateProfilePhoto"
                         accept="image/*"
                         label="新しいアイコンの画像を選択"
                         filled
                         prepend-icon="mdi-camera">
           </v-file-input>
-          <v-btn class="UpdateConfigBtn"
-                 @click="updateProfilePhoto( NewIcon )"
-                 :color="ThemeColor"
-                 :disabled="!formValid">
-            UPDATE
-          </v-btn>
+          <!-- <v-btn class="UpdateConfigBtn" -->
+          <!--        @click="updateProfilePhoto" -->
+          <!--        :color="ThemeColor" -->
+          <!--        :disabled="!formValid"> -->
+          <!--   UPDATE -->
+          <!-- </v-btn> -->
         </v-form>
       </div>
     </template>
