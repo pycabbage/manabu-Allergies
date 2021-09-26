@@ -3,7 +3,8 @@
     <div class="TitleWrapper">
       <PageTitle class="MyPageTitle">マイページ</PageTitle>
       <div class="AccountIconBtn">
-        <AccountIconBtn :ThemeColor="ThemeColor" />
+        <AccountIconBtn :ThemeColor="ThemeColor" 
+                        :userIconPath="this.$store.getters['auth/photo']"/>
       </div>
     </div>
     <v-row>

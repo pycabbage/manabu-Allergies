@@ -1,7 +1,6 @@
 <template>
   <v-avatar :size="avatarIconSize">
-    <!-- <v-img :src="this.$store.getters['auth/photo']" /> -->
-    <v-img :src="userIconPath" />
+    <v-img :src="userIconPath"/>
   </v-avatar>
 </template>
 
@@ -9,9 +8,8 @@
 export default {
   props: {
     userIconPath: {
-      //type: String,
       require: false,
-      default: "/anonymousIcon.png",
+      default: "this.$store.getters['auth/photo']",
     },
     avatarIconSize: {
       type: String,
