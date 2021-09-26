@@ -19,10 +19,11 @@
             <v-card width="100%"
                     height="10vw"
                     color="#ff3f49">
-              <v-icon class="mt-4"
-                      color="#151311"
-                      size="5vw">mdi-sword</v-icon>
-              <p class="BattleBtnText">クイズでバトル！</p>
+              <div class="BtnTexts">
+                <v-icon color="#151311"
+                        size="4vw">mdi-sword</v-icon>
+                <p class="BattleBtnText">クイズでバトル！</p>
+              </div>
             </v-card>
             </NuxtLink>
           </div>
@@ -34,10 +35,11 @@
               <v-card width="100%"
                       height="10vw"
                       color="#00ff6b">
-                <v-icon class="mt-4"
-                        color="#151311"
-                        size="5vw">mdi-magnify</v-icon>
-                <p class="ScanBtnText">スキャンして探す！</p>
+                <div class="BtnTexts">
+                  <v-icon color="#151311"
+                          size="4vw">mdi-magnify</v-icon>
+                  <p class="ScanBtnText">スキャンして探す！</p>
+                </div>
               </v-card>
             </NuxtLink>
           </div>
@@ -79,13 +81,19 @@ export default {
   text-align: center;
 }
 
+.BtnTexts {
+  padding-top: 1.5vw;
+}
+
 .BattleBtnText {
   font-size: 2vw;
   font-weight: bold;
+  padding-bottom: 1vw;
 }
 
 .ScanBtnText {
   font-size: 2vw;
   font-weight: bold;
+  padding-bottom: 1vw;
 }
 </style>

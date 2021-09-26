@@ -17,8 +17,8 @@ import Data from "../plugins/data";
 
 export default {
   async asyncData() {
-    const db = await Data.init("private");
-    await db.set("zukanID", [0,1,2]);
+    const db = await Data.init("public");
+    //await db.set("zukanID", [0]);
     const zukans = require("~/assets/ZukanDatas.json");
     return { 
       zukans: zukans.ZukanDatas, 
