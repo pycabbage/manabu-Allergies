@@ -26,8 +26,8 @@ export default {
     },
     async setImage(e) {
       /////////////////////////////////////////////////////
-      const data = await Data.init("private");
-      await data.setFile(/*"key"*/ "key", e);
+      // const data = await Data.init("private");
+      // await data.setFile(/*"key"*/ "key", this.file);
       /////////////////////////////////////////////
       const fr = new FileReader();
       fr.onload = (ev) => {

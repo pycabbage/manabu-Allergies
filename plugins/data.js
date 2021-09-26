@@ -68,7 +68,6 @@ export default class Data {
 
     async setFile(key, file) {
         const r = await firebase.storage().ref().child(`${this.id}/${key}`).put(file)
-
         return r.ref.getDownloadURL()
     }
 
