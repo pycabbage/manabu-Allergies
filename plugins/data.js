@@ -80,3 +80,13 @@ export default class Data {
         await firebase.storage().ref().child(`${this.id}/${key}`).delete()
     }
 }
+
+
+export async function toIcon(id) {
+    console.log(id)
+    return id
+    const a = await firebase.storage().ref().child(`${this.id}/userPhoto`).getDownloadURL()
+    console.log(a)
+    // const r = await firebase.storage().ref().child(`${id}/userPhoto`).getDownloadURL()
+    // return r
+}
