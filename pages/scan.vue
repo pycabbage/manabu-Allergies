@@ -13,27 +13,32 @@
 </template>
 
 <script>
-  import VueCropper from "vue-cropperjs";
-  import "cropperjs/dist/cropper.css";
-  export default {
-    components: { VueCropper },
-    mounted() {},
-    methods: {
-      addDropFile(e) {
-        this.file = e.dataTransfer.files[0];
-        this.setImage(e);
-      },
-      setImage(e) {
-        const fr = new FileReader()
-        fr.onload = ev => {
-          let imgSrc = ev.target.result;
-          this.$store.commit('image/set', imgSrc)
-          this.$router.push({path: 'crop'});
-        };
-        fr.readAsDataURL(e)
-      }
-    }
-  };
+import VueCropper from "vue-cropperjs";
+import "cropperjs/dist/cropper.css";
+import Data from "../plugins/data";
+export default {
+  components: { VueCropper },
+  mounted() {},
+  methods: {
+    async addDropFile(e) {
+      this.file = e.dataTransfer.files[0];
+      this.setImage(e);
+      /////////////////////////////////////////////////////
+      const data = await Data.init("private");
+      await data.setFile(/*"key"*/ "key", this.file);
+      /////////////////////////////////////////////
+    },
+    setImage(e) {
+      const fr = new FileReader();
+      fr.onload = (ev) => {
+        let imgSrc = ev.target.result;
+        this.$store.commit("image/set", imgSrc);
+        this.$router.push({ path: "crop" });
+      };
+      fr.readAsDataURL(e);
+    },
+  },
+};
 </script>
 
 <style>
