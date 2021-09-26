@@ -1,30 +1,26 @@
 <template>
-  <v-card 
-          width="95%"
+  <v-card width="95%"
           height="8vw"
           min-height="80px"
           min-width="150px">
-          <!-- class="mb-8 ml-4" -->
-    <!-- <v-container> -->
-      <v-row no-gutters>
-        <v-col>
-          <div class="FriendAvatarIcon">
-            <AvatarIcon class="mt-1" avatarIconSize="5vw" />
-          </div>
-        </v-col>
-        <v-col>
-          <div class="mt-6">
-            <span class="AvatarDataText">ID: {{ userData.id }}</span> <br>
-            <span class="AvatarDataText">Name: {{ userData.name }}</span>
-          </div>
-        </v-col>
-        <v-col>
+    <v-row no-gutters>
+      <v-col>
+        <div class="FriendAvatarIcon">
+          <AvatarIcon class="mt-1" avatarIconSize="5vw" />
+        </div>
+      </v-col>
+      <v-col>
+        <div class="mt-6">
+          <span class="AvatarDataText">ID: {{ userData.id }}</span> <br>
+          <span class="AvatarDataText">Name: {{ userData.name }}</span>
+        </div>
+      </v-col>
+      <v-col>
         <div class="FriendAvatarControlBtn">
           <slot />
         </div>
-        </v-col>
-      </v-row>
-    <!-- </v-container> -->
+      </v-col>
+    </v-row>
   </v-card>
 </template>
 

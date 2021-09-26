@@ -4,8 +4,8 @@
           openBtnColor="#8ccb00"
           btnHeight="6vw"
           btnWidth="10.5vw"
-          btnMinHeight="5vw"
-          btnMinWidth="9vw">
+          btnMinHeight="70px"
+          btnMinWidth="120px">
     <template v-slot:BtnContent>
       <BtnText color="white"
                size="1vw">Add Friend
