@@ -62,7 +62,7 @@ export default {
 }
 
 .ZukanContent {
-  margin-bottom: 150px;
-  margin-right: 150px;
+  margin-bottom: max(8vw, 80px);
+  margin-right: max(8vw, 80px);
 }
 </style>
