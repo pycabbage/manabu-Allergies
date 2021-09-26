@@ -4,27 +4,39 @@
     <v-row class="ZukanLists" >
       <div class="ZukanContent"
            v-for="(zukan, index) in ZukanContent.ZukanDatas" :key="index">
-           <!-- v-if="ZukanIDs.includes( index )"> -->
-        <v-col>
-          <ZukanList :ZukanContent="zukan" />
-        </v-col>
+        <div v-show="isHasTheZukan(index)">
+          <v-col>
+            <ZukanList :ZukanContent="zukan" />
+          </v-col>
+        </div>
       </div>
     </v-row>
   </v-container>
 </template>
 
 <script>
+import Data from "../plugins/data";
+
 export default {
-  asyncData() {
+  async asyncData() {
+    const db = await Data.init("private");
+    await db.set("zukanID", [0,1]);
     const ZukanContent = require("~/static/ZukanDatas.json");
-    return {
-      ZukanContent
+    return { 
+      ZukanContent: ZukanContent, 
+      db: db 
     };
   },
-  data() {
-    return {
-      ZukanIDs: [0,2],
-    };
+  methods: {
+    async ZukanIDSet(value) {
+      var newVal = await this.db.get("zukanID");
+      await newVal.push(value);
+      await this.db.set("zukanID", newVal);
+    },
+    async isHasTheZukan(index) {
+      const currentIDs = await this.db.get("zukanID");
+      return await currentIDs.includes(index);
+    },
   },
 }
 </script>
