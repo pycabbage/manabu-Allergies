@@ -66,7 +66,7 @@ export default {
           email: this.email,
           password: this.password,
           name: this.name,
-          photo: "/icon.png",
+          photo: "/anonymousIcon.png",
         })
         .then(() => {
           this.loading = false;
