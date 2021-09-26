@@ -58,7 +58,7 @@ export default {
 
 .ZukanLists {
   margin-top: 10vh;
-  margin-left: 15vh;
+  margin-left: 10vw;
 }
 
 .ZukanContent {
