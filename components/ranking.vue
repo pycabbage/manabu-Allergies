@@ -17,9 +17,16 @@
 </template>
 
 <script>
-import Data from "../plugins/data";
+import Data from "/plugins/data";
 
 export default {
+  async asyncData() {
+    const db = await Data.getAll("zukanID");
+    return { 
+      db: db ,
+      dbList: await db.get("zukanID")
+    };
+  },
   data() {
     return {
       datas: [

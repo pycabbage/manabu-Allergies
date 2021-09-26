@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import Data from "../plugins/data";
+import Data from "/plugins/data";
 
 export default {
   async asyncData() {
@@ -58,7 +58,7 @@ export default {
 
 .ZukanLists {
   margin-top: 10vh;
-  margin-left: 10vw;
+  margin-left: 8vw;
 }
 
 .ZukanContent {

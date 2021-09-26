@@ -45,7 +45,6 @@ export default {
     items: [
       { title: "トップ", to: "/" },
       { title: "スキャン", to:"/scan"},
-      { title: "ランキング", to: "/ranking" },
       { title: "戦闘", to: "/battle" },
       { title: "マイページ", to: "/my-page" },
       { title: "図鑑", to: "/zukan" },
