@@ -9,7 +9,6 @@
 export default {
   props: {
     userIconPath: {
-      type: String,
       require: false,
       default: "this.$store.getters['auth/photo']",
     },

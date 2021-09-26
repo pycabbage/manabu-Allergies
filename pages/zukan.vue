@@ -3,8 +3,8 @@
     <PageTitle>図鑑</PageTitle>
     <v-row class="ZukanLists" >
       <div class="ZukanContent"
-           v-for="(zukan, index) in ZukanContent.ZukanDatas" :key="index"
-           v-if="ZukanIDs.includes( index )">
+           v-for="(zukan, index) in ZukanContent.ZukanDatas" :key="index">
+           <!-- v-if="ZukanIDs.includes( index )"> -->
         <v-col>
           <ZukanList :ZukanContent="zukan" />
         </v-col>

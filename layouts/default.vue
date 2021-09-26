@@ -23,7 +23,8 @@
 
       <v-toolbar-title> マナブアレルギー </v-toolbar-title>
       <v-spacer></v-spacer>
-      <JumpMyPageIcon avatarIconSize="45"/>
+      <JumpMyPageIcon avatarIconSize="45"
+                      :userIconPath="this.$store.getters['auth/photo']"/>
       <!-- <v-btn icon nuxt v-on:click="login">
         <v-icon>mdi-login-variant</v-icon>
       </v-btn> -->
