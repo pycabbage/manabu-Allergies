@@ -180,7 +180,7 @@
           return data[i].id
         }
         var id = detectKey(e)
-        console.log(id)
+        console.log("id : ", id)
         console.log("uploading ... ")
         Data.init("private").then(data => data.setFile(id, this.file))
         .then(()=>{
