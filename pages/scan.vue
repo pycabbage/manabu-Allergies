@@ -35,9 +35,7 @@ export default {
         this.$store.commit("image/set", imgSrc);
         this.$router.push({ path: "crop" });
       };
-      console.log("readAsDataURL", e)
-      console.log("this.file", this.file)
-      fr.readAsDataURL(e);
+      fr.readAsDataURL((this.file[0] || this.file));
     },
   },
 };
