@@ -43,6 +43,7 @@
         :disabled="loading"
         >Sign up</v-btn
       >
+      #新規作成時に確認メールが送られます
     </v-form>
   </v-app>
 </template>
