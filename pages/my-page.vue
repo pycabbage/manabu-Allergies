@@ -24,13 +24,6 @@
                           :ThemeColor="ThemeColor"/>
         </div>
       </v-container>
-      <v-container class="Section">
-        <h3>トロフィー情報</h3>
-        <hr>
-        <div class="SectionContent">
-          あとで実装予定。トロフィーの進捗とかをグラフとしてだしたい。
-        </div>
-      </v-container>
       <v-container>
         <div class="LogoutBtnWrapper">
           <LogoutBtn />
