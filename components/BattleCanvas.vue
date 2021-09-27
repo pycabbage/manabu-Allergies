@@ -60,20 +60,22 @@
     },
     async asyncData() {
       const db = await Data.init("public");
-      const tempdb = await db.get("zukanID");
-      if (Array.isArray(tempdb) !== true) {
+      const dbList = await db.get("zukanID");
+      if (Array.isArray(dbList) !== true) {
         await db.set("zukanID", []);
       }
       return {
         db: db,
-        dbList: await db.get("zukanID"),
+        dbList: dbList,
       };
     },
     methods: {
       async ZukanIDSet(value) {
-        var newVal = dbList;
-        await newVal.push(value);
-        await this.db.set("zukanID", newVal);
+        if(value > -1){
+          var newVal = this.dbList;
+          newVal.push(value);
+          await this.db.set("zukanID", newVal);
+        }
       },
       _shuffle([...array]) {
         for (let i = array.length - 1; i >= 0; i--) {
@@ -113,7 +115,8 @@
         wText.position.set(50, 200)
         this.currentScene.addChild(wText)
         
-        var id = (["egg", "milk", "wheat", "soba", "peanuts", "shrimp", "crab"]).indexOf(this.$route.query.id)
+        var zukanArray = ["egg", "milk", "wheat", "soba", "peanuts", "shrimp", "crab"];
+        var id = zukanArray.indexOf(this.$route.query.id)
         this.ZukanIDSet(id)
       },
       Lose() {
