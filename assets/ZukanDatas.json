@@ -3,7 +3,7 @@
     {
       "Title": "卵",
       "Subtitle":"身の回りのとても多くの物に含まれているアレルゲン。生のほうが症状が出やすい。",
-      "Img": "https://illustimage.com/photo/11476.png",
+      "Img": "/image/egg.gif",
       "Descriptions":{
         "含まれている食品": "マヨネーズ、パン、とんかつなど",
         "別名": "卵黄、卵白、卵殻など",
@@ -13,7 +13,7 @@
     },
     {
       "Title": "乳",
-      "Img": "https://illustimage.com/photo/11412.png",
+      "Img": "/image/milk.gif",
       "Subtitle":"身の回りのとても多くの物に含まれているアレルゲン。様々な異名を持つ。",
       "Descriptions": {
         "含まれている食品": "ヨーグルト、バター、チーズなど(食品ではないが、石けんなどにも含まれていることがある。)",
@@ -24,7 +24,7 @@
     },
     {
       "Title": "小麦",
-      "Img": "https://4.bp.blogspot.com/-hOudO5zwA88/VPe0sdb_GNI/AAAAAAAAsKA/Xj77f6_Q-ps/s400/food_flour_komugiko.png",
+      "Img": "/image/pan.gif",
       "Subtitle":"運動によって誘発されやすいとも言われているアレルゲン。",
       "Descriptions": {
         "含まれている食品": "パン、うどん、ピザなど",
@@ -35,7 +35,7 @@
     },
     {
       "Title": "そば",
-      "Img": "https://illustimage.com/photo/1285.png",
+      "Img": "/image/soba.gif",
       "Subtitle":"症状がきついとも言われているアレルゲン。そば殻枕にも注意が必要",
       "Descriptions": {
         "含まれている食品": "そば(麺)など",
@@ -46,7 +46,7 @@
     },
     {
       "Title": "落花生(ピーナッツ)",
-      "Img": "https://illustimage.com/photo/12882.png",
+      "Img": "/image/peanuts.gif",
       "Subtitle":"症状がきついとも言われているアレルゲン。",
       "Descriptions": {
         "含まれている食品": "そばなど",
@@ -57,7 +57,7 @@
     },
     {
       "Title": "えび",
-      "Img": "https://illustimage.com/photo/3483.png?20170802",
+      "Img": "/image/ebi.gif",
       "Subtitle":"運動によって誘発されやすいとも言われているアレルゲン。",
       "Descriptions": {
         "含まれている食品": "(海産物に混ざり込むことがある)",
@@ -67,7 +67,7 @@
     },
     {
       "Title": "かに",
-      "Img": "https://illustimage.com/photo/3481.png",
+      "Img": "/image/kani.gif",
       "Subtitle":"運動によって誘発されやすいとも言われているアレルゲン。",
       "Descriptions": {
         "含まれている食品": "(海産物に混ざり込むことがある)",
