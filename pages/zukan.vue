@@ -9,7 +9,6 @@
           </v-col>
         </div>
     </v-row>
-    <v-btn @click="ZukanIDSet(counter++)">test</v-btn>
   </v-container>
 </template>
 
