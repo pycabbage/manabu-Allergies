@@ -55,7 +55,8 @@
       return {
         points: 0,
         noClick: false,
-        currentScene: new PIXI.Container()
+        currentScene: new PIXI.Container(),
+        id: this.$route.query.id
       }
     },
     async asyncData() {
@@ -89,7 +90,10 @@
       },
       Begin() {
         this.app.stage.addChild(this.currentScene)
-        var _questions = quiz.general.concat(quiz[this.$route.query.id || "peanuts"])
+        var _questions = quiz.general
+        if ( this.id ) {
+          _questions.concat(quiz[this.id])
+        }
         _questions = _questions.filter(i=>i)
         this.questions = this._shuffle(_questions)
         this.now = -1
@@ -114,10 +118,11 @@
         var wText = new Text("勝利しました")
         wText.position.set(50, 200)
         this.currentScene.addChild(wText)
-        
-        var zukanArray = ["egg", "milk", "wheat", "soba", "peanuts", "shrimp", "crab"];
-        var id = zukanArray.indexOf(this.$route.query.id)
-        this.ZukanIDSet(id)
+        if (this.id) {
+          var zukanArray = ["egg", "milk", "wheat", "soba", "peanuts", "shrimp", "crab"];
+          var id = zukanArray.indexOf(this.id)
+          this.ZukanIDSet(id)
+        }
       },
       Lose() {
         var lText = new Text("敗北しました")
@@ -134,6 +139,20 @@
           this.Begin()
         })
         this.currentScene.addChild(rText)
+
+        if (!this.id) {
+          var scanText = new Text("スキャンに戻る")
+          scanText.position.set(50, 450)
+          scanText.interactive = true
+          scanText.buttonMode = true;
+          scanText.on("pointertap", e=>{
+            this.flush()
+            this.$router.push({path: 'scan'});
+          })
+          this.currentScene.addChild(scanText)
+
+        }
+
       },
       Question(q) {
         var _ans_offsetX = 50
