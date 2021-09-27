@@ -1,14 +1,15 @@
 <template>
   <div>
-    <!-- <div v-for="i in getRequestFriendList" :key="i.id"> -->
-    <div v-for="userData in getRequestFriendList" :key="userData.id">
+    <div class="mb-6" 
+         v-for="userData in getRequestFriendList" :key="userData.id">
       <FriendListCard :userData="userData">
         <v-btn
           @click="deleteRequestFriend(userData.id)"
           color="#ff4956"
-          width="5vw"
-          height="2.5vw"
-        >
+               width="6vw"
+               min-width="60px"
+               height="3vw"
+               min-height="30px">
           <BtnText color="white" size="0.7vw">DELETE</BtnText>
         </v-btn>
       </FriendListCard>

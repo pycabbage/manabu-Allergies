@@ -1,15 +1,15 @@
 <template>
   <div>
-    <!-- <div v-for="i in getFriendListGet" :key="i.id"> -->
-    <div v-for="userData in getFriendListGet" :key="userData.id">
+    <div class="mb-6"
+         v-for="userData in getFriendListGet" :key="userData.id">
       <FriendListCard :userData="userData">
-        <v-btn
-          @click="deleteFriend(userData.id)"
-          color="#ff4956"
-          width="5vw"
-          height="2.5vw"
-        >
-          <BtnText color="white" size="0.7vw">DELETE</BtnText>
+        <v-btn @click="deleteFriend(userData.id)"
+               color="#ff4956"
+               width="6vw"
+               min-width="60px"
+               height="3vw"
+               min-height="30px">
+          <BtnText color="white" size="max(1vw, 12px)">DELETE</BtnText>
         </v-btn>
       </FriendListCard>
     </div>
@@ -18,24 +18,6 @@
 
 <script>
 export default {
-  data() {
-    return {
-      testUsers: [
-        {
-          id: "0",
-          name: "bob",
-        },
-        {
-          id: "1",
-          name: "john",
-        },
-        {
-          id: "2",
-          name: "mike",
-        },
-      ],
-    };
-  },
   computed: {
     getFriendListGet: function () {
       return this.$store.getters["friend/friendList"];

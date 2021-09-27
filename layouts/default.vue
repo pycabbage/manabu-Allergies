@@ -23,7 +23,8 @@
 
       <v-toolbar-title> マナブアレルギー </v-toolbar-title>
       <v-spacer></v-spacer>
-      <JumpMyPageIcon avatarIconSize="45"/>
+      <JumpMyPageIcon avatarIconSize="45"
+                      :userIconPath="this.$store.getters['auth/photo']"/>
       <!-- <v-btn icon nuxt v-on:click="login">
         <v-icon>mdi-login-variant</v-icon>
       </v-btn> -->
@@ -43,7 +44,7 @@ export default {
     drawer: false,
     items: [
       { title: "トップ", to: "/" },
-      { title: "ランキング", to: "/ranking" },
+      { title: "スキャン", to:"/scan"},
       { title: "戦闘", to: "/battle" },
       { title: "マイページ", to: "/my-page" },
       { title: "図鑑", to: "/zukan" },

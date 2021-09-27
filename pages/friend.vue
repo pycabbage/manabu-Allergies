@@ -2,8 +2,7 @@
   <v-container v-if="getEmailVerified">
     <PageTitle>フレンドリスト</PageTitle>
     <div class="FriendTabs">
-      <v-tabs vertical 
-              height="15vh">
+      <v-tabs height="5vh">
         <v-tab>
           <span class="TabTexts">Friend List</span>
         </v-tab>
@@ -41,6 +40,14 @@ export default {
     };
   },
   computed: {
+    isTabVertical() {
+      if(window.innerWidth > 500){
+        return false;
+      }
+      else {
+        return true;
+      }
+    },
     getEmailVerified: function () {
       return this.$store.getters["auth/emailVerified"];
     },
@@ -68,10 +75,10 @@ export default {
 }
 
 .TabTexts {
-  font-size: 0.9vw;
+  font-size: max(0.9vw, 10px);
 }
 
 .FriendTabs {
-  width: 80vw;
+  width: 100%;
 }
 </style>

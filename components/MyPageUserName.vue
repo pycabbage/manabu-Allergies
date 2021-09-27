@@ -56,7 +56,6 @@ export default {
           name: this.NewValue,
         })
         .then(() => {
-          //this.name = "";
         })
         .catch((error) => {
           alert(error);

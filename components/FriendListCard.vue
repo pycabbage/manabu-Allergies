@@ -1,29 +1,30 @@
 <template>
-  <v-card class="mb-8 ml-4">
-    <v-container>
-      <div>
+  <v-card width="100%" height="8vw" min-height="80px" min-width="150px">
+    <v-row no-gutters>
+      <v-col cols="2">
         <div class="FriendAvatarIcon">
-          <v-card-action>
-            <AvatarIcon avatarIconSize="5vw" />
-          </v-card-action>
+          <AvatarIcon class="mt-1" 
+                      avatarIconSize="max(5vw, 50px)"
+                      :userIconPath="img"/>
         </div>
-        <div class="FriendAvatarDatas">
-          <v-card-text>
-            <span class="AvatarDataText">ID: {{ userData.id }}</span> <br>
-            <span class="AvatarDataText">Name: {{ userData.name }}</span>
-          </v-card-text>
+      </v-col>
+      <v-col>
+        <div class="mt-6">
+          <span class="AvatarDataText">ID: {{ userData.id }}</span> <br />
+          <span class="AvatarDataText">Name: {{ userData.name }}</span>
         </div>
+      </v-col>
+      <v-col cols="1">
         <div class="FriendAvatarControlBtn">
-          <v-card-action>
-            <slot />
-          </v-card-action>
+          <slot />
         </div>
-      </div>
-    </v-container>
+      </v-col>
+    </v-row>
   </v-card>
 </template>
 
 <script>
+import { toIcon } from "../plugins/data";
 export default {
   props: {
     userData: {
@@ -31,27 +32,35 @@ export default {
       require: true,
     },
   },
-}
+  data: function () {
+    return {
+      img: "",
+    };
+  },
+  async fetch() {
+    console.log(this.userData.id);
+    const imageURL = await toIcon(this.userData.id);
+    console.log(imageURL);
+    this.img = imageURL;
+  },
+};
 </script>
 
 <style>
-.FriendAvatarIcon {
-  display: inline-block;
-}
-
 .FriendAvatarDatas {
-  display: inline-block;
-  /*margin-right: 1vw;*/
+  margin-top: 1vw;
+  margin-right: 0;
 }
 
 .AvatarDataText {
-  font-size: 1.5vw;
+  font-size: max(1.5vw, 12px);
   font-weight: bold;
-  /*margin-right: 3vw;*/
+  margin-right: 0;
 }
 
 .FriendAvatarControlBtn {
   display: inline-block;
+  margin-left: 0;
   float: right;
 }
 </style>

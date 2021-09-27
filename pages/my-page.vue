@@ -3,7 +3,8 @@
     <div class="TitleWrapper">
       <PageTitle class="MyPageTitle">マイページ</PageTitle>
       <div class="AccountIconBtn">
-        <AccountIconBtn :ThemeColor="ThemeColor" />
+        <AccountIconBtn :ThemeColor="ThemeColor" 
+                        :userIconPath="this.$store.getters['auth/photo']"/>
       </div>
     </div>
     <v-row>
@@ -21,13 +22,6 @@
           <MyPagePassword currentValue="*************"
                           :inputValidation="[inputRequire]"
                           :ThemeColor="ThemeColor"/>
-        </div>
-      </v-container>
-      <v-container class="Section">
-        <h3>トロフィー情報</h3>
-        <hr>
-        <div class="SectionContent">
-          あとで実装予定。トロフィーの進捗とかをグラフとしてだしたい。
         </div>
       </v-container>
       <v-container>
