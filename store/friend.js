@@ -87,6 +87,7 @@ export const actions = {
         const privateRef = db.collection("private").doc(userId)
         const partnerRequestRef = db.collection("request").doc(payload.id)
         const requestRef = db.collection("request").doc(userId)
+        const privateFriendRef = db.collection("private").doc(payload.id)
         batch.set(partnerFriendRef, {
             id: payload.id
         })
@@ -108,6 +109,11 @@ export const actions = {
                 id: payload.id
             })
         })
+        batch.update(privateFriendRef, {
+            requestFriend: firebase.firestore.FieldValue.arrayRemove({
+                id: userId
+            })
+        })
         await batch.commit()
         context.dispatch({
             type: "getReceiveFriend",
@@ -119,6 +125,7 @@ export const actions = {
         const privateRef = db.collection("private").doc(userId)
         const partnerRequestRef = db.collection("request").doc(payload.id)
         const requestRef = db.collection("request").doc(userId)
+        const privateFriendRef = db.collection("private").doc(payload.id)
         batch.update(privateRef, {
             requestFriend: firebase.firestore.FieldValue.arrayRemove({
                 id: payload.id
@@ -132,6 +139,11 @@ export const actions = {
         batch.update(requestRef, {
             user: firebase.firestore.FieldValue.arrayRemove({
                 id: payload.id
+            })
+        })
+        batch.update(privateFriendRef, {
+            requestFriend: firebase.firestore.FieldValue.arrayRemove({
+                id: userId
             })
         })
         await batch.commit()
