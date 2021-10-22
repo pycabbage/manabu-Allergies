@@ -18,10 +18,19 @@
 
 <script>
 export default {
+  computed: {
+    IconPath: function() {
+      if (this.$store.getters['auth/photo'] == "default") {
+        return "@/defaultAvater.png";
+      } else {
+        return this.$store.getters['auth/photo'];
+      }
+    }
+  },
   props: {
     userIconPath: {
       require: false,
-      default: "this.$store.getters['auth/photo']",
+      default: "",
     },
     ThemeColor: {
       type:String,

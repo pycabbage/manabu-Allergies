@@ -16,7 +16,7 @@ export default {
         age: 20,
         email: "tarou@yamada",
         tel: "xxx-xxxx",
-        icon: "AnonymousIcon.png",
+        icon: "default",
       },
     };
   },

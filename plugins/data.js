@@ -87,7 +87,7 @@ export async function toIcon(id) {
         const a = await firebase.storage().ref().child(`${id}/userPhoto`).getDownloadURL()
         return a
     } catch (error) {
-        return "/anonymousIcon.png"
+        return "default"
     }
 
 }
