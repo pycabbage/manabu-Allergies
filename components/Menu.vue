@@ -18,7 +18,6 @@ export default {
         { title: "トップ", to: "/" },
         //{ title: "ランキング", to: "/ranking" },
         { title: "戦闘", to: "/battle" },
-        //{ title: "アカウント設定", to: "/account-setting" },
         { title: "マイページ", to: "/my-page" },
         { title: "ダイアログのテスト", to: "/dialog-test" },
         { title: "図鑑", to: "/zukan-index"}
