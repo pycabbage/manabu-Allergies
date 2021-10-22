@@ -3,15 +3,16 @@ import "firebase/auth";
 import "firebase/firestore"
 import "firebase/storage";
 
-var firebaseConfig = {
-  apiKey: "AIzaSyBPBI1X80qznbcXFX5IM4JraiRPOLeb2MA",
-  authDomain: "manabu-allergies.firebaseapp.com",
-  projectId: "manabu-allergies",
-  storageBucket: "manabu-allergies.appspot.com",
-  messagingSenderId: "653982808749",
-  appId: "1:653982808749:web:8c52b4786ce2acd5bce424",
-  measurementId: "G-CHCRY1DZVK"
+const firebaseConfig = {
+  apiKey: "AIzaSyASesJoMw-hIpCvyrwZorB-8g1W0OWATTU",
+  authDomain: "manabu-allergies-a9031.firebaseapp.com",
+  projectId: "manabu-allergies-a9031",
+  storageBucket: "manabu-allergies-a9031.appspot.com",
+  messagingSenderId: "894469061687",
+  appId: "1:894469061687:web:e4017d14e2a055287913b2",
+  measurementId: "G-EHLK3N0HCB"
 };
+
 
 if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);
