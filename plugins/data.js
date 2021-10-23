@@ -1,4 +1,4 @@
-import firebase, { storage } from './firebase'
+import firebase from './firebase'
 
 export default class Data {
     static async init(access) {
