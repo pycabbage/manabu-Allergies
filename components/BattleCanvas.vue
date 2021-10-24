@@ -92,7 +92,7 @@
         this.app.stage.addChild(this.currentScene)
         var _questions = quiz.general
         if ( this.id ) {
-          _questions.concat(quiz[this.id])
+          _questions = _questions.concat(quiz[this.id])
         }
         _questions = _questions.filter(i=>i)
         this.questions = this._shuffle(_questions)

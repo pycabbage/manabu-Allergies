@@ -1,18 +1,24 @@
 <template>
+
   <div>
+    <v-badge icon="mdi-pencil" :value="mouseHover" offset-y="-10" left>
     <input @change="updateProfilePhoto()"
            style="display: none"
            ref="input"
            type="file"
            accept="image/jpeg, image/jpg, image/png" />
+    
     <v-btn @click="updateProfilePhotoBtn"
+           @mouseenter="mouseHover = true"
+           @mouseleave="mouseHover = false"
            x-large
            icon
            :loading="loading"
-           :disabled="loading" >
-      <AvatarIcon :userIconPath="userIconPath"
-                  avatarIconSize="128" />
+           :disabled="loading"
+          >
+      <AvatarIcon :userIconPath="userIconPath" avatarIconSize="128" />
     </v-btn>
+    </v-badge>
   </div>
 </template>
 
@@ -39,6 +45,7 @@ export default {
       isUseImg: true,
       NewIcon: null,
       loading: false,
+      mouseHover:false
     };
   },
   methods: {

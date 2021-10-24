@@ -28,6 +28,9 @@
         <div class="LogoutBtnWrapper">
           <LogoutBtn />
         </div>
+        <div class="DeleteBtnWrapper">
+          <DelAccountBtn />
+        </div>
       </v-container>
     </v-row>
   </v-container>
