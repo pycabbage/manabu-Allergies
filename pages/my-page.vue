@@ -25,10 +25,10 @@
         </div>
       </v-container>
       <v-container>
-        <div class="LogoutBtnWrapper">
+        <div class="ActionBtnWrapper">
           <LogoutBtn />
         </div>
-        <div class="DeleteBtnWrapper">
+        <div class="ActionBtnWrapper">
           <DelAccountBtn />
         </div>
       </v-container>
@@ -102,7 +102,7 @@ export default {
   margin-top: 10px;
 }
 
-.LogoutBtnWrapper {
+.ActionBtnWrapper {
   float: right;
 }
 
