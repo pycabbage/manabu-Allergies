@@ -1,15 +1,23 @@
 <template>
   <v-avatar :size="avatarIconSize">
-    <v-img :src="userIconPath"/>
+    <v-img :src="IconPath" />
   </v-avatar>
 </template>
 
 <script>
 export default {
+  computed: {
+    IconPath: function() {
+      if (this.userIconPath == "default") {
+        return "./defaultAvater.png";
+      } else {
+        return this.userIconPath;
+      }
+    }
+  },
   props: {
     userIconPath: {
-      require: false,
-      default: "this.$store.getters['auth/photo']",
+      require: true
     },
     avatarIconSize: {
       type: String,
