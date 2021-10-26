@@ -30,7 +30,7 @@
       </v-btn> -->
     </v-app-bar>
 
-    <v-main>
+    <v-main v-touch="{right:() => {drawer=true}}">
       <Nuxt />
     </v-main>
   </v-app>
