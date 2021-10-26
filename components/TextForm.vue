@@ -22,7 +22,7 @@ export default ({
       require: false,
       default: false,
     },
-    value:{
+    defaultValue:{
       type:String,
       require:false,
       default:""
@@ -30,7 +30,7 @@ export default ({
   },
   computed:{
     form_type: function() {
-      if (this.value) {
+      if (this.password) {
         if (this.passwdShow) {
           return "text"
         } else {
@@ -43,7 +43,8 @@ export default ({
   },
   data() {
       return {
-        passwdShow: false
+        passwdShow: false,
+        value:this.defaultValue
       };
   }
 })
