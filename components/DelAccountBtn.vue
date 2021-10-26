@@ -11,13 +11,7 @@
           >この操作を行うとあなたのアカウントが削除されます。二度と元に戻すことはできません。<br />それでも続行する場合は、パスワードを入力して削除ボタンを押してください。</v-card-subtitle
         >
         <v-col>
-          <v-text-field
-            v-model="passwd"
-            label="Password"
-            :type="passwdShow ? 'text' : 'password'"
-            :append-icon="passwdShow ? 'mdi-eye' : 'mdi-eye-off'"
-            @click:append="passwdShow = !passwdShow"
-          ></v-text-field>
+          <TextForm title="Password" passwd/>
         </v-col>
         <v-card-actions
           ><v-btn @click="passwdDialog = false">キャンセル</v-btn
