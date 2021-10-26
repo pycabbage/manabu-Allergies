@@ -37,7 +37,6 @@ export default {
   },
   methods: {
     delAccount() {
-      alert(this.$refs.passwd.value)
       this.$store
         .dispatch({
           type: "auth/deleteAccountWithAuth",
