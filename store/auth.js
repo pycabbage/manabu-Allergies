@@ -267,9 +267,6 @@ export const actions = {
     async deleteAccountWithAuth(context, payload) {
         const user = firebase.auth().currentUser
         const id = user.uid;
-        const credentials = await firebase.auth.EmailAuthProvider.credential(user.email, payload.confirmationPassword);
-        await user.reauthenticateWithCredential(credentials)
-        await user.delete()
         const batch = db.batch();
         const publicRef = db.collection("public").doc(id);
         const privateRef = db.collection("private").doc(id);
@@ -278,6 +275,9 @@ export const actions = {
         batch.delete(privateRef)
         batch.delete(requestRef)
         await batch.commit();
+        const credentials = await firebase.auth.EmailAuthProvider.credential(user.email, payload.confirmationPassword);
+        await user.reauthenticateWithCredential(credentials)
+        await user.delete()
         context.commit({
             type: "set",
             emailVerified: false,
