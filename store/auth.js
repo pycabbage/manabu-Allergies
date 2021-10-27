@@ -133,6 +133,7 @@ export const actions = {
             id: result.user.uid,
             name: result.user.displayName,
             photo: result.user.photoURL,
+            point: 0,
         })
         batch.set(privateRef, {
             requestFriend: []

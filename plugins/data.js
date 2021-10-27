@@ -53,7 +53,7 @@ export default class Data {
     async getAll(key) {
         if (this.access == "public" || this.access == "friend") {
             const data = []
-            await (await firebase.firestore().collection(this.access).get()).forEach(value => {
+            await (await firebase.firestore().collection(this.access).limit(20).orderBy("point").get()).forEach(value => {
                 if (key == undefined) {
                     data.push({ id: value.id, value: value.data() })
                 } else {
