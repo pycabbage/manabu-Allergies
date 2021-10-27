@@ -5,6 +5,7 @@
       :type="form_type"
       :append-icon="passwdShow ? 'mdi-eye' : 'mdi-eye-off'"
       @click:append="passwdShow = !passwdShow"
+      :disabled="disabled"
   >
   </v-text-field>
 </template>
@@ -44,7 +45,8 @@ export default ({
   data() {
       return {
         passwdShow: false,
-        value:this.defaultValue
+        value:this.defaultValue,
+        disabled:false
       };
   }
 })

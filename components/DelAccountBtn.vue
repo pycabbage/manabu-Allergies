@@ -15,8 +15,8 @@
           <TextForm ref="passwd" title="Password" password />
         </v-col>
         <v-card-actions>
-          <v-btn @click="passwdDialog = false">キャンセル</v-btn>
-          <v-btn color="#ff4956" @click="delAccount">削除</v-btn>
+          <v-btn @click="passwdDialog = false" :disabled="loading">キャンセル</v-btn>
+          <v-btn color="#ff4956" @click="delAccount" :loading="loading">削除</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -32,18 +32,23 @@ export default {
       BtnTextColor: "#000000",
       passwdDialog: false,
       passwdShow: false,
-      errorMsg:""
+      errorMsg:"",
+      loading:false
     };
   },
   methods: {
     delAccount() {
+      this.loading=true
+      this.$refs.passwd.disabled=true
       this.$store
         .dispatch({
           type: "auth/deleteAccountWithAuth",
           confirmationPassword: this.$refs.passwd.value,
         })
         .then(() => {
+          this.loading=false
           this.$router.push("/login");
+          this.passwdDialog=false
         })
         .catch((e) => {
           if (e == "Error: The password is invalid or the user does not have a password.") {
@@ -51,6 +56,8 @@ export default {
           } else {
             this.errorMsg=e
           }
+          this.loading=false
+          this.$refs.passwd.disabled=false
           //this.$router.push("/login");
         });
     },
