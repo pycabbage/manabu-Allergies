@@ -2,7 +2,8 @@
   <v-container class="mt-16">
     <v-card>
     <v-card-title justify="center" align="right">
-    <v-img src="icon.png" height="30vw" width="30vw" contain class="justify-left"><p>マナブアレルギーへようこそ！</p></v-img>
+    <v-img src="icon.png" height="30vw" width="auto" contain class="justify-space-around"></v-img>
+    <p>マナブアレルギーへようこそ！</p>
     </v-card-title>
     <v-divider />
     <v-card-actions justify="center">
