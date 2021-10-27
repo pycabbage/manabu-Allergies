@@ -50,6 +50,12 @@ export default class Data {
         }
     }
 
+    async setPoint(p) {
+        await firebase.firestore().collection("public").doc(this.id).update({
+            "point": p
+        })
+    }
+
     async getAll(key) {
         if (this.access == "public" || this.access == "friend") {
             const data = []
