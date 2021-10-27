@@ -1,51 +1,20 @@
 <template>
   <v-container class="mt-16">
-    <v-row class="mb-16"
-           justify="center">
-      <v-img src="icon.png" 
-             height="42vw"
-             contain/>
-    </v-row>
-    <v-row class="mt-16"
-           justify="center">
-      <p class="TopTitle">マナブアレルギーへようこそ！</p>
-    </v-row>
-    <div class="PageBtns">
-      <v-row justify="center">
-        <v-col cols="6">
-          <div class="BattleBtn">
-            <NuxtLink style="text-decoration:none;"
-                      to="battle">
-            <v-card width="100%"
-                    height="10vw"
-                    color="#ff3f49">
-              <div class="BtnTexts">
-                <v-icon color="#151311"
-                        size="4vw">mdi-sword</v-icon>
-                <p class="BattleBtnText">クイズでバトル！</p>
-              </div>
-            </v-card>
-            </NuxtLink>
-          </div>
-        </v-col>
-        <v-col cols="6">
-          <div class="ScanBtn">
-            <NuxtLink style="text-decoration:none;"
-                      to="scan">
-              <v-card width="100%"
-                      height="10vw"
-                      color="#00ff6b">
-                <div class="BtnTexts">
-                  <v-icon color="#151311"
-                          size="4vw">mdi-magnify</v-icon>
-                  <p class="ScanBtnText">スキャンして探す！</p>
-                </div>
-              </v-card>
-            </NuxtLink>
-          </div>
-        </v-col>
+    <v-card>
+    <v-card-title justify="center" align="right">
+    <v-img src="icon.png" height="30vw" width="30vw" contain class="justify-left"><p>マナブアレルギーへようこそ！</p></v-img>
+    </v-card-title>
+    <v-divider />
+    <v-card-actions justify="center">
+      <v-row>
+          <v-btn link nuxt to="battle" color="red" height="10vw" width="30vw"><StyledText size="2.5vw" icon="mdi-sword" color="#151311">クイズでバトル！</StyledText></v-btn>
+          <v-spacer />
+          <v-btn link nuxt to="scan" color="green" height="10vw" width="30vw"><StyledText size="2.5vw" icon="mdi-magnify" color="#151311">スキャンして探す！</StyledText></v-btn>
       </v-row>
-    </div>
+    </v-card-actions>
+    </v-card>
+    
+    
   </v-container>
 </template>
 
@@ -61,14 +30,8 @@ export default {
 }
 
 .TopTitle {
-  font-size: 5vw;
+  font-size:1vw;
   font-weight: bold;
-}
-
-.PageBtns {
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .BattleBtn {
@@ -88,12 +51,10 @@ export default {
 .BattleBtnText {
   font-size: 2vw;
   font-weight: bold;
-  padding-bottom: 1vw;
 }
 
 .ScanBtnText {
   font-size: 2vw;
   font-weight: bold;
-  padding-bottom: 1vw;
 }
 </style>

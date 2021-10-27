@@ -1,5 +1,5 @@
 <template>
-  <span :style="textStyle"><slot /></span>
+  <span :style="textStyle"><v-icon :size="size" :color="color">{{icon}}</v-icon><slot /></span>
 </template>
 
 <script>
@@ -15,6 +15,11 @@ export default {
       require: false,
       default: undefined,
     },
+    icon:{
+      type:String,
+      require: false,
+      default: ""
+    }
   },
   computed: {
     textStyle() {
