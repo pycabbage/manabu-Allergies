@@ -1,26 +1,44 @@
 <template>
   <v-container class="mt-16">
-    <v-card>
-    <v-card-title justify="center" align="right">
-    <v-img src="icon.png" height="30vw" width="auto" contain class="justify-space-around"></v-img>
-    <p>マナブアレルギーへようこそ！</p>
-    </v-card-title>
-    <v-divider />
-    <v-card-actions justify="center">
-      <v-row>
-          <v-btn link nuxt to="battle" color="red" height="10vw" width="30vw"><StyledText size="2.5vw" icon="mdi-sword" color="#151311">クイズでバトル！</StyledText></v-btn>
-          <v-spacer />
-          <v-btn link nuxt to="scan" color="green" height="10vw" width="30vw"><StyledText size="2.5vw" icon="mdi-magnify" color="#151311">スキャンして探す！</StyledText></v-btn>
-      </v-row>
-    </v-card-actions>
-    </v-card>
-    
-    
+    <!--<v-card>
+      <v-slider
+      v-model="width"
+      class="align-self-stretch"
+      min="0"
+      max="500"
+      step="1"
+    ></v-slider>
+    <v-slider
+      v-model="height"
+      class="align-self-stretch"
+      min="0"
+      max="500"
+      step="1"
+    ></v-slider>
+    </v-card>-->
+    <v-row align-content="center" justify="center">
+    <img src="icon.png" height="100%" aspect-ratio="1" contain />
+    <StyledText size="2vw" color="#000">マナブアレルギーへようこそ！</StyledText>
+    <v-spacer />
+    </v-row>
+    <v-row justify="center">
+      <v-spacer />
+      <v-btn link nuxt to="battle" color="red" height="10vw" width="30vw"><StyledText size="2.5vw" icon="mdi-sword" color="#151311">クイズでバトル！</StyledText></v-btn>
+      <v-spacer />
+      <v-btn link nuxt to="scan" color="green" height="10vw" width="30vw"><StyledText size="2.5vw" icon="mdi-magnify" color="#151311">スキャンして探す！</StyledText></v-btn>
+      <v-spacer />
+    </v-row>
   </v-container>
 </template>
 
 <script>
 export default {
+  data(){
+    return {
+      height:10,
+      width:20
+    }
+  }
 }
 </script>
 
