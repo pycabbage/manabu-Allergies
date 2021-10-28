@@ -10,15 +10,15 @@
         <v-card-subtitle>
           この操作を行うとあなたのアカウントが削除されます。二度と元に戻すことはできません。<br />それでも続行する場合は、パスワードを入力して削除ボタンを押してください。
         </v-card-subtitle>
-        <v-col>
+        <v-card-text>
           <StyledText color="red">{{errorMsg}}</StyledText>
           <v-form ref="form" :disabled="loading">
             <TextForm ref="passwd" title="Password" password required />
           </v-form>
-        </v-col>
-        <v-card-actions>
+        </v-card-text>
+        <v-card-actions class="justify-end">
           <v-btn @click="passwdDialog = false" :disabled="loading">キャンセル</v-btn>
-          <v-btn color="#ff4956" @click="delAccount" :loading="loading">削除</v-btn>
+          <v-btn color="red" @click="delAccount" :loading="loading">削除</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>

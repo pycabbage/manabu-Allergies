@@ -1,73 +1,36 @@
 <template>
   <v-app>
-    <v-form class="text-center">
-      <h2>Login</h2>
+    <v-form class="text-center" :disabled="loading" ref="loginform">
+      <h2>ログイン<br />(アカウントをお持ちでない方は<NuxtLink to="/create">作成</NuxtLink>)</h2>
+      <StyledText color="red" v-if="!dialog && Message != ''">{{Message}}</StyledText>
       <v-row justify="center">
         <v-col cols="8" sm="6" md="4">
-          <v-text-field
-            label="email"
-            type="email"
-            ref="email"
-            v-model="email"
-            required
-          />
+          <TextForm title="メールアドレス" required mail ref="email" />
         </v-col>
       </v-row>
       <v-row justify="center">
         <v-col cols="8" sm="6" md="4">
-          <v-text-field
-            label="password"
-            type="password"
-            ref="password"
-            v-model="password"
-            autocomplete="off"
-            required
-          />
+          <TextForm title="パスワード" required password ref="password" />
         </v-col>
       </v-row>
-      <div>
-        <v-dialog v-model="dialog" width="400px">
-          <template v-slot:activator="{ on }">
-            <a v-on="on"><u>Forgot password?</u></a>
-          </template>
-          <v-card>
-            <v-form>
-              <v-card-title>Password reset</v-card-title>
-              <v-col>
-                <v-text-field
-                  type="email"
-                  label="email"
-                  ref="resetEmail"
-                  v-model="resetEmail"
-                  required
-                />
-              </v-col>
-              <v-card-actions class="justify-end">
-                <v-btn @click="dialog = false"> Cancel </v-btn>
-                <v-btn
-                  type="submit"
-                  @click.prevent="reset"
-                  :loading="loading"
-                  :disabled="loading"
-                >
-                  Send
-                </v-btn>
-              </v-card-actions>
-            </v-form>
-          </v-card>
-        </v-dialog>
-      </div>
-      <div>
-        <router-link to="/create">Don’t have an account?</router-link>
-      </div>
-      <v-btn
-        type="submit"
-        @click.prevent="login"
-        :loading="loading"
-        :disabled="loading"
-        >Login</v-btn
-      >
+      <a @click="dialog = true"><u>パスワードをお忘れですか...?</u></a><br />
+      <v-btn @click="login" :loading="loading">ログイン</v-btn>
     </v-form>
+    <v-dialog v-model="dialog" width="400px">
+      <v-card>
+        <v-card-title>パスワードをリセット</v-card-title>
+        <v-card-subtitle><StyledText :color="errorMsg != '' ? 'red' : 'black'">{{Message}}</StyledText></v-card-subtitle>
+        <v-card-text>
+        <v-form :disabled="loading" ref="resetform">
+          <TextForm title="メールアドレス" required mail ref="resetEmail" />
+        </v-form>
+        </v-card-text>
+        <v-card-actions class="justify-end">
+          <v-btn @click="dialog = false">キャンセル</v-btn>
+          <v-btn @click="reset" :loading="loading" color="red">送信</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-app>
 </template>
 
@@ -77,35 +40,42 @@ export default {
     return {
       dialog: false,
       loading: false,
-      email: "",
-      password: "",
       resetEmail: "",
+      errorMsg:""
     };
   },
   methods: {
     login() {
       this.loading = true;
+      if (!this.$refs.loginform.validate()){
+        this.loading=false
+        return
+      }
       this.$store
         .dispatch({
           type: "auth/signInWithVerification",
-          email: this.email,
-          password: this.password,
+          email: this.$refs.email.value,
+          password: this.$refs.password.value,
         })
         .then(() => {
           this.loading = false;
           this.$router.push("/");
         })
         .catch((error) => {
-          alert(error);
+          this.errorMsg=error
           this.loading = false;
         });
     },
     reset() {
       this.loading = true;
+      if (!this.$refs.resetform.validate()){
+        this.loading=false
+        return
+      }
       this.$store
         .dispatch({
           type: "auth/resetPassword",
-          email: this.resetEmail,
+          email: this.$refs.resetEmail.value,
         })
         .then(() => {
           alert("success");
@@ -114,7 +84,7 @@ export default {
           this.loading = false;
         })
         .catch((error) => {
-          alert(error);
+          this.errorMsg=error
           this.loading = false;
         });
     },
@@ -123,6 +93,14 @@ export default {
     getemailVerified: function () {
       return this.$store.getters["auth/emailVerified"];
     },
+    Message: function() {
+      if (this.dialog){
+        return "リセットURLの送信先メールアドレスを入力してください。"+this.errorMsg
+      } else {
+        return this.errorMsg
+      }
+      
+    }
   },
 };
 </script>
