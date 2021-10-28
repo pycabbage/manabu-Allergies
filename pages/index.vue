@@ -1,25 +1,8 @@
 <template>
   <v-container class="mt-16">
-    <!--<v-card>
-      <v-slider
-      v-model="width"
-      class="align-self-stretch"
-      min="0"
-      max="500"
-      step="1"
-    ></v-slider>
-    <v-slider
-      v-model="height"
-      class="align-self-stretch"
-      min="0"
-      max="500"
-      step="1"
-    ></v-slider>
-    </v-card>-->
     <v-row align-content="center" justify="center">
-    <v-img src="icon.png" width="50%" :aspect-ratio="1/1" contain />
-    <StyledText size="2vw" color="#000">マナブアレルギーへようこそ！</StyledText>
-    <v-spacer />
+      <v-img src="icon.png" width="50%" :aspect-ratio="1/1" contain />
+      <StyledText size="2vw" color="#000">マナブアレルギーへようこそ！</StyledText>
     </v-row>
     <v-row justify="center">
       <v-spacer />
