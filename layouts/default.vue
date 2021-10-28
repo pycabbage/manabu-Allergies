@@ -37,13 +37,12 @@
 </template>
 
 <script>
-import Menu from "../components/Menu.vue";
 export default {
-  components: { Menu },
   data: (e) => ({
     drawer: false,
     items: [
       { title: "トップ", to: "/" },
+      { title: "ランキング", to: "/ranking" },
       { title: "スキャン", to:"/scan"},
       { title: "戦闘", to: "/battle" },
       { title: "マイページ", to: "/my-page" },
