@@ -6,7 +6,7 @@
       :append-icon="password ? (passwdShow ? 'mdi-eye' : 'mdi-eye-off'): ''"
       @click:append="passwdShow = !passwdShow"
       :disabled="disabled"
-      :rules="[check_require]"
+      :rules="[checker]"
       ref="form"
       :prepend-icon="form_type_icon"
   >
@@ -74,9 +74,11 @@ export default ({
       };
   },
   methods:{
-    check_require: function() {
+    checker: function() {
       if (this.required && this.value == "") {
         return "このフォームへの入力は必須です。"
+      } else if (this.mail && ! /.+@.+\..+/.test(this.value)) {
+        return "メールアドレスを正しく入力してください。"
       } else {
         return true
       }
