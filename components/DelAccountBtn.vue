@@ -12,7 +12,9 @@
         </v-card-subtitle>
         <v-col>
           <StyledText color="red">{{errorMsg}}</StyledText>
-          <TextForm ref="passwd" title="Password" password />
+          <v-form ref="form" :disabled="loading">
+            <TextForm ref="passwd" title="Password" password required />
+          </v-form>
         </v-col>
         <v-card-actions>
           <v-btn @click="passwdDialog = false" :disabled="loading">キャンセル</v-btn>
@@ -39,7 +41,10 @@ export default {
   methods: {
     delAccount() {
       this.loading=true
-      this.$refs.passwd.disabled=true
+      if (!this.$refs.form.validate()){
+        this.loading=false
+        return
+      }
       this.$store
         .dispatch({
           type: "auth/deleteAccountWithAuth",
@@ -47,8 +52,8 @@ export default {
         })
         .then(() => {
           this.loading=false
-          this.$router.push("/login");
           this.passwdDialog=false
+          this.$router.push("/login");
         })
         .catch((e) => {
           if (e == "Error: The password is invalid or the user does not have a password.") {
@@ -57,8 +62,6 @@ export default {
             this.errorMsg=e
           }
           this.loading=false
-          this.$refs.passwd.disabled=false
-          //this.$router.push("/login");
         });
     },
   },
