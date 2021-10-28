@@ -18,10 +18,13 @@ export default {
       rank: [],
     };
   },
-  mounted: async function () {
-    const db = await Data.init("public");
-    this.rank = await db.getAll();
-  },
+  // mounted: async function () {
+  //   const db = await Data.init("public");
+  //   this.rank = await db.getAll();
+  //   console.log(await db.getPoint());
+  //   await db.setPoint(1);
+  //   console.log(await db.getPoint());
+  // },
 };
 </script>
 
