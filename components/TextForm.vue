@@ -59,7 +59,7 @@ export default ({
     form_type_icon: function(){
       if (this.password){
         return "mdi-lock"
-      } else if (this.email) {
+      } else if (this.mail) {
         return "mdi-email"
       } else {
         return ""
