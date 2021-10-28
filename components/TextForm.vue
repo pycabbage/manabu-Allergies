@@ -3,7 +3,7 @@
       v-model="value"
       :label="title+(required ? ' *' : '')"
       :type="form_type"
-      :append-icon="passwdShow ? 'mdi-eye' : 'mdi-eye-off'"
+      :append-icon="password ? (passwdShow ? 'mdi-eye' : 'mdi-eye-off'): ''"
       @click:append="passwdShow = !passwdShow"
       :disabled="disabled"
       :rules="[check_require]"
