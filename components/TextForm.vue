@@ -8,6 +8,7 @@
       :disabled="disabled"
       :rules="[check_require]"
       ref="form"
+      :prepend-icon="form_type_icon"
   >
   </v-text-field>
 </template>
@@ -21,6 +22,11 @@ export default ({
       default: "Input",
     },
     password: {
+      type: Boolean,
+      require: false,
+      default: false,
+    },
+    mail: {
       type: Boolean,
       require: false,
       default: false,
@@ -44,8 +50,19 @@ export default ({
         } else {
           return "password"
         }
+      } else if (this.mail) {
+        return "email"
       } else {
         return "text"
+      }
+    },
+    form_type_icon: function(){
+      if (this.form_type == "password"){
+        return "mdi-lock"
+      } else if (this.form_type == "email") {
+        return "mdi-email"
+      } else {
+        return ""
       }
     }
   },
