@@ -17,7 +17,7 @@
     ></v-slider>
     </v-card>-->
     <v-row align-content="center" justify="center">
-    <img src="icon.png" height="100%" aspect-ratio="1" contain />
+    <v-img src="icon.png" width="50%" :aspect-ratio="1/1" contain />
     <StyledText size="2vw" color="#000">マナブアレルギーへようこそ！</StyledText>
     <v-spacer />
     </v-row>
