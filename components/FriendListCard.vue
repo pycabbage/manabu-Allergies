@@ -3,9 +3,11 @@
     <v-row no-gutters>
       <v-col cols="2">
         <div class="FriendAvatarIcon">
-          <AvatarIcon class="mt-1" 
-                      avatarIconSize="max(5vw, 50px)"
-                      :userIconPath="img"/>
+          <AvatarIcon
+            class="mt-1"
+            avatarIconSize="max(5vw, 50px)"
+            :userIconPath="img"
+          />
         </div>
       </v-col>
       <v-col>

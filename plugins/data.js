@@ -1,9 +1,9 @@
-import firebase from './firebase'
+import firebase, { auth, db, storage } from './firebase'
 
 export default class Data {
     static async init(access) {
         const user = await new Promise((resolve, reject) => {
-            firebase.auth().onAuthStateChanged((user) => {
+            auth.onAuthStateChanged((user) => {
                 if (user) {
                     resolve(user)
                 } else {
@@ -28,21 +28,21 @@ export default class Data {
 
     async set(key, value) {
         try {
-            await firebase.firestore().collection(this.access).doc(this.id).update({
+            await db.collection(this.access).doc(this.id).update({
                 [key]: value
             })
         } catch (error) {
-            await firebase.firestore().collection(this.access).doc(this.id).set({
+            await db.collection(this.access).doc(this.id).set({
                 id: this.id
             })
-            await firebase.firestore().collection(this.access).doc(this.id).update({
+            await db.collection(this.access).doc(this.id).update({
                 [key]: value
             })
         }
     }
 
     async get(key) {
-        const data = (await firebase.firestore().collection(this.access).doc(this.id).get()).data()
+        const data = (await db.collection(this.access).doc(this.id).get()).data()
         if (key == undefined) {
             return data
         } else {
@@ -50,8 +50,13 @@ export default class Data {
         }
     }
 
+    async getPoint() {
+        const data = (await db.collection("public").doc(this.id).get()).data().point;
+        return data
+    }
+
     async setPoint(p) {
-        await firebase.firestore().collection("public").doc(this.id).update({
+        await db.collection("public").doc(this.id).update({
             "point": p
         })
     }
@@ -59,7 +64,7 @@ export default class Data {
     async getAll(key) {
         if (this.access == "public" || this.access == "friend") {
             const data = []
-            await (await firebase.firestore().collection(this.access).limit(20).orderBy("point").get()).forEach(value => {
+            await (await db.collection(this.access).limit(20).orderBy("point", "desc").get()).forEach(value => {
                 if (key == undefined) {
                     data.push({ id: value.id, value: value.data() })
                 } else {
@@ -73,24 +78,24 @@ export default class Data {
     }
 
     async setFile(key, file) {
-        const r = await firebase.storage().ref().child(`${this.id}/${key}`).put(file)
+        const r = await storage.ref().child(`${this.id}/${key}`).put(file)
         return r.ref.getDownloadURL()
     }
 
     async getFile(key) {
-        const r = await firebase.storage().ref().child(`${this.id}/${key}`).getDownloadURL()
+        const r = await storage.ref().child(`${this.id}/${key}`).getDownloadURL()
         return r
     }
 
     async deleteFile(key) {
-        await firebase.storage().ref().child(`${this.id}/${key}`).delete()
+        await storage.ref().child(`${this.id}/${key}`).delete()
     }
 }
 
 
 export async function toIcon(id) {
     try {
-        const a = await firebase.storage().ref().child(`${id}/userPhoto`).getDownloadURL()
+        const a = await storage.ref().child(`${id}/userPhoto`).getDownloadURL()
         return a
     } catch (error) {
         return "default"

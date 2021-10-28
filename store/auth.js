@@ -272,9 +272,11 @@ export const actions = {
         const publicRef = db.collection("public").doc(id);
         const privateRef = db.collection("private").doc(id);
         const requestRef = db.collection("request").doc(id);
+        const friendRef = db.collection("friend").doc(id);
         batch.delete(publicRef)
         batch.delete(privateRef)
         batch.delete(requestRef)
+        batch.delete(friendRef)
         await batch.commit();
         const credentials = await firebase.auth.EmailAuthProvider.credential(user.email, payload.confirmationPassword);
         await user.reauthenticateWithCredential(credentials)
