@@ -4,11 +4,14 @@
       :label="title+(required ? ' *' : '')"
       :type="form_type"
       :append-icon="password ? (passwdShow ? 'mdi-eye' : 'mdi-eye-off'): ''"
+      :append-outer-icon="editSwitch ? (editable?'mdi-check':'mdi-pencil'):''"
       @click:append="passwdShow = !passwdShow"
+      @click:append-outer="pencilClick"
       :disabled="disabled"
       :rules="[checker]"
       ref="form"
       :prepend-icon="form_type_icon"
+      :readonly="!editable"
   >
   </v-text-field>
 </template>
@@ -45,6 +48,16 @@ export default ({
       type:String,
       require:false,
       default:""
+    },
+    editSwitch:{
+      type:Boolean,
+      require:false,
+      default:false
+    },
+    callback:{
+      type:Function,
+      require:false,
+      default:Function()
     }
   },
   computed:{
@@ -71,13 +84,28 @@ export default ({
       } else {
         return ""
       }
+    },
+    value: {
+      get: function() {
+        if (this.value_ != undefined) {
+          return this.value_
+        } else {
+          return this.defaultValue
+        }
+      },
+      set: function(value) {
+        if (value != ""){
+          this.value_=value
+        }
+      }
     }
   },
   data() {
       return {
         passwdShow: false,
-        value:this.defaultValue,
         disabled:false,
+        editable:this.editSwitch ? false : true,
+        value_:undefined
       };
   },
   methods:{
@@ -88,6 +116,12 @@ export default ({
         return "メールアドレスを正しく入力してください。"
       } else {
         return true
+      }
+    },
+    pencilClick: function() {
+      this.editable = !this.editable
+      if (!this.editable && this.defaultValue!=this.value) {
+        this.callback()
       }
     }
   }
