@@ -1,23 +1,25 @@
 <template>
-
   <div>
     <v-badge icon="mdi-pencil" :value="mouseHover" offset-y="-10" left>
-    <input @change="updateProfilePhoto()"
-           style="display: none"
-           ref="input"
-           type="file"
-           accept="image/jpeg, image/jpg, image/png" />
-    
-    <v-btn @click="updateProfilePhotoBtn"
-           @mouseenter="mouseHover = true"
-           @mouseleave="mouseHover = false"
-           x-large
-           icon
-           :loading="loading"
-           :disabled="loading"
-          >
-      <AvatarIcon :userIconPath="userIconPath" avatarIconSize="128" />
-    </v-btn>
+      <input
+        @change="updateProfilePhoto()"
+        style="display: none"
+        ref="input"
+        type="file"
+        accept="image/jpeg, image/jpg, image/png, image/gif"
+      />
+
+      <v-btn
+        @click="updateProfilePhotoBtn"
+        @mouseenter="mouseHover = true"
+        @mouseleave="mouseHover = false"
+        x-large
+        icon
+        :loading="loading"
+        :disabled="loading"
+      >
+        <AvatarIcon :userIconPath="userIconPath" avatarIconSize="128" />
+      </v-btn>
     </v-badge>
   </div>
 </template>
@@ -30,7 +32,7 @@ export default {
       default: "this.$store.getters['auth/photo']",
     },
     ThemeColor: {
-      type:String,
+      type: String,
       require: true,
     },
     avatarIconSize: {
@@ -45,7 +47,7 @@ export default {
       isUseImg: true,
       NewIcon: null,
       loading: false,
-      mouseHover:false
+      mouseHover: false,
     };
   },
   methods: {
@@ -66,9 +68,9 @@ export default {
           alert(error);
           this.loading = false;
         });
-    }
+    },
   },
-}
+};
 </script>
 
 <style>
