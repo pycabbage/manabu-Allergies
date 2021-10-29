@@ -66,7 +66,7 @@ export default class Data {
         console.log(dddd);
         console.log(p);
         dddd.push(p);
-        await db.collection("public").doc(this.id).set({
+        await db.collection("public").doc(this.id).update({
             "zukanID": dddd
         })
     }
