@@ -6,7 +6,7 @@
       <v-progress-linear
       :color="blue"
       height="3vw"
-      :value="rank.value.point"
+      :value="(100*rank.value.point)/ranks[0].value.point"
       striped
       >{{ rank.value.point }}Point</v-progress-linear>
     </v-card>
