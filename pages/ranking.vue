@@ -1,20 +1,16 @@
 <template>
-  <ol>
-    <li v-for="(rank, index) in ranks" :key="rank.id">
-      <v-card>
-        <div>{{index+1}}位</div>
-        <AvatarIcon :userIconPath="rank.value.photo" avatarIconSize="5vw" />
-        <div>{{ rank.value.name }}</div>
-        <v-progress-linear
-        color="light-blue"
-        height="3vw"
-        :value="rank.value.point"
-        striped
-        >{{ rank.value.point }}ぽいんちょ</v-progress-linear>
-        
-      </v-card>
-    </li>
-  </ol>
+  <div>
+    <v-card v-for="(rank, index) in ranks" :key="index">
+      <v-card-text><AvatarIcon :userIconPath="rank.value.photo" avatarIconSize="5vw" /></v-card-text>
+      <v-card-subtitle>{{ rank.value.name }}</v-card-subtitle>
+      <v-progress-linear
+      :color="blue"
+      height="3vw"
+      :value="rank.value.point"
+      striped
+      >{{ rank.value.point }}Point</v-progress-linear>
+    </v-card>
+  </div>
 </template>
 
 <script>
