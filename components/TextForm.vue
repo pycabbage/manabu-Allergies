@@ -54,11 +54,11 @@ export default ({
       require:false,
       default:false
     },
-    callback:{
+/*    callback:{
       type:Function,
       require:false,
       default:Function()
-    }
+    }*/
   },
   computed:{
     form_type: function() {
@@ -100,6 +100,7 @@ export default ({
       }
     }
   },
+  emits: ['callback:changed','callback:pencil'],
   data() {
       return {
         passwdShow: false,
@@ -119,9 +120,10 @@ export default ({
       }
     },
     pencilClick: function() {
+      this.$emit("callback:pencil")
       this.editable = !this.editable
       if (!this.editable && this.defaultValue!=this.value) {
-        this.callback()
+        this.$emit("callback:changed", this.value)
       }
     }
   }
