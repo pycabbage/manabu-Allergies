@@ -120,10 +120,11 @@ export default {
     Win() {
       var wText = new Text("勝利しました");
       wText.position.set(50, 200);
-      this.currentScene.addChild(wText)(async () => {
+      this.currentScene.addChild(wText);
+      (async () => {
         const db = await Data.init("public");
         console.log(await db.getPoint());
-        await db.setPoint(await db.getPoint());
+        await db.setPoint((await db.getPoint()) + 1);
         console.log(await db.getPoint());
       })();
 
