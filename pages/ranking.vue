@@ -4,7 +4,7 @@
       <v-card-text><AvatarIcon :userIconPath="rank.value.photo" avatarIconSize="5vw" /></v-card-text>
       <v-card-subtitle>{{ rank.value.name }}</v-card-subtitle>
       <v-progress-linear
-      :color="blue"
+      color="blue"
       height="3vw"
       :value="(100*rank.value.point)/ranks[0].value.point"
       striped
