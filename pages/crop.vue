@@ -185,28 +185,28 @@ export default {
           id: "egg",
         },
         {
-          name: "えび",
-          id: "shrimp",
-        },
-        {
-          name: "かに",
-          id: "crab",
-        },
-        {
-          name: "そば",
-          id: "soba",
+          name: "乳",
+          id: "milk",
         },
         {
           name: "小麦",
           id: "wheat",
         },
         {
-          name: "乳",
-          id: "milk",
+          name: "そば",
+          id: "soba",
         },
         {
           name: "落花生（ピーナッツ）",
           id: "peanut",
+        },
+        {
+          name: "えび",
+          id: "shrimp",
+        },
+        {
+          name: "かに",
+          id: "crab",
         },
       ];
       const zuk = dataaaa
