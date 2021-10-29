@@ -5,7 +5,7 @@
       <StyledText color="red" v-if="!dialog && Message != ''">{{Message}}</StyledText>
       <v-row justify="center">
         <v-col cols="8" sm="6" md="4">
-          <TextForm title="アカウント名" required ref="name" />
+          <TextForm title="アカウント名" required ref="name" icon="mdi-account"/>
         </v-col>
       </v-row>
       <v-row justify="center">

@@ -21,6 +21,11 @@ export default ({
       require: false,
       default: "Input",
     },
+    icon: {
+      type: String,
+      require: false,
+      default: "",
+    },
     password: {
       type: Boolean,
       require: false,
@@ -57,7 +62,9 @@ export default ({
       }
     },
     form_type_icon: function(){
-      if (this.password){
+      if (this.icon != "") {
+        return this.icon
+      } else if (this.password) {
         return "mdi-lock"
       } else if (this.mail) {
         return "mdi-email"
