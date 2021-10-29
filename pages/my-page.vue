@@ -10,7 +10,7 @@
     <v-row>
       <v-container class="Section">
         <h3>ユーザー情報</h3>
-        <hr>
+        <v-divider />
         <div class="SectionContent">
           <MyPageUserName :currentValue="getName"
                           :inputValidation="[inputRequire]"

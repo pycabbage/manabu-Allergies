@@ -8,7 +8,7 @@
                 :min-width="CardMinWidth"
                 :height="CardWidth"
                 :min-height="CardMinWidth"
-                :img="ZukanContent.Img">
+                :img="'./'+ZukanContent.Img">
           <v-card-title class="ListTitle">
             <p class="ZukanTitle">{{ ZukanContent.Title }}</p>
           </v-card-title>
