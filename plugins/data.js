@@ -61,6 +61,16 @@ export default class Data {
         })
     }
 
+    async setZukan(p) {
+        const dddd = await this.get("zukanID") ?? []
+        console.log(dddd);
+        console.log(p);
+        dddd.push(p);
+        await db.collection("public").doc(this.id).set({
+            "zukanID": dddd
+        })
+    }
+
     async getAll(key) {
         if (this.access == "public" || this.access == "friend") {
             const data = []
