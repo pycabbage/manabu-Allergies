@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-badge icon="mdi-pencil" :value="mouseHover" offset-y="-10" left>
+    <v-badge icon="mdi-pencil" :value="mouseHover" offset-y="30" offset-x="30" left>
       <input
         @change="updateProfilePhoto()"
         style="display: none"
@@ -14,12 +14,13 @@
           <v-btn
             @mouseenter="mouseHover = true"
             @mouseleave="mouseHover = false"
-            x-large
             icon
             :loading="loading"
             :disabled="loading"
             v-bind="attrs"
             v-on="on"
+            width="100%"
+            height="100%"
           ><AvatarIcon :userIconPath="userIconPath" avatarIconSize="128" /></v-btn>
         </template>
         <v-list>

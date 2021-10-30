@@ -2,9 +2,6 @@
   <v-container>
     <div class="TitleWrapper">
       <PageTitle class="MyPageTitle">マイページ</PageTitle>
-      <div class="AccountIconBtn">
-        <AccountIconBtn :userIconPath="this.$store.getters['auth/photo']"/>
-      </div>
     </div>
     <v-row>
       <v-container>
@@ -12,7 +9,8 @@
         <v-divider style="border-color:black"/>
         <div class="SectionContent">
           <v-form ref="nameform">
-          <TextForm title="アカウント名" icon="mdi-account" editSwitch required :defaultValue="this.$store.getters['auth/name']" @callback:changed="updateProfileName" ref="name" />
+          <AccountIconBtn :userIconPath="this.$store.getters['auth/photo']"/>
+          <TextForm title="アカウント名" editSwitch required :defaultValue="this.$store.getters['auth/name']" @callback:changed="updateProfileName" ref="name" />
           </v-form>
           <v-divider />
           <v-form ref="mailform">
@@ -169,7 +167,6 @@ export default {
   display: inline;
 }
 .AccountIconBtn {
-  display: inline;
   margin-right: 10vw;
   margin-top: 1vw;
   float: right;
