@@ -12,18 +12,22 @@
         <h3>ユーザー情報</h3>
         <v-divider />
         <div class="SectionContent">
-          <MyPageUserName :currentValue="getName"
-                          :inputValidation="[inputRequire]"
-                          :ThemeColor="ThemeColor"/>
+          <v-form ref="nameform">
+          <TextForm title="アカウント名" icon="mdi-account" editSwitch required :defaultValue="this.$store.getters['auth/name']" @callback:changed="updateProfileName" ref="name" />
+          </v-form>
+          <v-form ref="mailform">
+          <TextForm title="メールアドレス" editSwitch required mail :defaultValue="$store.getters['auth/email']" @callback:changed="updateEmail" @callback:pencil="show_vpasswd1=true" ref="mail" />
+          <TextForm title="パスワード" required password ref="verifyPassword1" v-show="show_vpasswd1" />
+          </v-form>
+          <v-form ref="passwdform">
+          <TextForm title="現在のパスワード" editSwitch required password defaultValue="**********" @callback:changed="updatePassword" @callback:pencil="show_vpasswd2=true" ref="password" />
+          <TextForm title="新しいパスワード" required password ref="verifyPassword2" v-show="show_vpasswd2" />
+          <TextForm title="新しいパスワード(確認用)" required password ref="verifyPassword3" v-show="show_vpasswd2" />
+          </v-form>
           <p>ユーザーID： {{ getId }}</p>
-          <MyPageEmail :currentValue="getEmail"
-                          :inputValidation="[inputRequire]"
-                          :ThemeColor="ThemeColor"/>
-          <MyPagePassword currentValue="*************"
-                          :inputValidation="[inputRequire]"
-                          :ThemeColor="ThemeColor"/>
         </div>
       </v-container>
+      <v-divider />
       <v-container>
         <div class="ActionBtnWrapper">
           <LogoutBtn />
@@ -45,6 +49,8 @@ export default {
       ThemeColor: "light-blue darken-1",
       inputRequire: value => !!value || "必ず入力してください",
       NewValue: "test",
+      show_vpasswd1: false,
+      show_vpasswd2: false
     };
   },
   computed: {
@@ -64,20 +70,68 @@ export default {
           alert(error);
         });
     },
-    deleteAccount() {
+    updateProfileName(value) {
+      if (!this.$refs.nameform.validate()){
+        return
+      }
       this.$store
         .dispatch({
-          type: "auth/deleteAccountWithAuth",
-          confirmationPassword: confirmationPassword,
+          type: "auth/updateProfile",
+          name: value,
         })
         .then(() => {
-          //this.confirmationPassword = "";
+          this.$refs.name.editable=false
+        })
+        .catch((error) => {
+          alert(error);
+        });
+    },
+    updateEmail(value) {
+      if (!this.$refs.mailform.validate()){
+        return
+      }
+      this.$store
+        .dispatch({
+          type: "auth/updateEmailWithAuth",
+          email: value,
+          confirmationPassword: this.$refs.verifyPassword1.value,
+        })
+        .then(() => {
+          this.$refs.mail.editable=false
+          this.show_vpasswd1=false
+          // this.email = "";
+          // this.confirmationPassword = "";
+        })
+        .catch((error) => {
+          alert(error);
+        });
+    },
+    updatePassword(value) {
+      if (!this.$refs.passwdform.validate()){
+        return
+      }
+      if (this.$refs.verifyPassword2.value != this.$refs.verifyPassword3.value){
+        this.loading=false
+        return
+      }
+      this.$store
+        .dispatch({
+          type: "auth/updatePasswordWithAuth",
+          password: value,
+          confirmationPassword: this.$refs.verifyPassword2.value,
+        })
+        .then(() => {
+          this.$refs.password.editable=false
+          this.show_vpasswd2=false
+          // this.password = "";
+          // this.confirmationPassword = "";
         })
         .catch((error) => {
           alert(error);
         });
     },
   },
+  
 }
 </script>
 

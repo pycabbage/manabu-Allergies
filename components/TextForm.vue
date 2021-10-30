@@ -120,17 +120,18 @@ export default ({
       }
     },
     pencilClick: function() {
-      this.$emit("callback:pencil")
-      this.editable = !this.editable
-      if (!this.editable && this.defaultValue!=this.value) {
-        this.$emit("callback:changed", this.value)
-      if (this.password){
-        if (this.editable){
-          this.value=""
+      if (this.editable){
+        if (this.defaultValue!=this.value){
+          this.$emit("callback:changed", this.value)
         } else {
-          this.value=this.defaultValue
+          this.editable=false
         }
-      }
+      } else {
+        if(this.password){
+          this.value=""
+        }
+        this.editable = true
+        this.$emit("callback:pencil")
       }
     }
   }
