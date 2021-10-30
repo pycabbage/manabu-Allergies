@@ -3,7 +3,7 @@
          color="#ff4956"
          large>
     <v-icon color="white">mdi-logout</v-icon>
-    <BtnText color="white">LOGOUT</BtnText>
+    <StyledText color="white">LOGOUT</StyledText>
   </v-btn> 
 </template>
 

@@ -2,7 +2,7 @@
   <div>
     <v-btn @click="passwdDialog = true" color="#ff4956" large>
       <v-icon color="white">mdi-delete</v-icon>
-      <BtnText color="white">DELETE ACCOUNT</BtnText>
+      <StyledText color="white">DELETE ACCOUNT</StyledText>
     </v-btn>
     <v-dialog v-model="passwdDialog" width="400px">
       <v-card>

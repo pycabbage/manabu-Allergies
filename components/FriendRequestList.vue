@@ -9,7 +9,7 @@
                min-width="60px"
                height="3vw"
                min-height="30px">
-          <BtnText color="white" size="0.7vw">ADD</BtnText>
+          <StyledText color="white" size="0.7vw">ADD</StyledText>
         </v-btn>
         <v-btn @click="deleteReceiveFriend(userData.id)"
                color="#ff4956"
@@ -17,7 +17,7 @@
                min-width="60px"
                height="3vw"
                min-height="30px">
-          <BtnText color="white" size="0.7vw">DELETE</BtnText>
+          <StyledText color="white" size="0.7vw">DELETE</StyledText>
         </v-btn>
       </FriendListCard>
     </div>

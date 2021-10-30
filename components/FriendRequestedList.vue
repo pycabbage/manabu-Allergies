@@ -10,7 +10,7 @@
                min-width="60px"
                height="3vw"
                min-height="30px">
-          <BtnText color="white" size="0.7vw">DELETE</BtnText>
+          <StyledText color="white" size="0.7vw">DELETE</StyledText>
         </v-btn>
       </FriendListCard>
     </div>
