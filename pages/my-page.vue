@@ -8,7 +8,7 @@
       </div>
     </div>
     <v-row>
-      <v-container class="Section">
+      <v-container>
         <h3>ユーザー情報</h3>
         <v-divider style="border-color:black"/>
         <div class="SectionContent">
@@ -18,7 +18,7 @@
           <v-divider />
           <v-form ref="mailform">
           <TextForm title="メールアドレス" editSwitch required mail :defaultValue="$store.getters['auth/email']" @callback:changed="updateEmail" @callback:pencil="show_vpasswd1=true" @callback:close="show_vpasswd1=false" ref="mail" />
-          <TextForm title="パスワード" required password ref="verifyPassword1" v-show="show_vpasswd1" />
+          <TextForm title="パスワード(確認のため入力してください)" required password ref="verifyPassword1" v-show="show_vpasswd1" />
           </v-form>
           <v-divider />
           <v-form ref="passwdform">
@@ -30,13 +30,11 @@
           <p>ユーザーID： {{ getId }}</p>
         </div>
       </v-container>
-      <v-divider />
       <v-container>
-        <div class="ActionBtnWrapper">
-          <LogoutBtn />
-        </div>
-        <div class="ActionBtnWrapper">
-          <DelAccountBtn />
+        <h3>各種操作</h3>
+        <v-divider style="border-color:black" />
+        <div>
+          <LogoutBtn style="float: left" /><v-spacer /><DelAccountBtn style="float: right" />
         </div>
       </v-container>
     </v-row>
@@ -144,7 +142,7 @@ export default {
 }
 
 .Section {
-  margin-bottom: 5rem;
+  margin-bottom: 2.5rem;
 }
 
 .SectionContent {
@@ -160,7 +158,7 @@ export default {
 }
 
 .ActionBtnWrapper {
-  float: right;
+  float: none;
 }
 
 .TitleWrapper {

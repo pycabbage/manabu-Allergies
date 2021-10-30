@@ -1,7 +1,7 @@
 <template>
   <v-btn @click="logout"
          color="#ff4956"
-         height="4.5vh">
+         large>
     <v-icon color="white">mdi-logout</v-icon>
     <BtnText color="white">LOGOUT</BtnText>
   </v-btn> 

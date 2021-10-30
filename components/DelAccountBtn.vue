@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-btn @click="passwdDialog = true" color="#ff4956" height="4.5vh">
+    <v-btn @click="passwdDialog = true" color="#ff4956" large>
       <v-icon color="white">mdi-delete</v-icon>
       <BtnText color="white">DELETE ACCOUNT</BtnText>
     </v-btn>
