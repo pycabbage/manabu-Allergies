@@ -1,23 +1,30 @@
 <template>
   <v-container class="mt-16">
-    <v-row align-content="center" justify="center">
-      <v-img src="icon.png" width="50%" :aspect-ratio="1/1" contain />
-      <StyledText size="2vw" color="#000">マナブアレルギーへようこそ！</StyledText>
-    </v-row>
-    <v-row justify="center" v-if="Name != ''">
-      <v-spacer />
-      <v-btn link nuxt to="battle" color="red" height="10vw" width="30vw"><StyledText size="2.5vw" icon="mdi-sword" color="#151311">クイズでバトル！</StyledText></v-btn>
-      <v-spacer />
-      <v-btn link nuxt to="scan" color="green" height="10vw" width="30vw"><StyledText size="2.5vw" icon="mdi-magnify" color="#151311">スキャンして探す！</StyledText></v-btn>
-      <v-spacer />
-    </v-row>
-    <v-row justify="center" v-else>
-      <v-spacer />
-      <v-btn link nuxt to="login" color="red" height="10vw" width="30vw"><StyledText size="2.5vw" icon="mdi-login" color="#151311">ログイン</StyledText></v-btn>
-      <v-spacer />
-      <v-btn link nuxt to="create" color="green" height="10vw" width="30vw"><StyledText size="2.5vw" icon="mdi-account-plus" color="#151311">アカウント作成</StyledText></v-btn>
-      <v-spacer />
-    </v-row>
+    <v-carousel cycle>
+      <v-carousel-item style="background: green;" contain>
+        <h1>マナブアレルギーへようこそ！</h1>
+        <v-img src="./icon.png" contain height="100%"/>
+      </v-carousel-item>
+      <v-carousel-item>
+        <v-sheet color="blue" height="100%" tile>
+          <v-row >
+            <v-col justify="start" align-self="start" cols="12">
+              <h1 >ここから始めよう!</h1>
+            </v-col>
+            <v-col justify="end" align-self="center" cols="12">
+              <div>
+                <v-btn link nuxt to="battle" color="red" height="10vw" width="30vw" v-if="Name != ''" ><StyledText size="2.5vw" icon="mdi-sword" color="#151311" >クイズでバトル！</StyledText></v-btn>
+                <v-btn link nuxt to="login" color="red" height="10vw" width="30vw" v-else><StyledText size="2.5vw" icon="mdi-login" color="#151311">ログイン</StyledText></v-btn>
+              </div>
+              <div>
+                <v-btn link nuxt to="scan" color="green" height="10vw" width="30vw" v-if="Name != ''" ><StyledText size="2.5vw" icon="mdi-magnify" color="#151311">スキャンして探す！</StyledText></v-btn>
+                <v-btn link nuxt to="create" color="green" height="10vw" width="30vw" v-else ><StyledText size="2.5vw" icon="mdi-account-plus" color="#151311">アカウント作成</StyledText></v-btn>
+              </div>
+            </v-col>
+          </v-row>
+        </v-sheet>
+      </v-carousel-item>
+    </v-carousel>
   </v-container>
 </template>
 
