@@ -25,6 +25,7 @@
     </div>
     <div class="AddFriendBtn">
       <AddFriend :ThemeColor="ThemeColor" />
+      <h3>あなたのユーザーID:{{getId}}</h3>
     </div>
   </v-container>
 </template>
