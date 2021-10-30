@@ -100,7 +100,7 @@ export default ({
       }
     }
   },
-  emits: ['callback:changed','callback:pencil'],
+  emits: ['callback:changed','callback:pencil','callback:close'],
   data() {
       return {
         passwdShow: false,
@@ -124,6 +124,7 @@ export default ({
         if (this.defaultValue!=this.value){
           this.$emit("callback:changed", this.value)
         } else {
+          this.$emit("callback:close")
           this.editable=false
         }
       } else {

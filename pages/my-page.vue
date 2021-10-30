@@ -16,11 +16,11 @@
           <TextForm title="アカウント名" icon="mdi-account" editSwitch required :defaultValue="this.$store.getters['auth/name']" @callback:changed="updateProfileName" ref="name" />
           </v-form>
           <v-form ref="mailform">
-          <TextForm title="メールアドレス" editSwitch required mail :defaultValue="$store.getters['auth/email']" @callback:changed="updateEmail" @callback:pencil="show_vpasswd1=true" ref="mail" />
+          <TextForm title="メールアドレス" editSwitch required mail :defaultValue="$store.getters['auth/email']" @callback:changed="updateEmail" @callback:pencil="show_vpasswd1=true" @callback:close="show_vpasswd1=false" ref="mail" />
           <TextForm title="パスワード" required password ref="verifyPassword1" v-show="show_vpasswd1" />
           </v-form>
           <v-form ref="passwdform">
-          <TextForm title="現在のパスワード" editSwitch required password defaultValue="**********" @callback:changed="updatePassword" @callback:pencil="show_vpasswd2=true" ref="password" />
+          <TextForm title="現在のパスワード" editSwitch required password defaultValue="**********" @callback:changed="updatePassword" @callback:pencil="show_vpasswd2=true" @callback:close="show_vpasswd2=false" ref="password" />
           <TextForm title="新しいパスワード" required password ref="verifyPassword2" v-show="show_vpasswd2" />
           <TextForm title="新しいパスワード(確認用)" required password ref="verifyPassword3" v-show="show_vpasswd2" />
           </v-form>
