@@ -11,7 +11,7 @@
             nuxt
           >
             <v-list-item-content>
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
+              <v-list-item-title><v-icon>{{ item.icon }}</v-icon>{{ item.title }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list-item-group>
@@ -41,13 +41,13 @@ export default {
   data: (e) => ({
     drawer: false,
     items: [
-      { title: "トップ", to: "/" },
-      { title: "ランキング", to: "/ranking" },
-      { title: "スキャン", to:"/scan"},
-      { title: "戦闘", to: "/battle" },
-      { title: "マイページ", to: "/my-page" },
-      { title: "図鑑", to: "/zukan" },
-      { title: "フレンドリスト", to:"/friend"},
+      { title: "トップ", to: "/", icon: "mdi-home" },
+      { title: "ランキング", to: "/ranking", icon: "mdi-crown" },
+      { title: "スキャン", to:"/scan", icon: "mdi-magnify-scan" },
+      { title: "戦闘", to: "/battle", icon: "mdi-sword-cross" },
+      { title: "マイページ", to: "/my-page", icon: "mdi-account" },
+      { title: "図鑑", to: "/zukan", icon: "mdi-book" },
+      { title: "フレンドリスト", to:"/friend", icon: "mdi-account-multiple" },
     ],
   }),
   methods: {
