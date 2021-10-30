@@ -24,14 +24,16 @@
       </v-tabs>
     </div>
     <div class="AddFriendBtn">
-      <AddFriend :ThemeColor="ThemeColor" />
+      <AddFriendBtn :ThemeColor="ThemeColor" />
       <h3>あなたのユーザーID:{{getId}}</h3>
     </div>
   </v-container>
 </template>
 
 <script>
+import AddFriendBtn from '../components/Btn/AddFriendBtn.vue';
 export default {
+  components: { AddFriendBtn },
   data: function () {
     return {
       ThemeColor: "light-blue darken-1",

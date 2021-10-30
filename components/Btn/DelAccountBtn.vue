@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import StyledText from './StyledText.vue';
+import StyledText from '../StyledText.vue';
 export default {
   components: { StyledText },
   data() {

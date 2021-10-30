@@ -41,9 +41,13 @@
 </template>
 
 <script>
+import LogoutBtn from '../components/Btn/LogoutBtn.vue';
+import DelAccountBtn from '../components/Btn/DelAccountBtn.vue';
 import DataFunc from '/components/DataFuncs.vue'
+import AccountIconBtn from '../components/Btn/AccountIconBtn.vue';
 
 export default {
+  components: { LogoutBtn, DelAccountBtn, AccountIconBtn },
   data(){
     return {
       show_vpasswd1: false,
