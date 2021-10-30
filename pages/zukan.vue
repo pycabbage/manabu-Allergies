@@ -11,6 +11,7 @@
           <ZukanList :ZukanContent="zukan" />
         </v-col>
       </div>
+      <h3 v-if="ZukanContent.length == 0">まだ図鑑にはなにもないようです。</h3>
     </v-row>
   </v-container>
 </template>
