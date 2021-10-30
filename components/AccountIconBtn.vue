@@ -11,6 +11,7 @@
 
       <v-btn
         @click="updateProfilePhotoBtn"
+        @contextmenu="aaa"
         @mouseenter="mouseHover = true"
         @mouseleave="mouseHover = false"
         x-large
@@ -51,6 +52,20 @@ export default {
     };
   },
   methods: {
+    async aaa() {
+      this.$store
+        .dispatch({
+          type: "auth/updateProfile",
+          aaa: "default"
+        })
+        .then(() => {
+          this.loading = false;
+        })
+        .catch((error) => {
+          alert(error);
+          this.loading = false;
+        });
+    },
     updateProfilePhotoBtn() {
       this.$refs.input.click();
     },

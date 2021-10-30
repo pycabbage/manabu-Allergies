@@ -197,22 +197,36 @@ export const actions = {
         })
     },
     async updateProfile(context, payload) {
-        const result = await storage.ref().child(`${this.getters["auth/id"]}/userPhoto`).put(payload.photo)
-        const userName = payload.name ?? this.getters["auth/name"]
-        const userPhoto = payload.photo ? await result.ref.getDownloadURL() : this.getters["auth/photo"]
-        await auth.currentUser.updateProfile({
-            displayName: userName,
-            photoURL: userPhoto,
-        })
-        await db.collection("public").doc(this.getters["auth/id"]).update({
-            name: userName,
-            photo: userPhoto
-        })
-        context.commit({
-            type: "set",
-            name: userName,
-            photo: userPhoto,
-        })
+        if(payload.aaa) {
+            await auth.currentUser.updateProfile({
+                photoURL: payload.aaa,
+            })
+            await db.collection("public").doc(this.getters["auth/id"]).update({
+                photo: payload.aaa
+            })
+            context.commit({
+                type: "set",
+                photo: payload.aaa,
+            })
+        } else {
+            const result = await storage.ref().child(`${this.getters["auth/id"]}/userPhoto`).put(payload.photo)
+            const userName = payload.name ?? this.getters["auth/name"]
+            const userPhoto = payload.photo ? await result.ref.getDownloadURL() : this.getters["auth/photo"]
+            await auth.currentUser.updateProfile({
+                displayName: userName,
+                photoURL: userPhoto,
+            })
+            await db.collection("public").doc(this.getters["auth/id"]).update({
+                name: userName,
+                photo: userPhoto
+            })
+            context.commit({
+                type: "set",
+                name: userName,
+                photo: userPhoto,
+            })
+        }
+        
     },
     // async updateEmail(context, payload) {
     //     try {
