@@ -1,38 +1,29 @@
 <template>
-  <Dialog DialogTitle="Add Friend"
-          :ThemeColor="ThemeColor"
-          openBtnColor="#8ccb00"
-          btnHeight="4.25vw"
-          btnWidth="8.5vw"
-          btnMinHeight="50px"
-          btnMinWidth="100px">
-    <template v-slot:BtnContent>
-      <BtnText color="white"
-               size="max(1.2vw, 12px)">Add Friend
-      </BtnText>
-    </template>
-    <template v-slot:DialogContent>
-      <v-container>
-        <v-card-title>Add Friend</v-card-title>
-        <v-form>
-          <v-col>
-            <v-text-field type="text"
-                          label="friend id"
-                          v-model="requestFriendId"
-                          required/>
-          </v-col>
-          <v-card-actions class="justify-end">
-            <v-btn type="submit"
-                   @click.prevent="requestFriend"
-                   :loading="loading"
-                   :disabled="loading">
-              Send
-            </v-btn>
-          </v-card-actions>
-        </v-form>
-      </v-container>
-    </template>
-  </Dialog>
+  <div>
+    <v-btn @click="addfrienddialog = true" color="#8ccb00" large>
+      <v-icon color="white">mdi-account-plus</v-icon>
+      <StyledText color="white">Add Friend</StyledText>
+    </v-btn>
+    <v-dialog v-model="addfrienddialog" width="400px">
+      <v-card>
+        <v-card-title>フレンドリクエスト送信</v-card-title>
+        <v-divider />
+        <v-card-subtitle>
+          フォームにお友達のユーザーIDを入力するとお友達にフレンドリクエストが送信されます。<br />お友達がフレンドリクエストを承認すると、フレンドとして登録されます。
+        </v-card-subtitle>
+        <v-card-text>
+          <StyledText color="red">{{errorMsg}}</StyledText>
+          <v-form ref="form" :disabled="loading">
+            <TextForm ref="requestFriendId" title="Friend's User ID" icon="mdi-account-outline" required />
+          </v-form>
+        </v-card-text>
+        <v-card-actions class="justify-end">
+          <v-btn @click="addfrienddialog = false" :disabled="loading">キャンセル</v-btn>
+          <v-btn @click="requestFriend" color="green" :loading="loading">送信</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </div>
 </template>
 
 <script>
@@ -45,28 +36,34 @@ export default {
   },
   data() {
     return {
-      loading: false,
-      requestFriendId: "",
+      addfrienddialog: false,
+      errorMsg:"",
+      loading:false
     };
   },
   methods: {
     requestFriend() {
       this.loading = true;
+      if (!this.$refs.form.validate()){
+        this.loading=false
+        return
+      }
       this.$store
         .dispatch({
           type: "friend/requestFriend",
-          id: this.requestFriendId,
+          id: this.$refs.requestFriendId.value,
         })
         .then(() => {
           this.loading = false;
           this.dialog = false;
-          this.requestFriendId = "";
         })
         .catch((error) => {
-          alert(error);
+          if (error == "Error: same"){
+            this.errorMsg="自分自身を追加することはできません...!"
+          } else {
+            this.errorMsg=error
+          }
           this.loading = false;
-          this.dialog = false;
-          this.requestFriendId = "";
         });
     },
   },
