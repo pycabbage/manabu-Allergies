@@ -30,8 +30,8 @@
       <v-container>
         <h3>各種操作</h3>
         <v-divider style="border-color:black" />
-        <div>
-          <LogoutBtn style="float: left" /><v-spacer /><DelAccountBtn style="float: right" />
+        <div style="float:right">
+          <LogoutBtn />　<DelAccountBtn />
         </div>
       </v-container>
     </v-row>
