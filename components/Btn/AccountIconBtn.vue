@@ -6,21 +6,27 @@
         style="display: none"
         ref="input"
         type="file"
-        accept="image/jpeg, image/jpg, image/png, image/gif"
+        accept="image/*"
       />
 
-      <v-btn
-        @click="updateProfilePhotoBtn"
-        @contextmenu="aaa"
-        @mouseenter="mouseHover = true"
-        @mouseleave="mouseHover = false"
-        x-large
-        icon
-        :loading="loading"
-        :disabled="loading"
-      >
-        <AvatarIcon :userIconPath="userIconPath" avatarIconSize="128" />
-      </v-btn>
+      <v-menu offset-y>
+        <template v-slot:activator="{on, attrs}">
+          <v-btn
+            @mouseenter="mouseHover = true"
+            @mouseleave="mouseHover = false"
+            x-large
+            icon
+            :loading="loading"
+            :disabled="loading"
+            v-bind="attrs"
+            v-on="on"
+          ><AvatarIcon :userIconPath="userIconPath" avatarIconSize="128" /></v-btn>
+        </template>
+        <v-list>
+          <v-list-item><v-btn @click="updateProfilePhotoBtn" tile text>ファイルから選択</v-btn></v-list-item>
+          <v-list-item><v-btn @click="aaa" tile text>リセット</v-btn></v-list-item>
+        </v-list>
+      </v-menu>
     </v-badge>
   </div>
 </template>
@@ -49,6 +55,7 @@ export default {
       NewIcon: null,
       loading: false,
       mouseHover: false,
+      showMenu: false
     };
   },
   methods: {
