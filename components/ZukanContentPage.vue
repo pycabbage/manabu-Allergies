@@ -3,7 +3,7 @@
     <v-col>
       <v-container class="ZukanImg">
         <v-img  :height="ImgHeight"
-                :src="ZukanContent.Img"></v-img>
+                :src="'./'+ZukanContent.Img"></v-img>
       </v-container>
       <v-container class="ZukanContent">
         <div class="font-weight-bold display-3">{{ ZukanContent.Title }}</div>
