@@ -62,7 +62,11 @@ export default {
           this.$router.push("/");
         })
         .catch((error) => {
-          this.errorMsg=error
+          if (error="Error: There is no user record corresponding to this identifier. The user may have been deleted."){
+            this.errorMsg="おっと...ユーザーが存在しないようです..."
+          } else {
+            this.errorMsg=error
+          }
           this.loading = false;
         });
     },

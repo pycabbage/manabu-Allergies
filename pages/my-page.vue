@@ -47,9 +47,6 @@ import DataFunc from '/components/DataFuncs.vue'
 export default {
   data(){
     return {
-      ThemeColor: "light-blue darken-1",
-      inputRequire: value => !!value || "必ず入力してください",
-      NewValue: "test",
       show_vpasswd1: false,
       show_vpasswd2: false
     };
