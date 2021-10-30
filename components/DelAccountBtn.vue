@@ -31,9 +31,7 @@ export default {
   components: { StyledText },
   data() {
     return {
-      BtnTextColor: "#000000",
       passwdDialog: false,
-      passwdShow: false,
       errorMsg:"",
       loading:false
     };
