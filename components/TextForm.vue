@@ -3,7 +3,7 @@
       v-model="value"
       :label="title+(required ? ' *' : '')"
       :type="form_type"
-      :append-icon="password ? (passwdShow ? 'mdi-eye' : 'mdi-eye-off'): ''"
+      :append-icon="password && editable ? (passwdShow ? 'mdi-eye' : 'mdi-eye-off'): ''"
       :append-outer-icon="editSwitch ? (editable?'mdi-check':'mdi-pencil'):''"
       @click:append="passwdShow = !passwdShow"
       @click:append-outer="pencilClick"
@@ -124,6 +124,13 @@ export default ({
       this.editable = !this.editable
       if (!this.editable && this.defaultValue!=this.value) {
         this.$emit("callback:changed", this.value)
+      if (this.password){
+        if (this.editable){
+          this.value=""
+        } else {
+          this.value=this.defaultValue
+        }
+      }
       }
     }
   }
