@@ -13,6 +13,7 @@
         </v-btn>
       </FriendListCard>
     </div>
+    <h2 v-if="getFriendListGet.length == 0">まだお友達はいないようです...お友達を追加しましょう!!</h2>
   </div>
 </template>
 

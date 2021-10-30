@@ -14,6 +14,7 @@
         </v-btn>
       </FriendListCard>
     </div>
+    <h2 v-if="getRequestFriendList.length == 0">あなたからお友達におくったフレンドリクエストは今のところないようです...<br />"ADD Friend"ボタンを使ってリクエストしてみましょう!!</h2>
   </div>
 </template>
 

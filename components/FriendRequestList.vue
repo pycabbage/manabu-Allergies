@@ -21,6 +21,7 @@
         </v-btn>
       </FriendListCard>
     </div>
+    <h2 v-if="getReceiveRequestFriendList.length == 0">今のところ、あなたはお友達からフレンドリクエストを受け取っていないようです...</h2>
   </div>
 </template>
 
