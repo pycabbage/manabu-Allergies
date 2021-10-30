@@ -2,7 +2,7 @@
   <div>
     <PageTitle>ランキング</PageTitle>
     <v-card v-for="(rank, index) in ranks" :key="index">
-      <v-card-text><AvatarIcon :userIconPath="rank.value.photo" avatarIconSize="5vw" /></v-card-text>
+      <v-card-text>{{index+1}}位<v-spacer /><AvatarIcon :userIconPath="rank.value.photo" avatarIconSize="5vw" /></v-card-text>
       <v-card-subtitle>{{ rank.value.name }}</v-card-subtitle>
       <v-progress-linear
       color="blue"
