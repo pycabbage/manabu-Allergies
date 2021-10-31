@@ -1,24 +1,20 @@
 <template>
   <div>
-    <div class="mb-6"
-         v-for="userData in getFriendListGet" :key="userData.id">
-      <FriendListCard :userData="userData">
-        <v-btn @click="deleteFriend(userData.id)"
-               color="#ff4956"
-               width="6vw"
-               min-width="60px"
-               height="3vw"
-               min-height="30px">
-          <StyledText color="white" size="max(1vw, 12px)">DELETE</StyledText>
-        </v-btn>
-      </FriendListCard>
-    </div>
+    <v-list width="80%">
+      <div v-for="userData in getFriendListGet" :key="userData.id">
+        <FriendListCard :userData="userData"><v-btn @click="deleteFriend(userData.id)" color="#ff4956">
+        <StyledText color="white">DELETE</StyledText>
+      </v-btn></FriendListCard>
+      </div>
+    </v-list>
     <h2 v-if="getFriendListGet.length == 0">まだお友達はいないようです...お友達を追加しましょう!!</h2>
   </div>
 </template>
 
 <script>
+import FriendListCard from './FriendListCard.vue'
 export default {
+  components:{FriendListCard},
   computed: {
     getFriendListGet: function () {
       return this.$store.getters["friend/friendList"];

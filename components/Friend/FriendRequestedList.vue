@@ -1,19 +1,12 @@
 <template>
   <div>
-    <div class="mb-6" 
-         v-for="userData in getRequestFriendList" :key="userData.id">
-      <FriendListCard :userData="userData">
-        <v-btn
-          @click="deleteRequestFriend(userData.id)"
-          color="#ff4956"
-               width="6vw"
-               min-width="60px"
-               height="3vw"
-               min-height="30px">
-          <StyledText color="white" size="0.7vw">DELETE</StyledText>
-        </v-btn>
-      </FriendListCard>
-    </div>
+    <v-list width="80%">
+      <div v-for="userData in getRequestFriendList" :key="userData.id">
+        <FriendListCard :userData="userData"><v-btn @click="deleteRequestFriend(userData.id)" color="#ff4956">
+        <StyledText color="white">DELETE</StyledText>
+      </v-btn></FriendListCard>
+      </div>
+    </v-list>
     <h2 v-if="getRequestFriendList.length == 0">あなたからお友達におくったフレンドリクエストは今のところないようです...<br />"ADD Friend"ボタンを使ってリクエストしてみましょう!!</h2>
   </div>
 </template>

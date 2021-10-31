@@ -1,26 +1,17 @@
 <template>
   <div>
-    <div class="mb-6"
-         v-for="userData in getReceiveRequestFriendList" :key="userData.id">
-      <FriendListCard :userData="userData">
-        <v-btn @click="addReceiveFriend(userData.id)"
-               color="#8ccb00"
-               width="6vw"
-               min-width="60px"
-               height="3vw"
-               min-height="30px">
-          <StyledText color="white" size="0.7vw">ADD</StyledText>
-        </v-btn>
-        <v-btn @click="deleteReceiveFriend(userData.id)"
-               color="#ff4956"
-               width="6vw"
-               min-width="60px"
-               height="3vw"
-               min-height="30px">
-          <StyledText color="white" size="0.7vw">DELETE</StyledText>
-        </v-btn>
-      </FriendListCard>
-    </div>
+    <v-list width="80%">
+      <div v-for="userData in getReceiveRequestFriendList" :key="userData.id">
+        <FriendListCard :userData="userData">
+          <v-btn @click="addReceiveFriend(userData.id)" color="#8ccb00">
+            <StyledText color="white">承認</StyledText>
+          </v-btn>
+          <v-btn @click="deleteReceiveFriend(userData.id)" color="#ff4956">
+            <StyledText color="white">棄却</StyledText>
+          </v-btn>
+        </FriendListCard>
+      </div>
+    </v-list>
     <h2 v-if="getReceiveRequestFriendList.length == 0">今のところ、あなたはお友達からフレンドリクエストを受け取っていないようです...</h2>
   </div>
 </template>

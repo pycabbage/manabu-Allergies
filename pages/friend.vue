@@ -2,7 +2,7 @@
   <v-container v-if="getEmailVerified">
     <PageTitle>フレンド</PageTitle>
     <div class="FriendTabs">
-      <v-tabs height="5vh">
+      <v-tabs>
         <v-tab>
           <span class="TabTexts">Friend List</span>
         </v-tab>
@@ -37,9 +37,12 @@
 </template>
 <script>
 import AddFriendBtn from '../components/Btn/AddFriendBtn.vue';
-import QrcodeVue from 'qrcode.vue'
+import QrcodeVue from 'qrcode.vue';
+import CurrentFriendList from '../components/Friend/CurrentFriendList.vue';
+import FriendRequestedList from '../components/Friend/FriendRequestedList.vue';
+import FriendRequestList from '../components/Friend/FriendRequestList.vue';
 export default {
-  components: { AddFriendBtn, QrcodeVue },
+  components: { AddFriendBtn, QrcodeVue, CurrentFriendList, FriendRequestedList, FriendRequestList},
   data: function () {
     return {
       ThemeColor: "light-blue darken-1",
