@@ -14,7 +14,7 @@
         <v-card-text>
           <StyledText color="red">{{errorMsg}}</StyledText>
           <v-form ref="form" :disabled="loading">
-            <TextForm ref="requestFriendId" title="Friend's User ID" icon="mdi-account-outline" required />
+            <TextForm ref="requestFriendId" title="Friend's User ID" icon="mdi-account-outline" required :defaultValue="userId" />
           </v-form>
         </v-card-text>
         <v-card-actions class="justify-end">
@@ -33,6 +33,11 @@ export default {
       type: String,
       require: true,
     },
+    userId:{
+      type: String,
+      require: false,
+      default:""
+    }
   },
   data() {
     return {
@@ -65,8 +70,13 @@ export default {
           }
           this.loading = false;
         });
-    },
+    }
   },
+  mounted: function(){
+    if (this.userId != ""){
+      this.addfrienddialog = true
+    }
+  }
 }
 </script>
 

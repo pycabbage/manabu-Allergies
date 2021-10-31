@@ -24,16 +24,19 @@
       </v-tabs>
     </div>
     <div class="AddFriendBtn">
-      <AddFriendBtn :ThemeColor="ThemeColor" />
+      <AddFriendBtn :ThemeColor="ThemeColor" :userId="$route.query.id" />
       <h3>あなたのユーザーID:{{getId}}</h3>
+      <qrcodeVue :value="'https://www.cabbageqq.tk/manabu-Allergies/friend?id='+getId"></qrcodeVue>
+      このQRコードを使用してお友達からリクエストを送信してもらうこともできます。
     </div>
   </v-container>
 </template>
 
 <script>
 import AddFriendBtn from '../components/Btn/AddFriendBtn.vue';
+import QrcodeVue from 'qrcode.vue'
 export default {
-  components: { AddFriendBtn },
+  components: { AddFriendBtn, QrcodeVue },
   data: function () {
     return {
       ThemeColor: "light-blue darken-1",
@@ -66,7 +69,7 @@ export default {
     getPhoto: function () {
       return this.$store.getters["auth/photo"];
     },
-  },
+  }
 };
 </script>
 
