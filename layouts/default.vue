@@ -47,7 +47,7 @@ export default {
       { title: "戦闘", to: "/battle", icon: "mdi-sword-cross" },
       { title: "マイページ", to: "/my-page", icon: "mdi-account" },
       { title: "図鑑", to: "/zukan", icon: "mdi-book" },
-      { title: "フレンドリスト", to:"/friend", icon: "mdi-account-multiple" },
+      { title: "フレンド", to:"/friend", icon: "mdi-account-group" },
     ],
   }),
   methods: {

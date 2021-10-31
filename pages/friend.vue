@@ -1,6 +1,6 @@
 <template>
   <v-container v-if="getEmailVerified">
-    <PageTitle>フレンドリスト</PageTitle>
+    <PageTitle>フレンド</PageTitle>
     <div class="FriendTabs">
       <v-tabs height="5vh">
         <v-tab>
