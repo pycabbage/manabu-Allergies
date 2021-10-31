@@ -32,11 +32,9 @@
     <div class="AddFriendBtn">
       <AddFriendBtn :ThemeColor="ThemeColor" :userId="$route.query.id" /><v-btn @click="QRdialog=true" color="green" large>QRコード</v-btn>
       <h3>あなたのユーザーID:{{getId}}</h3>
-      
     </div>
   </v-container>
 </template>
-
 <script>
 import AddFriendBtn from '../components/Btn/AddFriendBtn.vue';
 import QrcodeVue from 'qrcode.vue'
@@ -82,7 +80,6 @@ export default {
 <style>
 .AddFriendBtn {
   float: left;
-  position: fixed;
   bottom: 10vh;
 }
 
