@@ -1,6 +1,6 @@
 <template>
   <v-container class="mt-16">
-    <v-carousel cycle show-arrows-on-hover>
+    <v-carousel :cycle="doCycle" show-arrows-on-hover>
       <v-carousel-item style="background: green;" contain reverse-transition="fade-transition" transition="fade-transition">
         <h1>マナブアレルギーへようこそ！</h1>
         <v-img src="./icon.png" contain height="100%"/>
@@ -30,8 +30,16 @@
           <v-spacer />
           <QrcodeVue size="400" value="https://www.cabbageqq.tk/manabu-Allergies/"></QrcodeVue>
         </v-sheet>
-     </v-carousel-item>
+      </v-carousel-item>
+      <v-carousel-item reverse-transition="fade-transition" transition="fade-transition">
+        <v-sheet color="$vuetify.theme.dark ? 'black' : 'white'" height="100%" style="text-align: center;" tile>
+          <h1>[試験的実装]ダークテーマ</h1>
+          <v-spacer />
+          <v-switch v-model="$vuetify.theme.dark" label="ダークテーマ切り替え"/>
+        </v-sheet>
+      </v-carousel-item>
     </v-carousel>
+    <v-switch v-model="doCycle" label="自動再生"/>
   </v-container>
 </template>
 
@@ -43,6 +51,7 @@ export default {
     return {
       height:10,
       width:20,
+      doCycle:true
     }
   },
   computed :{
