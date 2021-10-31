@@ -18,7 +18,7 @@
     "nuxt": "^2.15.3",
     "pixi.js": "^6.1.0",
     "qrcode.vue": "1.7.0",
-    "vue-cropperjs": "^5.0.0"
+    "vue-cropperjs": "4.2.0"
   },
   "devDependencies": {
     "@nuxtjs/vuetify": "^1.12.1",
