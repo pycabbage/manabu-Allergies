@@ -23,11 +23,16 @@
         </v-tab-item>
       </v-tabs>
     </div>
+    <v-dialog v-model="QRdialog">
+      <v-card>
+        <v-card-subtitle>このQRコードを使用してお友達からリクエストを送信してもらってください。<br />(あらかじめログインしたブラウザで開く必要があります。)</v-card-subtitle>
+        <v-card-text><qrcodeVue :value="'https://www.cabbageqq.tk/manabu-Allergies/friend?id='+getId"></qrcodeVue></v-card-text>
+      </v-card>
+    </v-dialog>
     <div class="AddFriendBtn">
-      <AddFriendBtn :ThemeColor="ThemeColor" :userId="$route.query.id" />
+      <AddFriendBtn :ThemeColor="ThemeColor" :userId="$route.query.id" /><v-btn @click="QRdialog=true" color="green" large>QRコード</v-btn>
       <h3>あなたのユーザーID:{{getId}}</h3>
-      <qrcodeVue :value="'https://www.cabbageqq.tk/manabu-Allergies/friend?id='+getId"></qrcodeVue>
-      このQRコードを使用してお友達からリクエストを送信してもらうこともできます。
+      
     </div>
   </v-container>
 </template>
@@ -43,6 +48,7 @@ export default {
       dialog: false,
       loading: false,
       requestFriendId: "",
+      QRdialog:false
     };
   },
   computed: {
