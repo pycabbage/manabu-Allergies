@@ -1,11 +1,11 @@
 <template>
   <v-container class="mt-16">
-    <v-carousel cycle>
-      <v-carousel-item style="background: green;" contain>
+    <v-carousel cycle show-arrows-on-hover>
+      <v-carousel-item style="background: green;" contain reverse-transition="fade-transition" transition="fade-transition">
         <h1>マナブアレルギーへようこそ！</h1>
         <v-img src="./icon.png" contain height="100%"/>
       </v-carousel-item>
-      <v-carousel-item>
+      <v-carousel-item reverse-transition="fade-transition" transition="fade-transition">
         <v-sheet color="blue" height="100%" tile>
           <v-row >
             <v-col justify="start" align-self="start" cols="12">
@@ -24,10 +24,11 @@
           </v-row>
         </v-sheet>
       </v-carousel-item>
-      <v-carousel-item>
-        <v-sheet color="blue" height="100%" tile>
+      <v-carousel-item reverse-transition="fade-transition" transition="fade-transition">
+        <v-sheet color="blue" height="100%" style="text-align: center;" tile>
           <h1>もっと多くの人に!</h1>
-          <QrcodeVue size="200" value="https://www.cabbageqq.tk/manabu-Allergies/"></QrcodeVue>
+          <v-spacer />
+          <QrcodeVue size="400" value="https://www.cabbageqq.tk/manabu-Allergies/"></QrcodeVue>
         </v-sheet>
      </v-carousel-item>
     </v-carousel>
