@@ -54,11 +54,6 @@ export default ({
       require:false,
       default:false
     },
-/*    callback:{
-      type:Function,
-      require:false,
-      default:Function()
-    }*/
   },
   computed:{
     form_type: function() {
@@ -128,10 +123,10 @@ export default ({
           this.editable=false
         }
       } else {
-        if(this.password){
-          this.value=""
-        }
         this.editable = true
+        if(this.password){
+          this.$refs.form.value=""
+        }
         this.$emit("callback:pencil")
       }
     }
