@@ -24,12 +24,19 @@
           </v-row>
         </v-sheet>
       </v-carousel-item>
+      <v-carousel-item>
+        <v-sheet color="blue" height="100%" tile>
+          <h1>もっと多くの人に!</h1>
+          <vue-qrcode value="https://www.cabbageqq.tk/manabu-Allergies/"></vue-qrcode>
+        </v-sheet>
+     </v-carousel-item>
     </v-carousel>
   </v-container>
 </template>
 
 <script>
 import DataFunc from '/components/DataFuncs.vue'
+import VueQrcode from '@chenfengyuan/vue-qrcode';
 export default {
   data(){
     return {
@@ -39,7 +46,8 @@ export default {
   },
   computed :{
     Name: DataFunc.computed.getName,
-  }
+  },
+  components:{VueQrcode}
 }
 </script>
 
