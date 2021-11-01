@@ -24,10 +24,26 @@
       </v-tabs>
     </div>
     <v-dialog v-model="QRdialog">
-      <v-card>
-        <v-card-subtitle>このQRコードを使用してお友達からリクエストを送信してもらってください。<br />(あらかじめログインしたブラウザで開く必要があります。)</v-card-subtitle>
-        <v-card-text><qrcodeVue :value="'https://www.cabbageqq.tk/manabu-Allergies/friend?id='+getId"></qrcodeVue></v-card-text>
-      </v-card>
+      <v-tabs>
+        <v-tab>
+          <span class="TabTexts">表示</span>
+        </v-tab>
+        <v-tab>
+          <span class="TabTexts">読み取り</span>
+        </v-tab>
+        <v-tab-item>
+          <v-card>
+            <v-card-subtitle>このQRコードを使用してお友達からリクエストを送信してもらってください。<br />(あらかじめログインしたブラウザで開く必要があります。)</v-card-subtitle>
+            <v-card-text><qrcodeVue :value="'https://www.cabbageqq.tk/manabu-Allergies/friend?id='+getId"></qrcodeVue></v-card-text>
+          </v-card>
+        </v-tab-item>
+        <v-tab-item>
+          <v-card>
+            <v-card-subtitle>QRコードを読み取ります。枠の中に入るように調整してください。</v-card-subtitle>
+            <v-card-text><QrcodeStream @decode="onDecode" ></QrcodeStream></v-card-text>
+          </v-card>
+        </v-tab-item>
+      </v-tabs>
     </v-dialog>
     <div class="AddFriendBtn">
       <AddFriendBtn :ThemeColor="ThemeColor" :userId="$route.query.id" /><v-btn @click="QRdialog=true" color="green" large>QRコード</v-btn>
@@ -38,11 +54,12 @@
 <script>
 import AddFriendBtn from '../components/Btn/AddFriendBtn.vue';
 import QrcodeVue from 'qrcode.vue';
+import { QrcodeStream } from 'vue-qrcode-reader';
 import CurrentFriendList from '../components/Friend/CurrentFriendList.vue';
 import FriendRequestedList from '../components/Friend/FriendRequestedList.vue';
 import FriendRequestList from '../components/Friend/FriendRequestList.vue';
 export default {
-  components: { AddFriendBtn, QrcodeVue, CurrentFriendList, FriendRequestedList, FriendRequestList},
+  components: { AddFriendBtn, QrcodeVue, CurrentFriendList, FriendRequestedList, FriendRequestList, QrcodeStream },
   data: function () {
     return {
       ThemeColor: "light-blue darken-1",
@@ -76,6 +93,11 @@ export default {
     getPhoto: function () {
       return this.$store.getters["auth/photo"];
     },
+  },
+  methods:{
+    onDecode(text){
+      alert(text)
+    }
   }
 };
 </script>
