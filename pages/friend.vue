@@ -46,7 +46,7 @@
       </v-tabs>
     </v-dialog>
     <div class="AddFriendBtn">
-      <AddFriendBtn :ThemeColor="ThemeColor" :userId="$route.query.id" /><v-btn @click="QRdialog=true" color="green" large>QRコード</v-btn>
+      <AddFriendBtn :ThemeColor="ThemeColor" :userId="$route.query.id" /><v-btn @click="QRdialog=true" color="green" large><StyledText icon="mdi-qrcode">QRコード</StyledText></v-btn>
       <h3>あなたのユーザーID:{{getId}}</h3>
     </div>
   </v-container>
