@@ -40,13 +40,13 @@
         <v-tab-item>
           <v-card>
             <v-card-subtitle>QRコードを読み取ります。枠の中に入るように調整してください。</v-card-subtitle>
-            <v-card-text><QrcodeStream @decode="onDecode" ></QrcodeStream></v-card-text>
+            <v-card-text><QrcodeStream @decode="onDecode" :track="tracking"></QrcodeStream></v-card-text>
           </v-card>
         </v-tab-item>
       </v-tabs>
     </v-dialog>
     <div class="AddFriendBtn">
-      <AddFriendBtn :ThemeColor="ThemeColor" :userId="$route.query.id" /><v-btn @click="QRdialog=true" color="green" large><StyledText icon="mdi-qrcode">QRコード</StyledText></v-btn>
+      <AddFriendBtn :ThemeColor="ThemeColor" :userId="uid" ref="addBtn"/><v-btn @click="QRdialog=true" color="green" large><StyledText icon="mdi-qrcode">QRコード</StyledText></v-btn>
       <h3>あなたのユーザーID:{{getId}}</h3>
     </div>
   </v-container>
@@ -66,7 +66,8 @@ export default {
       dialog: false,
       loading: false,
       requestFriendId: "",
-      QRdialog:false
+      QRdialog:false,
+      uid:this.$route.query.id
     };
   },
   computed: {
@@ -96,8 +97,28 @@ export default {
   },
   methods:{
     onDecode(text){
-      alert(text)
-    }
+      var parser = new URL(text);
+      if (parser.searchParams.has("id")){
+        this.uid=parser.searchParams.get("id")
+        this.$refs.addBtn.showDialog()
+      }
+    },
+    tracking(detectedCodes, ctx) {
+      for (const detectedCode of detectedCodes) {
+        const [ firstPoint, ...otherPoints ] = detectedCode.cornerPoints
+
+        ctx.strokeStyle = "red";
+
+        ctx.beginPath();
+        ctx.moveTo(firstPoint.x, firstPoint.y);
+        for (const { x, y } of otherPoints) {
+          ctx.lineTo(x, y);
+        }
+        ctx.lineTo(firstPoint.x, firstPoint.y);
+        ctx.closePath();
+        ctx.stroke();
+      }
+    },
   }
 };
 </script>

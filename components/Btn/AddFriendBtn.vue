@@ -70,11 +70,14 @@ export default {
           }
           this.loading = false;
         });
+    },
+    showDialog(){
+      this.addfrienddialog = true
     }
   },
   mounted: function(){
     if (this.userId != ""){
-      this.addfrienddialog = true
+      this.showDialog()
     }
   }
 }
