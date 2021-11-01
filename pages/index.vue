@@ -26,9 +26,9 @@
       </v-carousel-item>
       <v-carousel-item reverse-transition="fade-transition" transition="fade-transition">
         <v-sheet color="blue" height="100%" style="text-align: center;" tile>
-          <h1>もっと多くの人に!</h1>
+          <h1>さあ、他の人もここからアクセス!</h1>
           <v-spacer />
-          <QrcodeVue size="400" value="https://www.cabbageqq.tk/manabu-Allergies/"></QrcodeVue>
+          <QrcodeVue size="350" value="https://www.cabbageqq.tk/manabu-Allergies/"></QrcodeVue>
         </v-sheet>
       </v-carousel-item>
       <v-carousel-item reverse-transition="fade-transition" transition="fade-transition">
