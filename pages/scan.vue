@@ -7,6 +7,7 @@
         prepend-icon="mdi-camera"
         placeholder="画像をドラッグ＆ドロップか選択してください。"
         @change="setImage"
+        capture="environment"
       ></v-file-input>
     </v-container>
   </v-app>
