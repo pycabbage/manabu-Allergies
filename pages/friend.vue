@@ -40,7 +40,8 @@
         <v-tab-item>
           <v-card>
             <v-card-subtitle>QRコードを読み取ります。枠の中に入るように調整してください。</v-card-subtitle>
-            <v-card-text><QrcodeStream @decode="onDecode" :track="tracking"></QrcodeStream></v-card-text>
+            <StyledText color="red" v-if="error != ''">{{error}}</StyledText>
+            <v-card-text><QrcodeStream @decode="onDecode" :track="tracking" @init="onInit"></QrcodeStream></v-card-text>
           </v-card>
         </v-tab-item>
       </v-tabs>
@@ -67,7 +68,8 @@ export default {
       loading: false,
       requestFriendId: "",
       QRdialog:false,
-      uid:this.$route.query.id
+      uid:this.$route.query.id,
+      error:""
     };
   },
   computed: {
@@ -119,6 +121,29 @@ export default {
         ctx.stroke();
       }
     },
+    async onInit (promise) {
+      try {
+        await promise
+      } catch (error) {
+        if (error.name === 'NotAllowedError') {
+          this.error = "ERROR: you need to grant camera access permission"
+        } else if (error.name === 'NotFoundError') {
+          this.error = "ERROR: no camera on this device"
+        } else if (error.name === 'NotSupportedError') {
+          this.error = "ERROR: secure context required (HTTPS, localhost)"
+        } else if (error.name === 'NotReadableError') {
+          this.error = "ERROR: is the camera already in use?"
+        } else if (error.name === 'OverconstrainedError') {
+          this.error = "ERROR: installed cameras are not suitable"
+        } else if (error.name === 'StreamApiNotSupportedError') {
+          this.error = "ERROR: Stream API is not supported in this browser"
+        } else if (error.name === 'InsecureContextError') {
+          this.error = 'ERROR: Camera access is only permitted in secure context. Use HTTPS or localhost rather than HTTP.';
+        } else {
+          this.error = `ERROR: Camera error (${error.name})`;
+        }
+      }
+    }
   }
 };
 </script>
