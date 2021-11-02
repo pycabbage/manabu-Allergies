@@ -107,7 +107,9 @@ export default {
       this.setImage(e.dataTransfer.files[0]);
     },
     async setImage(e) {
-      alert(e)
+      if (Object.prototype.toString(fr) == "[object FileList]"){
+        e=e[0]
+      }
       /////////////////////////////////////////////////////
       // const data = await Data.init("private");
       // await data.setFile(/*"key"*/ "key", this.file);
