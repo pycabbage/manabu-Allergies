@@ -107,9 +107,6 @@ export default {
       this.setImage(e.dataTransfer.files[0]);
     },
     async setImage(e) {
-      if (Object.prototype.toString(e) == "[object FileList]"){
-        e=e[0]
-      }
       /////////////////////////////////////////////////////
       // const data = await Data.init("private");
       // await data.setFile(/*"key"*/ "key", this.file);
@@ -119,7 +116,11 @@ export default {
         this.imgSrc = ev.target.result;
         this.step=2
       };
-      fr.readAsDataURL(e);
+      try{
+        fr.readAsDataURL(e);
+      } catch(error) {
+        fr.readAsDataURL(e[0]);
+      }
     },
     cropImage() {
       this.imgSrc = this.$refs.cropper.getCroppedCanvas().toDataURL();
