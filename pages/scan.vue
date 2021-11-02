@@ -107,7 +107,7 @@ export default {
       this.setImage(e.dataTransfer.files[0]);
     },
     async setImage(e) {
-      if (Object.prototype.toString(fr) == "[object FileList]"){
+      if (Object.prototype.toString(e) == "[object FileList]"){
         e=e[0]
       }
       /////////////////////////////////////////////////////
