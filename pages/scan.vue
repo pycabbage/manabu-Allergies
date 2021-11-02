@@ -6,11 +6,11 @@
           スキャン画像のアップロード
         </v-stepper-step>
         <v-divider />
-        <v-stepper-step step="2">
+        <v-stepper-step step="2" :complete="step > 2">
           画像の調整
         </v-stepper-step>
         <v-divider />
-        <v-stepper-step step="3">
+        <v-stepper-step step="3" :complete="step > 3">
           スキャン結果の選択
         </v-stepper-step>
       </v-stepper-header>
@@ -107,7 +107,7 @@ export default {
       this.setImage(e.dataTransfer.files[0]);
     },
     async setImage(e) {
-      console.log(e)
+      alert(e)
       /////////////////////////////////////////////////////
       // const data = await Data.init("private");
       // await data.setFile(/*"key"*/ "key", this.file);
