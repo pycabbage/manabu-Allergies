@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-form class="text-center" :disabled="loading" ref="signupform">
+    <v-form class="text-center" :disabled="loading" ref="signupform" @submit.prevent="verifyPasswd">
       <h2>アカウント作成<br />(アカウントをお持ちの方は<NuxtLink to="/login">ログイン</NuxtLink>)</h2>
       <StyledText color="red" v-if="!dialog && Message != ''">{{Message}}</StyledText>
       <v-row justify="center">
@@ -26,7 +26,7 @@
         <v-card-title>パスワードを確認</v-card-title>
         <v-card-subtitle><StyledText :color="errorMsg != '' ? 'red' : 'black'">{{Message}}</StyledText></v-card-subtitle>
         <v-card-text>
-        <v-form :disabled="loading" ref="verifyform">
+        <v-form :disabled="loading" ref="verifyform" @submit.prevent="create">
           <TextForm title="パスワード" required password ref="verifyPasswd" />
         </v-form>
         </v-card-text>

@@ -7,6 +7,7 @@
       :append-outer-icon="editSwitch ? (editable?'mdi-check':'mdi-pencil'):''"
       @click:append="passwdShow = !passwdShow"
       @click:append-outer="pencilClick"
+      @keyup.enter="pencilClick"
       :disabled="disabled"
       :rules="[checker]"
       ref="form"

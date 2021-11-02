@@ -8,17 +8,17 @@
         <h3>ユーザー情報</h3>
         <v-divider style="border-color:black"/>
         <div class="SectionContent">
-          <v-form ref="nameform">
+          <v-form ref="nameform" @submit.prevent="updateProfileName">
           <AccountIconBtn :userIconPath="this.$store.getters['auth/photo']"/>
           <TextForm title="アカウント名" editSwitch required :defaultValue="this.$store.getters['auth/name']" @callback:changed="updateProfileName" ref="name" />
           </v-form>
           <v-divider />
-          <v-form ref="mailform">
+          <v-form ref="mailform" @submit.prevent="updateEmail">
           <TextForm title="メールアドレス" editSwitch required mail :defaultValue="$store.getters['auth/email']" @callback:changed="updateEmail" @callback:pencil="show_vpasswd1=true" @callback:close="show_vpasswd1=false" ref="mail" />
           <TextForm title="パスワード(確認のため入力してください)" required password ref="verifyPassword1" v-show="show_vpasswd1" />
           </v-form>
           <v-divider />
-          <v-form ref="passwdform">
+          <v-form ref="passwdform" @submit.prevent="updatePassword">
           <TextForm title="現在のパスワード" editSwitch required password defaultValue="**********" @callback:changed="updatePassword" @callback:pencil="show_vpasswd2=true" @callback:close="show_vpasswd2=false" ref="password" />
           <TextForm title="新しいパスワード" required password ref="verifyPassword2" v-show="show_vpasswd2" />
           <TextForm title="新しいパスワード(確認用)" required password ref="verifyPassword3" v-show="show_vpasswd2" />

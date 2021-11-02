@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-form class="text-center" :disabled="loading" ref="loginform">
+    <v-form class="text-center" :disabled="loading" ref="loginform" @submit.prevent="login">
       <h2>ログイン<br />(アカウントをお持ちでない方は<NuxtLink to="/create">作成</NuxtLink>)</h2>
       <StyledText color="red" v-if="!dialog && Message != ''">{{Message}}</StyledText>
       <v-row justify="center">
@@ -21,7 +21,7 @@
         <v-card-title>パスワードをリセット</v-card-title>
         <v-card-subtitle><StyledText :color="errorMsg != '' ? 'red' : 'black'">{{Message}}</StyledText></v-card-subtitle>
         <v-card-text>
-        <v-form :disabled="loading" ref="resetform">
+        <v-form :disabled="loading" ref="resetform" @submit.prevent="resetEmail">
           <TextForm title="メールアドレス" required mail ref="resetEmail" />
         </v-form>
         </v-card-text>

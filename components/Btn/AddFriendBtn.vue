@@ -13,7 +13,7 @@
         </v-card-subtitle>
         <v-card-text>
           <StyledText color="red">{{errorMsg}}</StyledText>
-          <v-form ref="form" :disabled="loading">
+          <v-form ref="form" :disabled="loading" @submit.prevent="requestFriend">
             <TextForm ref="requestFriendId" title="Friend's User ID" icon="mdi-account-outline" required :defaultValue="userId" />
           </v-form>
         </v-card-text>
