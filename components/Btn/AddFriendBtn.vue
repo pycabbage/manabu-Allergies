@@ -68,6 +68,7 @@ export default {
           } else {
             this.errorMsg=error
           }
+          this.loading = false;
         });
     },
     showDialog(){
