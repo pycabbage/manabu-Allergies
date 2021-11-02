@@ -60,7 +60,7 @@ export default {
         })
         .then(() => {
           this.loading = false;
-          this.dialog = false;
+          this.addfrienddialog = false;
         })
         .catch((error) => {
           if (error == "Error: same"){
@@ -68,7 +68,6 @@ export default {
           } else {
             this.errorMsg=error
           }
-          this.loading = false;
         });
     },
     showDialog(){
