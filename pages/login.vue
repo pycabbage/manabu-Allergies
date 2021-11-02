@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <v-alert dense :type="alertData['type']" v-if="alertData['show']" />
     <v-form class="text-center" :disabled="loading" ref="loginform" @submit.prevent="login">
       <h2>ログイン<br />(アカウントをお持ちでない方は<NuxtLink to="/create">作成</NuxtLink>)</h2>
       <StyledText color="red" v-if="!dialog && Message != ''">{{Message}}</StyledText>
@@ -41,7 +42,12 @@ export default {
       dialog: false,
       loading: false,
       resetEmail: "",
-      errorMsg:""
+      errorMsg:"",
+      alertData:{
+        show:false,
+        type:"success",
+
+      }
     };
   },
   methods: {

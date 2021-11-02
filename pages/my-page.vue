@@ -69,14 +69,14 @@ export default {
           alert(error);
         });
     },
-    updateProfileName(value) {
+    updateProfileName() {
       if (!this.$refs.nameform.validate()){
         return
       }
       this.$store
         .dispatch({
           type: "auth/updateProfile",
-          name: value,
+          name: this.$refs.name.value,
         })
         .then(() => {
           this.$refs.name.editable=false
@@ -85,14 +85,14 @@ export default {
           alert(error);
         });
     },
-    updateEmail(value) {
+    updateEmail() {
       if (!this.$refs.mailform.validate()){
         return
       }
       this.$store
         .dispatch({
           type: "auth/updateEmailWithAuth",
-          email: value,
+          email: this.$refs.mail.value,
           confirmationPassword: this.$refs.verifyPassword1.value,
         })
         .then(() => {
@@ -105,7 +105,7 @@ export default {
           alert(error);
         });
     },
-    updatePassword(value) {
+    updatePassword() {
       if (!this.$refs.passwdform.validate()){
         return
       }
@@ -116,7 +116,7 @@ export default {
       this.$store
         .dispatch({
           type: "auth/updatePasswordWithAuth",
-          password: value,
+          password: this.$refs.password,
           confirmationPassword: this.$refs.verifyPassword2.value,
         })
         .then(() => {
