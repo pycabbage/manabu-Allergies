@@ -16,7 +16,7 @@
       </v-stepper-header>
       <v-stepper-items>
         <v-stepper-content step="1">
-          <v-container v-cloak @drop.prevent="setImage" @dragover.prevent>
+          <v-container v-cloak @drop.prevent="addDropFile" @dragover.prevent>
             <v-file-input
               accept="image/png, image/jpeg, image/bmp"
               prepend-icon="mdi-camera"
@@ -103,12 +103,14 @@ export default {
     };
   },
   methods: {
+    addDropFile(e) {
+      this.setImage(e.dataTransfer.files[0]);
+    },
     async setImage(e) {
       /////////////////////////////////////////////////////
       // const data = await Data.init("private");
       // await data.setFile(/*"key"*/ "key", this.file);
       /////////////////////////////////////////////
-      console.log(e)
       const fr = new FileReader();
       fr.onload = (ev) => {
         this.imgSrc = ev.target.result;
