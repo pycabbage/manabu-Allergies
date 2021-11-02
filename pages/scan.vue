@@ -107,6 +107,7 @@ export default {
       this.setImage(e.dataTransfer.files[0]);
     },
     async setImage(e) {
+      console.log(e)
       /////////////////////////////////////////////////////
       // const data = await Data.init("private");
       // await data.setFile(/*"key"*/ "key", this.file);
