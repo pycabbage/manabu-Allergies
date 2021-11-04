@@ -55,7 +55,7 @@
 <script>
 import AddFriendBtn from '../components/Btn/AddFriendBtn.vue';
 import QrcodeVue from 'qrcode.vue';
-import QrcodeStream from 'vue-qrcode-reader';
+import { QrcodeStream } from 'vue-qrcode-reader';
 import CurrentFriendList from '../components/Friend/CurrentFriendList.vue';
 import FriendRequestedList from '../components/Friend/FriendRequestedList.vue';
 import FriendRequestList from '../components/Friend/FriendRequestList.vue';

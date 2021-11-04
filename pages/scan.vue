@@ -24,7 +24,7 @@
               @change="setImage"
               :capture="file_upload"
             ></v-file-input>
-            <v-switch v-model="file_upload" label="ファイルをアップロードしたい場合は、このスイッチをオフにしてください"/>
+            <v-switch v-model="file_upload" label="ファイルをアップロードしたい場合は、このスイッチをオフにしてください" v-show="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm"/>
           </v-container>
         </v-stepper-content>
         <v-stepper-content step="2">
