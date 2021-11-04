@@ -1,8 +1,19 @@
 /*!
- * qrcode.vue v1.7.0
- * A Vue component to generate QRCode.
- * © 2017-2019 @scopewu(https://github.com/scopewu)
- * MIT License.
+  * vue-router v3.5.2
+  * (c) 2021 Evan You
+  * @license MIT
+  */
+
+/*!
+ * Vue.js v2.6.14
+ * (c) 2014-2021 Evan You
+ * Released under the MIT License.
+ */
+
+/*!
+ * vuex v3.6.2
+ * (c) 2021 Evan You
+ * @license MIT
  */
 
 
@@ -272,25 +283,6 @@ PERFORMANCE OF THIS SOFTWARE.
 
 
 /*!
-  * vue-router v3.5.2
-  * (c) 2021 Evan You
-  * @license MIT
-  */
-
-/*!
- * Vue.js v2.6.14
- * (c) 2014-2021 Evan You
- * Released under the MIT License.
- */
-
-/*!
- * vuex v3.6.2
- * (c) 2021 Evan You
- * @license MIT
- */
-
-
-/*!
  * Cropper.js v1.5.12
  * https://fengyuanchen.github.io/cropperjs
  *
@@ -298,4 +290,12 @@ PERFORMANCE OF THIS SOFTWARE.
  * Released under the MIT license
  *
  * Date: 2021-06-12T08:00:17.411Z
+ */
+
+
+/*!
+ * qrcode.vue v1.7.0
+ * A Vue component to generate QRCode.
+ * © 2017-2019 @scopewu(https://github.com/scopewu)
+ * MIT License.
  */
