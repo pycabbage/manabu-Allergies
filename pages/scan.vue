@@ -22,8 +22,9 @@
               prepend-icon="mdi-camera"
               placeholder="画像をここにドロップするか、選択してください。"
               @change="setImage"
-              capture="environment"
+              :capture="file_upload"
             ></v-file-input>
+            <v-switch v-model="file_upload" label="ファイルをアップロードしたい場合は、このスイッチをオフにしてください"/>
           </v-container>
         </v-stepper-content>
         <v-stepper-content step="2">
@@ -67,6 +68,7 @@ export default {
   data() {
     return {
       step:1,
+      file_upload:true,
       imgSrc: "",
       visionResult: undefined,
       includeList: [],
